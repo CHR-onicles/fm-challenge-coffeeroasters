@@ -1,5 +1,8 @@
+@use './styles/abstracts/index' as *;
+
 .App {
   text-align: center;
+  // background-color: $color-1;
 }
 
 .App-logo {
