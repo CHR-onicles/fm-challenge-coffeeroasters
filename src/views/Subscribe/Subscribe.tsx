@@ -1,9 +1,9 @@
-import React from 'react';
+import { BaseHero } from '../../components/layout';
 
 const Subscribe = () => {
   return (
     <main>
-      <h2>Subscribe Component</h2>
+      <BaseHero title="Create your plan" description="Some text for the description" imgPath="some image path" />
     </main>
   );
 };
