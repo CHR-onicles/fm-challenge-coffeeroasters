@@ -14,7 +14,8 @@ function App() {
       </BaseUtility>
 
       <BaseUtility className="stack | text-color-dark" elemType="ul">
-        <li>Stack is a `ul` element</li>
+        <li>- Stack is a `ul` element</li>
+        <li>- Another list element</li>
       </BaseUtility>
 
       <BaseUtility className="box | text-color-dark" elemType="header">
