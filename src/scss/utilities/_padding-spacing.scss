@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+@each $scale, $value in $size-scale {
+  .pt-#{$scale} {
+    padding-top: $value;
+  }
+
+  .pb-#{$scale} {
+    padding-bottom: $value;
+  }
+}
+
+@each $scale, $value in $size-scale {
+  .pl-#{$scale} {
+    padding-left: $value;
+  }
+
+  .pr-#{$scale} {
+    padding-right: $value;
+  }
+}

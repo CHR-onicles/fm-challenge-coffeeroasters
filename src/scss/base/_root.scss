@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+:root {
+  @each $font, $value in $fonts {
+    --font-family-#{"" + $font}: #{$value};
+  }
+
+  @each $color, $shade in $colors {
+    @each $key, $value in $shade {
+      --#{"" + $color}-#{$key}: #{$value};
+    }
+  }
+
+  @each $shadow, $value in $shadows {
+    --shadow-#{$shadow}: #{$value};
+  }
+
+  @each $zindex, $value in $zindexes {
+    --zindex-#{$zindex}: #{$value};
+  }
+
+  @each $scale, $value in $size-scale {
+    --space-#{$scale}: #{$value};
+  }
+}

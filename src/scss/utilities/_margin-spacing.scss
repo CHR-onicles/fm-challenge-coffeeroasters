@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+@each $scale, $value in $size-scale {
+  .mt-#{$scale} {
+    margin-top: $value;
+  }
+
+  .mb-#{$scale} {
+    margin-bottom: $value;
+  }
+}
+
+@each $scale, $value in $size-scale {
+  .ml-#{$scale} {
+    margin-left: $value;
+  }
+
+  .mr-#{$scale} {
+    margin-right: $value;
+  }
+}

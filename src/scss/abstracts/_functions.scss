@@ -1,0 +1,7 @@
+@use './config-map/' as *;
+
+@function toRem($pixelValue) {
+  $remValue: calc($pixelValue / $root-font-size) + rem;
+
+  @return $remValue;
+}

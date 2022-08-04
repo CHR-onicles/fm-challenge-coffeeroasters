@@ -1,0 +1,9 @@
+@use '../abstracts/' as *;
+
+@each $color, $shade in $colors {
+  @each $key, $value in $shade {
+    .bg-#{"" + $color}-#{$key} {
+      background-color: var(--#{"" + $color}-#{$key});
+    }
+  }
+}
