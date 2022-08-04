@@ -4,6 +4,10 @@ const Subscribe = () => {
   return (
     <main>
       <BaseHero title="Create your plan" description="Some text for the description" imgPath="some image path" />
+
+      <section className="container">
+        <h2>CreatePlan Component</h2>
+      </section>
     </main>
   );
 };

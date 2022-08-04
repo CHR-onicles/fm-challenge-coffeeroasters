@@ -5,7 +5,7 @@ import { routes } from '../../../data/routes';
 const BaseNavigation = () => {
   return (
     <nav>
-      <ul>
+      <ul className="row">
         {
           routes.map(route => (
             <li key={ `nav-${route.path}` }>

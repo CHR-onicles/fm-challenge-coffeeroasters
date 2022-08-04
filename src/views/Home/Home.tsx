@@ -5,7 +5,9 @@ const Home = () => {
     <main>
       <TheHero />
       
-      <h2>Home Component</h2>
+      <section className="container">
+        <h2>Home Component</h2>
+      </section>
     </main>
   );
 };

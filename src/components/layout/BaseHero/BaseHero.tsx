@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface BaseHeroProps {
   title: string;
   description: string;
@@ -9,9 +7,11 @@ interface BaseHeroProps {
 const BaseHero = ({ title, description, imgPath }: BaseHeroProps) => {
   return (
     <section>
-      <h1>{ title }</h1>
+      <div className="container">
+        <h1>{ title }</h1>
 
-      <p>{ description }</p>
+        <p>{ description }</p>
+      </div>
     </section>
   );
 };

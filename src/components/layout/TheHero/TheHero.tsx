@@ -1,8 +1,10 @@
 const TheHero = () => {
   return (
-    <div>
-      <p>TheHero Component</p>
-    </div>
+    <section>
+      <div className="container">
+        <p>TheHero Component</p>
+      </div>
+    </section>
   );
 };
 

@@ -5,13 +5,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './scss/index.scss';
 
 import App from './App';
-import { Home, AboutUs, Subscribe, NotFound } from './views';
+import { Home, AboutUs, CreatePlan, DesignSystem, NotFound } from './views';
 
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -19,7 +20,8 @@ root.render(
         <Route path="/" element={ <App /> }>
           <Route index element={ <Home /> } />
           <Route path="about-us" element={ <AboutUs /> } />
-          <Route path="subscribe" element={ <Subscribe /> } />
+          <Route path="create-plan" element={ <CreatePlan /> } />
+          <Route path="design-system" element={ <DesignSystem /> } />
           <Route path="*" element={ <NotFound /> } />
         </Route>
       </Routes>

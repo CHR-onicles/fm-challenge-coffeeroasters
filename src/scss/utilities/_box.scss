@@ -1,0 +1,9 @@
+@use '../abstracts/' as *;
+
+.box {
+  padding: var(--space-s0, 1.5rem);
+
+  * {
+    color: inherit;
+  }
+}

@@ -9,6 +9,6 @@ export const routes = [
   },
   {
     title: 'Create your plan',
-    path: '/subscribe',
+    path: '/create-plan',
   },
 ];

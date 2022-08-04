@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.grid,
+.grid-cols {
+  --grid-gap: #{toRem($grid-gap)};
+  display: grid;
+  grid-gap: var(--grid-gap, 0);
+
+  &-no-gutter {
+    grid-gap: 0;
+  }
+
+  @include media-breakpoint(xl) {
+    --grid-gap: #{toRem($grid-gap-xl)};
+  }
+}
+
+.grid {
+  --col-min-width: #{toRem($grid-col-width)};
+  grid-template-columns: repeat(auto-fit, minmax(var(--col-min-width), 1fr));
+
+  &-cols {
+    --grid-cols: #{$grid-cols};
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+
+    > * {
+      grid-column-end: span var(--grid-cols);
+    }
+  }
+
+  &__item {
+    @for $i from 1 through $grid-cols {
+      &--span-#{$i} {
+        grid-column-end: span #{$i};
+      }
+
+      &--start-#{$i} {
+        grid-column-start: #{$i};
+      }
+
+      &--end-#{$i+1} {
+        grid-column-end: #{$i+1};
+      }
+
+      &--order-#{$i} {
+        order: #{$i};
+      }
+    }
+  }
+
+  @each $breakpoint, $value in $breakpoints {
+    @include media-breakpoint(#{$breakpoint}) {
+      --col-min-width: #{toRem(map-get($grid-col-widths, $breakpoint))};
+
+      &__item {
+        @for $i from 1 through $grid-cols {
+          &--span-#{$breakpoint}-#{$i} {
+            grid-column-end: span #{$i};
+          }
+    
+          &--start-#{$breakpoint}-#{$i} {
+            grid-column-start: #{$i};
+          }
+    
+          &--end-#{$breakpoint}-#{$i+1} {
+            grid-column-end: #{$i+1};
+          }
+    
+          &--order-#{$breakpoint}-#{$i} {
+            order: #{$i};
+          }
+        }
+      }
+    }
+  }
+}
