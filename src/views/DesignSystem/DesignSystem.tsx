@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 
 import { BaseLogo } from '../../components/layout';
+import { ColorsSection, TypographySection, ButtonsSection, AccordionSection } from './';
 
 const DesignSystem = () => {
   return (
@@ -14,22 +15,13 @@ const DesignSystem = () => {
       </header>
 
       <main>
-        <section className="container">
-          <h2>Colors</h2>
-        </section>
+        <ColorsSection />
 
-        <section className="container">
-          <h2>Typography</h2>
-        </section>
+        <TypographySection />
 
-        <section className="container">
-          <h2>Buttons</h2>
-        </section>
+        <ButtonsSection />
 
-
-        <section className="container">
-          <h2>Accordion</h2>
-        </section>
+        <AccordionSection />
       </main>
     </Fragment>
   );

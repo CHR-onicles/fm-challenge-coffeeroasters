@@ -1,0 +1,18 @@
+@use '../../../scss/abstracts/' as *;
+
+.swatch {
+  > * + * {
+    margin-top: toRem(24px);
+  }
+
+  &__color {
+    justify-content: space-between;
+    padding: toRem(24px);
+    border-radius: toRem(8px);
+
+    > * {
+      margin-top: toRem(40px);
+      font-size: toRem(20px);
+    }
+  }
+}
