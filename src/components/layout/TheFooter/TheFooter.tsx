@@ -1,15 +1,12 @@
-import { NavLink } from 'react-router-dom';
-
 import { BaseNavigation } from '../index';
-import { ReactComponent as Logo } from '../../../assets/images/shared/logo.svg';
+
+import { BaseLogo } from '../index';
 
 const TheFooter = () => {
   return (
     <footer>
       <div className="container row">
-        <NavLink to="/">
-          <Logo />
-        </NavLink>
+        <BaseLogo />
         
         <BaseNavigation />
       </div>

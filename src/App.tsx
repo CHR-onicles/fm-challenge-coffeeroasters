@@ -1,12 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
-import styles from './App.module.scss';
-
 import { TheHeader, TheFooter } from './components/layout';
 
 function App() {
   return (
-    <div className={ styles.app }>
+    <div className="page">
       <TheHeader />
 
       <Outlet />

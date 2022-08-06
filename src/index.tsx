@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './scss/index.scss';
 
 import App from './App';
+import { BasePage } from './components/layout';
 import { Home, AboutUs, CreatePlan, DesignSystem, NotFound } from './views';
 
 import reportWebVitals from './reportWebVitals';
@@ -21,8 +22,11 @@ root.render(
           <Route index element={ <Home /> } />
           <Route path="about-us" element={ <AboutUs /> } />
           <Route path="create-plan" element={ <CreatePlan /> } />
-          <Route path="design-system" element={ <DesignSystem /> } />
           <Route path="*" element={ <NotFound /> } />
+        </Route>
+
+        <Route path="design-system" element={ <BasePage /> }>
+          <Route index element={ <DesignSystem /> } />
         </Route>
       </Routes>
     </BrowserRouter>
