@@ -1,0 +1,11 @@
+@use '../../scss/abstracts/' as *;
+
+.header {
+  padding-top: toRem(100px);
+  padding-bottom: toRem(150px);
+
+  h1 {
+    font-size: toRem(56px);
+    line-height: 1.1;
+  }
+}

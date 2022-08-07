@@ -19,6 +19,7 @@ export const colors = [
     rgb: '253, 214, 186',
     hsl: '25°, 94%, 86%',
     colorVar: 'orange-color-1',
+    type: 'light',
   },
   {
     name: 'Light Cream (BG)',
@@ -26,6 +27,7 @@ export const colors = [
     rgb: '254, 252, 247',
     hsl: '43°, 78%, 98%',
     colorVar: 'neutral-color-1',
+    type: 'light',
   },
   {
     name: 'Grey',

@@ -3,10 +3,12 @@ import { Fragment } from 'react';
 import { BaseLogo } from '../../components/layout';
 import { ColorsSection, TypographySection, ButtonsSection, AccordionSection } from './';
 
+import styles from './DesignSystem.module.scss';
+
 const DesignSystem = () => {
   return (
     <Fragment>
-      <header>
+      <header className={ styles.header }>
         <div className="container stack">
           <BaseLogo />
 

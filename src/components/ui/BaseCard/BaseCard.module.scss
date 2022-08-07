@@ -1,0 +1,22 @@
+@use '../../../scss/abstracts/' as *;
+
+.card {
+  padding: toRem(48px);
+  border-radius: toRem(8px);
+
+  &__content {
+    text-align: center;
+  }
+
+  &[data-variant="cyan"] {
+    background-color: var(--cyan-color-1);
+  }
+
+  &[data-variant="dark"] {
+    background-color: var(--dark-color-2);
+  }
+
+  &[data-variant="two-tone"] {
+    background: linear-gradient(90deg, var(--cyan-color-1) 0%, var(--cyan-color-1) 69%, var(--dark-color-2) 69%, var(--dark-color-2) 90%);
+  }
+}

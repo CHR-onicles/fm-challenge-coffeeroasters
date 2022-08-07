@@ -1,4 +1,4 @@
-export { default as Accordion } from './Accordion/Accordion';
-export { default as Button } from './Button/Button';
-export { default as Card } from './Card/Card';
-export { default as Swatch } from './Swatch/Swatch';
+export { default as BaseAccordion } from './BaseAccordion/BaseAccordion';
+export { default as BaseButton } from './BaseButton/BaseButton';
+export { default as BaseCard } from './BaseCard/BaseCard';
+export { default as BaseSwatch } from './BaseSwatch/BaseSwatch';
