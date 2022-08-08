@@ -6,6 +6,11 @@
 
   &__content {
     text-align: center;
+
+    h3 {
+      margin-bottom: toRem(24px);
+      font-size: toRem(40px);
+    }
   }
 
   &[data-variant="cyan"] {
@@ -17,6 +22,7 @@
   }
 
   &[data-variant="two-tone"] {
-    background: linear-gradient(90deg, var(--cyan-color-1) 0%, var(--cyan-color-1) 69%, var(--dark-color-2) 69%, var(--dark-color-2) 90%);
+    padding: 0;
+    background: linear-gradient(90deg, var(--cyan-color-1) 0%, var(--cyan-color-1) 60%, var(--dark-color-2) 60%, var(--dark-color-2) 90%);
   }
 }

@@ -1,0 +1,7 @@
+@use '../../../scss/abstracts/' as *;
+
+.card {
+  &__body {
+    padding: toRem(48px);
+  }
+}
