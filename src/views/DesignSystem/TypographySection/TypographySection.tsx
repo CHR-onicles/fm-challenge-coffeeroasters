@@ -4,9 +4,7 @@ import styles from './TypographySection.module.scss';
 
 const TypographySection = () => {
   return (
-    <section className="container">
-      <h2>Typography</h2>
-
+    <section className="container | mb-s5">
       <BaseCard data-variant="two-tone">
         <div className="grid-cols">
           <div className="grid__item grid__item--span-7">
@@ -27,28 +25,28 @@ const TypographySection = () => {
         </div>
       </BaseCard>
 
-      <div className="grid-cols">
+      <div className="grid-cols | mt-s4">
         <div className="grid__item grid__item--span-7">
           <div className="stack">
-            <p><strong>H1</strong> Fraunces Black, 72px, 72px line</p>
+            <p><strong className="mr-s2">H1</strong> Fraunces Black, 72px, 72px line</p>
 
             <h1>Lorem ipsum dolor sit amet</h1>
           </div>
 
-          <div className="stack">
-            <p><strong>H2</strong> Fraunces Black, 40px, 48px line</p>
+          <div className="stack | mt-s5">
+            <p><strong className="mr-s2">H2</strong> Fraunces Black, 40px, 48px line</p>
 
             <h2>Lorem ipsum dolor sit amet consectetuer adipiscing</h2>
           </div>
 
-          <div className="stack">
-            <p><strong>H3</strong> Fraunces Black, 32px, 36px line</p>
+          <div className="stack | mt-s5">
+            <p><strong className="mr-s2">H3</strong> Fraunces Black, 32px, 36px line</p>
 
             <h3>Lorem ipsum dolor sit amet consectetuer adipiscing</h3>
           </div>
 
-          <div className="stack">
-            <p><strong>H4</strong> Fraunces Black, 24px, 32px line</p>
+          <div className="stack | mt-s5">
+            <p><strong className="mr-s2">H4</strong> Fraunces Black, 24px, 32px line</p>
 
             <h4>Lorem ipsum dolor sit amet consectetuer adipiscing</h4>
           </div>
@@ -56,7 +54,7 @@ const TypographySection = () => {
 
         <div className="grid__item grid__item--span-5">
           <div className="stack">
-            <p><strong>Body</strong> Barlow Regular, 16px, 26px line</p>
+            <p><strong className="mr-s2">Body</strong> Barlow Regular, 16px, 26px line</p>
 
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl.</p>
 

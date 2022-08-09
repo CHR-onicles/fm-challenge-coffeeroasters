@@ -78,6 +78,7 @@ $colors: (
     color-2: rgba(51, 61, 75, 1),
     color-2-opacity-8: rgba(51, 61, 75, 0.085),
     color-2-opacity-25: rgba(51, 61, 75, 0.25),
+    color-2-opacity-80: rgba(51, 61, 75, 0.8),
   ),
   cyan: (
     color-1: rgba(14, 135, 132, 1),
@@ -104,6 +105,7 @@ $shadows: (
 //------------------------------------------------------------------------------
 $fonts: (
   regular: 'barlow-regular',
+  bold: 'barlow-bold',
   black: 'fraunces-black'
 );
 

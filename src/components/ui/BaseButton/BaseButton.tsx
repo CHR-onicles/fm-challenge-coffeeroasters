@@ -1,11 +1,11 @@
-import React from 'react';
+interface ButtonProps {
+  label: string;
+}
 
-const Button = () => {
+const BaseButton = ({ label, ...rest }: ButtonProps) => {
   return (
-    <div>
-      <p>Button Component</p>
-    </div>
+    <button {...rest}>{ label }</button>
   );
 };
 
-export default Button;
+export default BaseButton;
