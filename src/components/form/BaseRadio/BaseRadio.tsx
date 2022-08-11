@@ -1,12 +1,21 @@
 import styles from './BaseRadio.module.scss';
 
-const BaseRadio = () => {
+interface BaseRadioProps {
+  id: string;
+  label: string;
+  description: string;
+  name: string;
+  value: string;
+  checked?: boolean;
+}
+
+const BaseRadio = ({ id, label, description, name, value, checked = false }: BaseRadioProps) => {
   return (
     <div className={ styles['radio-control'] }>
-      <input type="radio" id="option-1" name="options" value="option-1" />
-      <label htmlFor="option-1" className={ `${styles['radio-control__label']} | stack` }>
-        Option
-        <span className={ styles['radio-control__description'] }>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span>
+      <input type="radio" id={ id } value={ value } name={ name } defaultChecked={ checked } />
+      <label htmlFor={ id } className={ `${styles['radio-control__label']} | stack` }>
+        { label }
+        <span className={ styles['radio-control__description'] }>{ description }</span>
       </label>
     </div>
   );

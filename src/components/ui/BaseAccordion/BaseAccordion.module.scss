@@ -1,0 +1,35 @@
+@use '../../../scss/abstracts/' as *;
+
+.accordion {
+  --title-font-size: #{toRem(40px)};
+
+  &__toggle {
+    position: relative;
+
+    > label {
+      display: block;
+      font-family: var(--font-family-black);
+      font-size: var(--title-font-size);
+      color: var(--dark-color-1);
+      cursor: pointer;
+    }
+
+    > input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  &__dropdown {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease-in-out;
+
+    &-visible {
+      height: toRem(400px);
+      transition: height 0.35s ease-in-out;
+    }
+  }
+}

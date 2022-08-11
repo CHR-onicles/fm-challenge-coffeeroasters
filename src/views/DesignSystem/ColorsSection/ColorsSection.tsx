@@ -5,6 +5,8 @@ import { BaseSwatch } from '../../../components/ui/';
 const ColorsSection = () => {
   return (
     <section className="container | mb-s5">
+      <h2 className="sr-only">Colors</h2>
+
       <div className="grid-cols">
          {
           colors.map(color => (

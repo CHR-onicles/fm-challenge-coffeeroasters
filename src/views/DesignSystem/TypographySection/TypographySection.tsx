@@ -5,6 +5,8 @@ import styles from './TypographySection.module.scss';
 const TypographySection = () => {
   return (
     <section className="container | mb-s5">
+      <h2 className="sr-only">Typography</h2>
+
       <BaseCard data-variant="two-tone">
         <div className="grid-cols">
           <div className="grid__item grid__item--span-7">
