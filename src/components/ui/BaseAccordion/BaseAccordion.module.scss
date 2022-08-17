@@ -4,32 +4,51 @@
   --title-font-size: #{toRem(40px)};
 
   &__toggle {
-    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    font-family: var(--font-family-black);
+    font-size: var(--title-font-size);
+    color: var(--dark-color-1);
+    cursor: pointer;
 
-    > label {
-      display: block;
-      font-family: var(--font-family-black);
-      font-size: var(--title-font-size);
-      color: var(--dark-color-1);
-      cursor: pointer;
+    > svg {
+      margin-left: auto;
+      transform-origin: center;
+      transform: rotate(0deg);
+      transition: transform 0.25s ease-in-out;
     }
 
-    > input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
+    path {
+      fill: var(--cyan-color-1);
+      transition: fill 0.25s ease-in-out;
+    }
+
+    &-active {
+      > svg {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &:hover {
+      path {
+        fill: var(--cyan-color-2);
+      }
+    }
+
+    &:disabled {
+      color: var(--dark-color-3);
+      cursor: not-allowed;
     }
   }
 
   &__dropdown {
-    height: 0;
-    overflow: hidden;
-    transition: height 0.35s ease-in-out;
+    display: none;
 
-    &-visible {
-      height: toRem(400px);
-      transition: height 0.35s ease-in-out;
+    &-active {
+      display: block;
+      margin-top: toRem(56px);
     }
   }
 }

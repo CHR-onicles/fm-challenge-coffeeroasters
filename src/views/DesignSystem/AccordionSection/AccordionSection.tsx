@@ -5,13 +5,31 @@ const AccordionSection = () => {
     <section className="container">
       <h2 className="sr-only">Accordion</h2>
 
-      <BaseAccordion id="menu-1" label="Sample Menu" name="coffee-plan">
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-      </BaseAccordion>
+      <div className="grid-cols | mb-s5">
+        <div className="grid__item grid__item--span-4 | text-align-center">
+          <p className="mb-s3">Accordion Menu Closed Default</p>
 
-      <BaseAccordion id="menu-2" label="Sample Menu 2" name="coffee-plan">
-        <p>Some other content</p>
-      </BaseAccordion>
+          <BaseAccordion id="menu-1" label="Sample Menu">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          </BaseAccordion>
+        </div>
+
+        <div className="grid__item grid__item--span-4 | text-align-center">
+          <p className="mb-s3">Accordion Menu Closed Hover</p>
+
+          <BaseAccordion id="menu-2" label="Sample Menu">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          </BaseAccordion>
+        </div>
+
+        <div className="grid__item grid__item--span-4 | text-align-center">
+          <p className="mb-s3">Accordion Menu Closed Disabled</p>
+
+          <BaseAccordion id="menu-3" label="Sample Menu">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          </BaseAccordion>
+        </div>
+      </div>
     </section>
   );
 };

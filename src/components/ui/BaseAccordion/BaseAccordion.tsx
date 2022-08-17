@@ -1,29 +1,30 @@
 import { useState, ReactNode } from 'react';
 
 import styles from './BaseAccordion.module.scss';
+import { ReactComponent as IconArrow } from '../../../assets/images/shared/icon-arrow.svg';
 
 interface BaseAccordionProps {
   id: string;
   label: string;
-  name: string;
   children: ReactNode;
 }
 
-const BaseAccordion = ({ id, label, name, children }: BaseAccordionProps) => {
-  const [ isDropdownVisible, setIsDropdownVisible ] = useState<boolean>(false);
+const BaseAccordion = ({ id, label, children }: BaseAccordionProps) => {
+  const [ isActive, setIsActive ] = useState<boolean>(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsDropdownVisible(event.target.checked);
+  const handleToggleDropdown = () => {
+    setIsActive((prevState => !prevState));
   };
 
   return (
-    <div className={ styles.accordion }>
-      <div className={ styles['accordion__toggle'] }>
-        <label htmlFor={ id }>{ label }</label>
-        <input id={ id } type="checkbox" name={ name } onChange={ (event) => handleChange(event) } />
-      </div>
+    <div id={ id } className={ styles.accordion }>
+      <button
+        type="button"
+        className={ `${styles['accordion__toggle']} ${isActive ? `${styles['accordion__toggle-active']}` : ``}` }
+        onClick={ handleToggleDropdown }
+      >{ label } <IconArrow /></button>
 
-      <div className={ `${isDropdownVisible ? `${styles['accordion__dropdown-visible']}` : `${styles['accordion__dropdown']}`}` }>
+      <div className={ `${isActive ? `${styles['accordion__dropdown-active']}` : `${styles['accordion__dropdown']}`}` }>
         { children }
       </div>
     </div>
