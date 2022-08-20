@@ -7,29 +7,45 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 h1, .h1 {
-  --h1-font-size: #{calc(map-get($size-scale, s0) * 2.5)};
+  --h1-font-size: #{toRem(40px)};
 
   font-size: var(--h1-font-size);
 
   @include media-breakpoint(md) {
-    --h1-font-size: #{calc(map-get($size-scale, s0) * 3.5)};
+    --h1-font-size: #{toRem(48px)};
   }
 
   @include media-breakpoint(xl) {
-    --h1-font-size: #{calc(map-get($size-scale, s0) * 5)};
+    --h1-font-size: #{toRem(72px)};
   }
 }
 
 h2, .h2 {
-  --h2-font-size: #{calc(map-get($size-scale, s0) * 2)};
+  --h2-font-size: #{toRem(40px)};
 
   font-size: var(--h2-font-size);
 
   @include media-breakpoint(xl) {
-    --h2-font-size: #{calc(map-get($size-scale, s0) * 3.5)};
+    --h2-font-size: #{toRem(40px)};
   }
 }
 
 h3, .h3 {
-  font-size: map-get($size-scale, s1);
+  --h3-font-size: #{toRem(32px)};
+
+  font-size: var(--h3-font-size);
+
+  @include media-breakpoint(xl) {
+    --h2-font-size: #{toRem(32px)};
+  }
+}
+
+h4, .h4 {
+  --h4-font-size: #{toRem(24px)};
+
+  font-size: var(--h4-font-size);
+
+  @include media-breakpoint(xl) {
+    --h2-font-size: #{toRem(24px)};
+  }
 }

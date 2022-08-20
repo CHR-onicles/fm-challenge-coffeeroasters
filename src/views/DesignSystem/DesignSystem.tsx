@@ -1,10 +1,31 @@
+import { Fragment } from 'react';
+
+import { BaseLogo } from '../../components/layout';
+import { ColorsSection, TypographySection, ButtonsSection, AccordionSection } from './';
+
+import styles from './DesignSystem.module.scss';
+
 const DesignSystem = () => {
   return (
-    <main>
-      <section className="container">
-        <h2>DesignSystem Component</h2>
-      </section>
-    </main>
+    <Fragment>
+      <header className={ styles.header }>
+        <div className="container stack">
+          <BaseLogo />
+
+          <h1>Design System</h1>
+        </div>
+      </header>
+
+      <main>
+        <ColorsSection />
+
+        <TypographySection />
+
+        <ButtonsSection />
+
+        <AccordionSection />
+      </main>
+    </Fragment>
   );
 };
 

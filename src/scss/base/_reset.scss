@@ -138,8 +138,12 @@ body {
 }
 
 p {
-  color: var(--dark-color-2);
+  color: var(--dark-color-2-opacity-80);
   font-size: toRem(16px);
+}
+
+strong {
+  font-family: var(--font-family-bold);
 }
 
 a {

@@ -1,0 +1,60 @@
+@use '../../../scss/abstracts/' as *;
+
+.swatch {
+  > * + * {
+    margin-top: toRem(24px);
+  }
+
+  &__color {
+    justify-content: space-between;
+    padding: toRem(24px);
+    border-radius: toRem(8px);
+
+    > * {
+      margin-top: toRem(40px);
+      font-size: toRem(20px);
+    }
+
+    span {
+      &:first-child {
+        color: var(--neutral-color-1);
+      }
+
+      &:last-child {
+        color: var(--neutral-color-1-opacity-25);
+      }
+    }
+  }
+
+  &__color-model {
+    &:last-child {
+      margin-top: toRem(8px);
+    }
+
+    span {
+      &:first-child {
+        display: inline-block;
+        min-width: toRem(35px);
+        margin-right: toRem(90px);
+      }
+    }
+  }
+
+  &[data-variant="light"] {
+    .swatch {
+      &__color {
+        border: 1px solid var(--dark-color-2-opacity-8);
+
+        span {
+          &:first-child {
+            color: var(--dark-color-2);
+          }
+
+          &:last-child {
+            color: var(--dark-color-2-opacity-25);
+          }
+        }
+      }
+    }
+  }
+}
