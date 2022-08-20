@@ -1,12 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../../assets/images/shared/logo.svg';
+import Logo from '../../../assets/images/shared/logo.svg';
+
+import styles from './BaseLogo.module.scss';
 
 const BaseLogo = () => {
   return (
-    <NavLink to="/">
-      <Logo />
-    </NavLink>
+    <Link to="/" className={ styles['header__brand'] }>
+      <img src={ Logo } alt="Coffeeroasters logo" />
+    </Link>
   );
 };
 
