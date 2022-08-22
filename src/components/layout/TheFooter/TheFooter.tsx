@@ -1,14 +1,14 @@
-import { BaseNavigation } from '../index';
+// import { BaseNavigation } from '../index';
 
-import { BaseLogo } from '../index';
+import { BaseBrand } from '../index';
 
 const TheFooter = () => {
   return (
     <footer>
       <div className="container row">
-        <BaseLogo />
+        <BaseBrand />
         
-        <BaseNavigation />
+        {/* <BaseNavigation /> */}
       </div>
     </footer>
   );

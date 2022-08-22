@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 import Logo from '../../../assets/images/shared/logo.svg';
 
-import styles from './BaseLogo.module.scss';
+import styles from './BaseBrand.module.scss';
 
-const BaseLogo = () => {
+const BaseBrand = () => {
   return (
     <Link to="/" className={ styles['header__brand'] }>
       <img src={ Logo } alt="Coffeeroasters logo" />
@@ -12,4 +12,4 @@ const BaseLogo = () => {
   );
 };
 
-export default BaseLogo;
+export default BaseBrand;
