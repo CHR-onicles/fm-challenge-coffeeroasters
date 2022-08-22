@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { routes } from '../../../data/routes';
@@ -6,6 +6,31 @@ import { routes } from '../../../data/routes';
 import styles from './BaseNavigation.module.scss';
 
 const BaseNavigation = () => {
+  const navRef = useRef<HTMLElement>(null);
+  const [ isActive, setIsActive ] = useState<boolean>(false);
+
+  const handleToggleNav = () => {
+    setIsActive(prevState => !prevState);
+  };
+
+  useEffect(() => {
+    const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 767px)');
+
+    mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
+      const mql = event.target as MediaQueryList;
+
+      if (!navRef.current) {
+        return;
+      }
+
+      if (mql.matches) {
+        navRef.current.dataset.variant = 'mobile';
+      } else {
+        navRef.current.removeAttribute('data-variant');
+      }
+    });
+  }, []);
+
   return (
     <Fragment>
       <button
@@ -13,13 +38,15 @@ const BaseNavigation = () => {
         id="btn-nav-toggle"
         className={ `btn ${styles['header__nav-toggle']}` }
         aria-controls="header-nav"
-        aria-expanded="false"
+        aria-expanded={ isActive ? 'true' : 'false' }
         data-variant="burger"
+        onClick={ handleToggleNav }
       >
         <span className="sr-only">Toggle Menu</span>
       </button>
 
       <nav
+        ref={ navRef }
         id="header-nav"
         className={ styles['header__nav'] }
       >

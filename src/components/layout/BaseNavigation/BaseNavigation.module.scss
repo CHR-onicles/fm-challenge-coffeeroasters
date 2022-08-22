@@ -12,6 +12,10 @@
       color: var(--dark-color-1);
     }
 
+    > .row {
+      gap: toRem(32px);
+    }
+
     &[data-variant="mobile"] {
       --nav-font-size: #{toRem(24px)};
 
@@ -28,11 +32,12 @@
       > .row {
         flex-direction: column;
         align-items: stretch;
+        gap: toRem(28px);
       }
 
       a {
         display: block;
-        padding: toRem(8px);
+        padding: toRem(4px);
         font-family: var(--font-family-black);
         text-align: center;
         line-height: 1.3;
@@ -44,6 +49,7 @@
   &__nav-toggle {
     &[aria-expanded="true"] + .header__nav {
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      transition: clip-path 0.35s ease-in-out;
     }
   }
 
