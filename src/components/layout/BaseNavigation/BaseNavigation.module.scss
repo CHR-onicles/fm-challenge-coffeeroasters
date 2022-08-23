@@ -5,15 +5,15 @@
     --nav-offset-top: #{toRem(104px)};
     --nav-font-size: #{toRem(12px)};
 
+    > .row {
+      gap: toRem(32px);
+    }
+
     a {
       font-family: var(--font-family-bold);
       font-size: var(--nav-font-size);
       text-transform: uppercase;
       color: var(--dark-color-1);
-    }
-
-    > .row {
-      gap: toRem(32px);
     }
 
     &[data-variant="mobile"] {
@@ -56,6 +56,28 @@
   @include media-breakpoint(md) {
     &__nav-toggle {
       display: none;
+    }
+  }
+}
+
+.footer {
+  &__nav {
+    --footer-margin-space-left: 0;
+    --nav-font-size: #{toRem(12px)};
+    
+    margin-left: var(--footer-margin-space-left);
+
+    > .row {
+      gap: toRem(32px);
+    }
+    
+    a {
+      font-size: var(--nav-font-size);
+      text-transform: uppercase;
+    }
+
+    @include media-breakpoint(xl) {
+      --footer-margin-space-left: #{toRem(86px)};
     }
   }
 }

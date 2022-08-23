@@ -1,14 +1,16 @@
-// import { BaseNavigation } from '../index';
+import { BaseNavigation } from '../index';
 
 import { BaseBrand } from '../index';
 
+import styles from './TheFooter.module.scss';
+
 const TheFooter = () => {
   return (
-    <footer>
-      <div className="container row">
-        <BaseBrand />
+    <footer id="footer" className={ styles.footer }>
+      <div className={ `container row ${styles.row}` }>
+        <BaseBrand isLogoDark={ false } />
         
-        {/* <BaseNavigation /> */}
+        <BaseNavigation isHeaderNav={ false } />
       </div>
     </footer>
   );

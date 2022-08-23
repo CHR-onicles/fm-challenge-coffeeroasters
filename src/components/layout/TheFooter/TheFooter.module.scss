@@ -1,0 +1,21 @@
+@use '../../../scss/abstracts/' as *;
+
+.footer {
+  --footer-vertical-space: #{toRem(54px)};
+  --footer-horizontal-space: #{toRem(54px)};
+  --footer-margin-space-bottom: #{toRem(72px)};
+
+  margin-bottom: var(--footer-margin-space-bottom);
+
+  > .row {
+    justify-content: flex-start;
+    padding: var(--footer-vertical-space) var(--footer-horizontal-space);
+    background-color: var(--dark-color-2);
+  }
+
+  @include media-breakpoint(xl) {
+    --footer-vertical-space: #{toRem(47px)};
+    --footer-horizontal-space: #{toRem(84px)};
+    --footer-margin-space-bottom: #{toRem(88px)};
+  }
+}
