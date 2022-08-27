@@ -70,11 +70,10 @@ const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
           </Fragment>
         ) : (
           <nav
-            ref={ navRef }
             id="footer-nav"
             className={ styles['footer__nav'] }
           >
-            <ul className={ `row ${styles.row}`}>
+            <ul className={ `row ${styles.row}` }>
               {
                 routes.map(route => (
                   <li key={ `nav-${route.path}` }>

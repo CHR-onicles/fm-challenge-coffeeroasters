@@ -8,9 +8,21 @@
   margin-bottom: var(--footer-margin-space-bottom);
 
   > .row {
+    flex-direction: column;
     justify-content: center;
     padding: var(--footer-vertical-space) var(--footer-horizontal-space);
     background-color: var(--dark-color-2);
+
+    > a,
+    > nav {
+      margin-bottom: toRem(32px);
+    }
+
+    > a {
+      img {
+        width: toRem(218px) !important;
+      }
+    }
   }
 
   @include media-breakpoint(xl) {
@@ -19,7 +31,13 @@
     --footer-margin-space-bottom: #{toRem(88px)};
 
     > .row {
+      flex-direction: row;
       justify-content: flex-start;
+
+      > a,
+      > nav {
+        margin-bottom: 0;
+      }
     }
   }
 }

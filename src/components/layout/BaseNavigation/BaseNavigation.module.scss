@@ -68,16 +68,23 @@
     margin-left: var(--footer-margin-space-left);
 
     > .row {
-      gap: toRem(32px);
+      flex-direction: column;
+      gap: toRem(24px);
     }
     
     a {
+      font-family: var(--font-family-bold);
       font-size: var(--nav-font-size);
       text-transform: uppercase;
     }
 
     @include media-breakpoint(xl) {
       --footer-margin-space-left: #{toRem(86px)};
+
+      > .row {
+        gap: toRem(32px);
+        flex-direction: row;
+      }
     }
   }
 }

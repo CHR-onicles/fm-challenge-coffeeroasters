@@ -9,7 +9,10 @@ const BaseSocialMedia = () => {
     <ul className={ styles['social-media'] }>
       {
         socialMediaLinks.map(socialMedia => (
-          <li className={ styles['social-media__item'] }>
+          <li
+            className={ styles['social-media__item'] }
+            key={ socialMedia.icon }
+          >
             <Link to={ `/${socialMedia.path}` }>
               <img src={ socialMedia.icon } alt={ socialMedia.altText } />
             </Link>

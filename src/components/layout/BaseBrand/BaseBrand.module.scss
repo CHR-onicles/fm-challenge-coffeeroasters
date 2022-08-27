@@ -1,6 +1,6 @@
 @use '../../../scss/abstracts/' as *;
 
-.header__brand {
+.brand {
   --brand-width: #{toRem(163px)};
 
   img {
