@@ -1,6 +1,4 @@
-import { BaseNavigation } from '../index';
-
-import { BaseBrand } from '../index';
+import { BaseBrand, BaseNavigation } from '../index';
 
 import styles from './TheHeader.module.scss';
 

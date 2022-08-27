@@ -1,6 +1,5 @@
-import { BaseNavigation } from '../index';
-
-import { BaseBrand } from '../index';
+import { BaseBrand, BaseNavigation } from '../index';
+import { BaseSocialMedia } from '../../ui/index';
 
 import styles from './TheFooter.module.scss';
 
@@ -11,6 +10,8 @@ const TheFooter = () => {
         <BaseBrand isLogoDark={ false } />
         
         <BaseNavigation isHeaderNav={ false } />
+
+        <BaseSocialMedia />
       </div>
     </footer>
   );

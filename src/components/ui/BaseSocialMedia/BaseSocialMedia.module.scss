@@ -1,0 +1,17 @@
+@use '../../../scss/abstracts/' as *;
+
+.social-media {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: toRem(24px);
+    }
+  }
+
+  @include media-breakpoint(xl) {
+    margin-left: auto !important;
+  }
+}

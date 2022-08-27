@@ -8,7 +8,7 @@
   margin-bottom: var(--footer-margin-space-bottom);
 
   > .row {
-    justify-content: flex-start;
+    justify-content: center;
     padding: var(--footer-vertical-space) var(--footer-horizontal-space);
     background-color: var(--dark-color-2);
   }
@@ -17,5 +17,9 @@
     --footer-vertical-space: #{toRem(47px)};
     --footer-horizontal-space: #{toRem(84px)};
     --footer-margin-space-bottom: #{toRem(88px)};
+
+    > .row {
+      justify-content: flex-start;
+    }
   }
 }
