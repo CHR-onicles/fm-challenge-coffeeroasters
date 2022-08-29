@@ -78,13 +78,15 @@
       text-transform: uppercase;
     }
 
-    @include media-breakpoint(xl) {
-      --footer-margin-space-left: #{toRem(86px)};
-
+    @include media-breakpoint(md) {
       > .row {
         gap: toRem(32px);
         flex-direction: row;
       }
+    }
+
+    @include media-breakpoint(xl) {
+      --footer-margin-space-left: #{toRem(86px)};
     }
   }
 }

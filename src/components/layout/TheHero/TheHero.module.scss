@@ -1,0 +1,59 @@
+@use '../../../scss/abstracts/' as *;
+
+.hero {
+  --hero-space-top: #{toRem(100px)};
+  --hero-space-left: #{toRem(48px)};
+  --hero-content-width: 32ch;
+  --hero-title-space-bottom: #{toRem(24px)};
+  --hero-text-size: #{toRem(15px)};
+  --hero-text-width: 32ch;
+  --hero-text-space-bottom: #{toRem(40px)};
+  --hero-text-align: center;
+  
+  position: relative;
+
+  &__content {
+    position: absolute;
+    top: var(--hero-space-top);
+    left:  var(--hero-space-left);
+    max-width: var(--hero-content-width);
+    text-align: var(--hero-text-align);
+
+    h1 {
+      margin-bottom: var(--hero-title-space-bottom);
+      color: var(--neutral-color-1);
+      line-height: 1;
+    }
+
+    > p {
+      max-width: var(--hero-text-width);
+      margin-bottom: var(--hero-text-space-bottom);
+      color: var(--neutral-color-1-opacity-80);
+      font-size: var(--hero-text-size);
+      line-height: 1.6;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: toRem(10px);
+    overflow: hidden;
+  }
+
+  @include media-breakpoint(md) {
+    --hero-space-top: #{toRem(104px)};
+    --hero-space-left: #{toRem(58px)};
+    --hero-content-width: 45ch;
+    --hero-text-width: 45ch;
+    --hero-text-align: left;
+  }
+
+  @include media-breakpoint(xl) {
+    --hero-space-top: #{toRem(117px)};
+    --hero-space-left: #{toRem(85px)};
+    --hero-content-width: 55ch;
+    --hero-title-space-bottom: #{toRem(32px)};
+    --hero-text-size: #{toRem(16px)};
+    --hero-text-space-bottom: #{toRem(56px)};
+  }
+}

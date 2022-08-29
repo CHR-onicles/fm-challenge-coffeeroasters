@@ -7,7 +7,7 @@
 
   margin-bottom: var(--footer-margin-space-bottom);
 
-  > .row {
+ .row {
     flex-direction: column;
     justify-content: center;
     padding: var(--footer-vertical-space) var(--footer-horizontal-space);
@@ -30,7 +30,7 @@
     --footer-horizontal-space: #{toRem(84px)};
     --footer-margin-space-bottom: #{toRem(88px)};
 
-    > .row {
+    .row {
       flex-direction: row;
       justify-content: flex-start;
 

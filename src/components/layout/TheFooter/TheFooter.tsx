@@ -6,12 +6,14 @@ import styles from './TheFooter.module.scss';
 const TheFooter = () => {
   return (
     <footer id="footer" className={ styles.footer }>
-      <div className={ `container row ${styles.row}` }>
-        <BaseBrand isLogoDark={ false } />
-        
-        <BaseNavigation isHeaderNav={ false } />
+      <div className="container">
+        <div className={ `row ${styles.row}` }>
+          <BaseBrand isLogoDark={ false } />
+          
+          <BaseNavigation isHeaderNav={ false } />
 
-        <BaseSocialMedia />
+          <BaseSocialMedia />
+        </div>
       </div>
     </footer>
   );
