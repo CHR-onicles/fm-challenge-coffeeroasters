@@ -1,19 +1,28 @@
 import { coffeeTypes } from '../../../data/coffee-types';
 
+import styles from './OurCollection.module.scss';
+
 const OurCollection = () => {
   return (
-    <section>
+    <section className={ styles.collection }>
       <div className="container">
-        <h2>Our Collection</h2>
+        <h2 className={ styles['collection__title'] }>Our Collection</h2>
         
-        <ul>
+        <ul className={ `${styles['collection__list']} grid-cols` }>
           {
             coffeeTypes.map(coffeeType => (
-              <li key={ coffeeType.name }>
-                <div>
-                  <img src={ coffeeType.imagePath } alt={ coffeeType.name } />
+              <li
+                className={ `${styles['collection__item']} grid__item grid__item--span-lg-3` }
+                key={ coffeeType.name }
+              >
+                <img
+                  className={ styles['collection__image'] }
+                  src={ coffeeType.imagePath }
+                  alt={ coffeeType.name }
+                />
 
-                  <h3>{ coffeeType.name }</h3>
+                <div className={ styles['collection__content'] }>
+                  <h3 className="h4">{ coffeeType.name }</h3>
 
                   <p>{ coffeeType.description }</p>
                 </div>

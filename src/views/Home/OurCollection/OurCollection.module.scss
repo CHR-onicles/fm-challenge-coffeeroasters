@@ -1,0 +1,84 @@
+@use '../../../scss/abstracts/' as *;
+
+.collection {
+  --collection-vertical-spacing: #{toRem(120px)};
+  --collection-list-spacing: #{toRem(48px)};
+  --collection-title-size: #{toRem(40px)};
+  --collection-title-space-bottom: #{toRem(40px)};
+  --collection-text-size: #{toRem(15px)};
+  --collection-text-align: center;
+
+  padding-top: var(--collection-vertical-spacing);
+  padding-bottom: var(--collection-vertical-spacing);
+
+  &__title {
+    margin-bottom: var(--collection-title-space-bottom);
+    background: linear-gradient(180deg, var(--dark-color-1) 0%, var(--neutral-color-1) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: var(--collection-title-size);
+    text-align: center;
+    line-height: 1.2;
+    color: var(--dark-color-1);
+  }
+
+  &__list {
+    > * + * {
+      margin-top: var(--collection-list-spacing);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__image {
+    margin-bottom: toRem(24px);
+    text-align: center;
+  }
+
+  &__content {
+    text-align: var(--collection-text-align);
+
+    h3 {
+      margin-bottom: toRem(16px);
+    }
+
+    p {
+      font-size: var(--collection-text-size);
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --collection-vertical-spacing: #{toRem(144px)};
+    --collection-list-spacing: #{toRem(32px)};
+    --collection-title-size: #{toRem(96px)};
+    --collection-title-space-bottom: #{toRem(-44px)};
+    --collection-text-align: left;
+
+    &__item {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  @include media-breakpoint(lg) {
+    --collection-vertical-spacing: #{toRem(136px)};
+    --collection-list-spacing: 0;
+    --collection-title-size: #{toRem(150px)};
+    --collection-title-space-bottom: #{toRem(-65px)};
+    --collection-text-size: #{toRem(16px)};
+    --collection-text-align: center;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+}
