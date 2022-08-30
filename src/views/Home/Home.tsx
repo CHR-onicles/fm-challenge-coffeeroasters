@@ -1,13 +1,12 @@
 import { TheHero } from '../../components/layout';
+import { OurCollection } from './index';
 
 const Home = () => {
   return (
     <main>
       <TheHero />
       
-      <section className="container">
-        <h2>Home Component</h2>
-      </section>
+      <OurCollection />
     </main>
   );
 };
