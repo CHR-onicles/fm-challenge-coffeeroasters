@@ -1,5 +1,5 @@
 import { TheHero } from '../../components/layout';
-import { OurCollection } from './index';
+import { OurCollection, WhyChooseUs } from './index';
 
 const Home = () => {
   return (
@@ -7,6 +7,8 @@ const Home = () => {
       <TheHero />
       
       <OurCollection />
+
+      <WhyChooseUs />
     </main>
   );
 };
