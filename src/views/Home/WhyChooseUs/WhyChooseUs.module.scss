@@ -1,0 +1,44 @@
+@use '../../../scss/abstracts/' as *;
+
+.benefits {
+  --benefits-horizontal-spacing: #{toRem(85px)};
+  --benefits-spacing-bottom: #{toRem(200px)};
+  --benefits-intro-vertical-spacing-top: #{toRem(100px)};
+  --benefits-intro-vertical-spacing-bottom: #{toRem(317px)};
+  --benefits-list-vertical-margin-top: #{toRem(-231px)};
+
+  margin-bottom: var(--benefits-spacing-bottom);
+
+  &__intro {
+    padding: var(--benefits-intro-vertical-spacing-top) var(--benefits-horizontal-spacing) var(--benefits-intro-vertical-spacing-bottom) var(--benefits-horizontal-spacing);
+
+    h2 {
+      margin-bottom: toRem(32px);
+      color: var(--neutral-color-1);
+    }
+
+    p {
+      color: var(--neutral-color-1-opacity-80);
+    }
+  }
+
+  ul[class] {
+    margin-top: var(--benefits-list-vertical-margin-top);
+    padding-left: var(--benefits-horizontal-spacing);
+    padding-right: var(--benefits-horizontal-spacing);
+  }
+
+  &__list {  
+    &-item {
+      > * {
+        height: 100%;
+      }
+    }
+  }
+
+  &__card {
+    img {
+      margin: 0 auto;
+    }
+  }
+}
