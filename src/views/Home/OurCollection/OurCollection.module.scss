@@ -5,11 +5,18 @@
   --collection-list-spacing: #{toRem(48px)};
   --collection-title-size: #{toRem(40px)};
   --collection-title-space-bottom: #{toRem(40px)};
+  --collection-image-size: #{toRem(200px)};
   --collection-text-size: #{toRem(15px)};
   --collection-text-align: center;
+  --collection-body-title-spacing-top: 0;
+  --collection-body-title-spacing-bottom: #{toRem(16px)};
 
   padding-top: var(--collection-vertical-spacing);
   padding-bottom: var(--collection-vertical-spacing);
+
+  &__content {
+    padding: 0 var(--content-horizontal-spacing);
+  }
 
   &__title {
     margin-bottom: var(--collection-title-space-bottom);
@@ -31,24 +38,28 @@
   &__item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   &__image {
+    width: var(--collection-image-size);
+    object-fit: contain;
     margin-bottom: toRem(24px);
     text-align: center;
   }
 
-  &__content {
+  &__body {
     text-align: var(--collection-text-align);
 
     h3 {
-      margin-bottom: toRem(16px);
+      margin-top: var(--collection-body-title-spacing-top);
+      margin-bottom: var(--collection-body-title-spacing-bottom);
     }
 
     p {
       font-size: var(--collection-text-size);
+      line-height: 1.7;
     }
   }
 
@@ -57,12 +68,25 @@
     --collection-list-spacing: #{toRem(32px)};
     --collection-title-size: #{toRem(96px)};
     --collection-title-space-bottom: #{toRem(-44px)};
+    --collection-image-size: #{toRem(255px)};
     --collection-text-align: left;
+    --collection-body-title-spacing-top: #{toRem(20px)};
+    --collection-body-title-spacing-bottom: #{toRem(24px)};
+
+    &__content {
+      padding: 0;
+    }
 
     &__item {
       flex-direction: row;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
+    }
+
+    &__body {
+      p {
+        max-width: 31ch;
+      }
     }
   }
 
@@ -73,6 +97,10 @@
     --collection-title-space-bottom: #{toRem(-65px)};
     --collection-text-size: #{toRem(16px)};
     --collection-text-align: center;
+
+    &__content {
+      padding: 0 var(--content-horizontal-spacing);
+    }
 
     &__item {
       display: flex;

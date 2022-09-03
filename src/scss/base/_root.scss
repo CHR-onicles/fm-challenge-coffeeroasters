@@ -22,4 +22,14 @@
   @each $scale, $value in $size-scale {
     --space-#{$scale}: #{$value};
   }
+
+  --content-horizontal-spacing: #{toRem(24px)};
+
+  @include media-breakpoint(md) {
+    --content-horizontal-spacing: #{toRem(58px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --content-horizontal-spacing: #{toRem(85px)};
+  }
 }

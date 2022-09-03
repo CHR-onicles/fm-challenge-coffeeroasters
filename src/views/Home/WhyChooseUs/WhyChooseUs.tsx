@@ -10,7 +10,7 @@ const WhyChooseUs = () => {
       <div className="container">
         <BaseCard customClasses={ `${styles['benefits__intro']} | bg-dark-color-2` }>
           <div className="grid-cols">
-            <div className="grid__item grid__item--span-lg-6 grid__item--start-lg-4">
+            <div className="grid__item grid__item--span-md-10 grid__item--start-md-2 grid__item--span-lg-6 grid__item--start-lg-4">
               <h2>Why choose us?</h2>
 
               <p>A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.</p> 
@@ -28,9 +28,11 @@ const WhyChooseUs = () => {
                     alt={ benefit.title }
                   />
 
-                  <h3>{ benefit.title }</h3>
+                  <div className={ styles['benefits__card-body'] }>
+                    <h3>{ benefit.title }</h3>
 
-                  <p>{ benefit.description }</p>
+                    <p>{ benefit.description }</p>
+                  </div>
                 </BaseCard>
               </li>
             ))
