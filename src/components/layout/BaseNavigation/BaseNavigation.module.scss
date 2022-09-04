@@ -3,7 +3,7 @@
 .header {
   &__nav {
     --nav-offset-top: #{toRem(104px)};
-    --nav-font-size: #{toRem(12px)};
+    --nav-text-size: #{toRem(12px)};
 
     > .row {
       gap: toRem(32px);
@@ -11,13 +11,13 @@
 
     a {
       font-family: var(--font-family-bold);
-      font-size: var(--nav-font-size);
+      font-size: var(--nav-text-size);
       text-transform: uppercase;
       color: var(--dark-color-1);
     }
 
     &[data-variant="mobile"] {
-      --nav-font-size: #{toRem(24px)};
+      --nav-text-size: #{toRem(24px)};
 
       position: fixed;
       top: var(--nav-offset-top);
@@ -62,10 +62,10 @@
 
 .footer {
   &__nav {
-    --footer-margin-space-left: 0;
-    --nav-font-size: #{toRem(12px)};
+    --footer-spacing-left: 0;
+    --nav-text-size: #{toRem(12px)};
     
-    margin-left: var(--footer-margin-space-left);
+    margin-left: var(--footer-spacing-left);
 
     > .row {
       flex-direction: column;
@@ -74,7 +74,7 @@
     
     a {
       font-family: var(--font-family-bold);
-      font-size: var(--nav-font-size);
+      font-size: var(--nav-text-size);
       text-transform: uppercase;
     }
 
@@ -86,7 +86,7 @@
     }
 
     @include media-breakpoint(xl) {
-      --footer-margin-space-left: #{toRem(86px)};
+      --footer-spacing-left: #{toRem(86px)};
     }
   }
 }

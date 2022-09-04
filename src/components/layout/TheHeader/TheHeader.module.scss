@@ -1,22 +1,22 @@
 @use '../../../scss/abstracts/' as *;
 
 .header {
-  --vertical-space-top: #{toRem(32px)};
-  --vertical-space-bottom: #{toRem(40px)};
+  --header-spacing-top: #{toRem(32px)};
+  --header-spacing-bottom: #{toRem(40px)};
 
   > .row {
     justify-content: space-between;
-    padding-top: var(--vertical-space-top);
-    padding-bottom: var(--vertical-space-bottom);
+    padding-top: var(--header-spacing-top);
+    padding-bottom: var(--header-spacing-bottom);
   }
 
   @include media-breakpoint(md) {
-    --vertical-space-top: #{toRem(40px)};
-    --vertical-space-bottom: #{toRem(53px)};
+    --header-spacing-top: #{toRem(40px)};
+    --header-spacing-bottom: #{toRem(53px)};
   }
 
   @include media-breakpoint(xl) {
-    --vertical-space-top: #{toRem(43px)};
-    --vertical-space-bottom: #{toRem(43px)};
+    --header-spacing-top: #{toRem(43px)};
+    --header-spacing-bottom: #{toRem(43px)};
   }
 }

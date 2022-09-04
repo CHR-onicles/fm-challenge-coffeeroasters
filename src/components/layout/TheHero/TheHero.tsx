@@ -10,7 +10,7 @@ const TheHero = () => {
   return (
     <section>
       <div className={ `container ${styles.hero}` }>
-        <div className={ styles['hero__img'] }>
+        <div className={ styles['hero__image'] }>
           <picture>
             <source media="(min-width: 1110px)" srcSet={ desktopHeroImage } />
             <source media="(min-width: 768px)" srcSet={ tabletHeroImage } />

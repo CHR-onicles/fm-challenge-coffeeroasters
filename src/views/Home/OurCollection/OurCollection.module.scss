@@ -1,25 +1,30 @@
 @use '../../../scss/abstracts/' as *;
 
 .collection {
-  --collection-vertical-spacing: #{toRem(120px)};
+  --collection-spacing-vertical: #{toRem(120px)};
+
   --collection-list-spacing: #{toRem(48px)};
+
   --collection-title-size: #{toRem(40px)};
-  --collection-title-space-bottom: #{toRem(40px)};
+  --collection-title-spacing-bottom: #{toRem(40px)};
+
   --collection-image-size: #{toRem(200px)};
+
   --collection-text-size: #{toRem(15px)};
   --collection-text-align: center;
+
   --collection-body-title-spacing-top: 0;
   --collection-body-title-spacing-bottom: #{toRem(16px)};
 
-  padding-top: var(--collection-vertical-spacing);
-  padding-bottom: var(--collection-vertical-spacing);
+  padding-top: var(--collection-spacing-vertical);
+  padding-bottom: var(--collection-spacing-vertical);
 
   &__content {
-    padding: 0 var(--content-horizontal-spacing);
+    padding: 0 var(--content-spacing-horizontal);
   }
 
   &__title {
-    margin-bottom: var(--collection-title-space-bottom);
+    margin-bottom: var(--collection-title-spacing-bottom);
     background: linear-gradient(180deg, var(--dark-color-1) 0%, var(--neutral-color-1) 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -64,12 +69,17 @@
   }
 
   @include media-breakpoint(md) {
-    --collection-vertical-spacing: #{toRem(144px)};
+    --collection-spacing-vertical: #{toRem(144px)};
+
     --collection-list-spacing: #{toRem(32px)};
+
     --collection-title-size: #{toRem(96px)};
-    --collection-title-space-bottom: #{toRem(-44px)};
+    --collection-title-spacing-bottom: #{toRem(-44px)};
+
     --collection-image-size: #{toRem(255px)};
+
     --collection-text-align: left;
+
     --collection-body-title-spacing-top: #{toRem(20px)};
     --collection-body-title-spacing-bottom: #{toRem(24px)};
 
@@ -91,15 +101,18 @@
   }
 
   @include media-breakpoint(lg) {
-    --collection-vertical-spacing: #{toRem(136px)};
+    --collection-spacing-vertical: #{toRem(136px)};
+
     --collection-list-spacing: 0;
+
     --collection-title-size: #{toRem(150px)};
-    --collection-title-space-bottom: #{toRem(-65px)};
+    --collection-title-spacing-bottom: #{toRem(-65px)};
+    
     --collection-text-size: #{toRem(16px)};
     --collection-text-align: center;
 
     &__content {
-      padding: 0 var(--content-horizontal-spacing);
+      padding: 0 var(--content-spacing-horizontal);
     }
 
     &__item {

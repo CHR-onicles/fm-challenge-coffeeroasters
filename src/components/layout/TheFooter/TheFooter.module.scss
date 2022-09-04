@@ -1,17 +1,17 @@
 @use '../../../scss/abstracts/' as *;
 
 .footer {
-  --footer-vertical-space: #{toRem(54px)};
-  --footer-horizontal-space: #{toRem(54px)};
-  --footer-margin-space-bottom: #{toRem(72px)};
-
-  margin-bottom: var(--footer-margin-space-bottom);
+  --footer-spacing-vertical: #{toRem(54px)};
+  --footer-spacing-horizontal: #{toRem(54px)};
+  --footer-spacing-bottom: #{toRem(72px)};
 
  .row {
     flex-direction: column;
     justify-content: center;
-    padding: var(--footer-vertical-space) var(--footer-horizontal-space);
+    margin-bottom: var(--footer-spacing-bottom);
+    padding: var(--footer-spacing-vertical) var(--footer-spacing-horizontal);
     background-color: var(--dark-color-2);
+    border-radius: toRem(10px);
 
     > a,
     > nav {
@@ -26,9 +26,9 @@
   }
 
   @include media-breakpoint(xl) {
-    --footer-vertical-space: #{toRem(47px)};
-    --footer-horizontal-space: #{toRem(84px)};
-    --footer-margin-space-bottom: #{toRem(88px)};
+    --footer-spacing-vertical: #{toRem(47px)};
+    --footer-spacing-horizontal: #{toRem(85px)};
+    --footer-spacing-bottom: #{toRem(88px)};
 
     .row {
       flex-direction: row;

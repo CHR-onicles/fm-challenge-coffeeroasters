@@ -23,13 +23,13 @@
     --space-#{$scale}: #{$value};
   }
 
-  --content-horizontal-spacing: #{toRem(24px)};
+  --content-spacing-horizontal: #{toRem(24px)};
 
   @include media-breakpoint(md) {
-    --content-horizontal-spacing: #{toRem(58px)};
+    --content-spacing-horizontal: #{toRem(58px)};
   }
 
   @include media-breakpoint(lg) {
-    --content-horizontal-spacing: #{toRem(85px)};
+    --content-spacing-horizontal: #{toRem(85px)};
   }
 }

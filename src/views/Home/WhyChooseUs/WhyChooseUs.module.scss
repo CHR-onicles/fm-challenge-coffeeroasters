@@ -12,18 +12,18 @@
   --benefits-list-spacing-top: #{toRem(-597px)};
   --benefits-list-item-spacing: #{toRem(24px)};
 
-  --benefits-card-horizontal-spacing: #{toRem(34px)};
+  --benefits-card-spacing-horizontal: #{toRem(34px)};
   --benefits-card-spacing-top: #{toRem(72px)};
   --benefits-card-spacing-bottom: #{toRem(51px)};
   --benefits-card-title-spacing-top: #{toRem(56px)};
   --benefits-card-title-spacing-bottom: #{toRem(24px)};
-  --benefits-card-img-size: #{toRem(72px)};
+  --benefits-card-image-size: #{toRem(72px)};
   --benefits-card-body-spacing-left: #{toRem(55px)};
 
   margin-bottom: var(--benefits-spacing-bottom);
 
   &__intro {
-    padding: var(--benefits-intro-spacing-top) var(--content-horizontal-spacing) var(--benefits-intro-spacing-bottom) var(--content-horizontal-spacing);
+    padding: var(--benefits-intro-spacing-top) var(--content-spacing-horizontal) var(--benefits-intro-spacing-bottom) var(--content-spacing-horizontal);
 
     h2 {
       margin-bottom: var(--benefits-intro-title-spacing-bottom);
@@ -40,8 +40,8 @@
 
   ul[class] {
     margin-top: var(--benefits-list-spacing-top);
-    padding-left: var(--content-horizontal-spacing);
-    padding-right: var(--content-horizontal-spacing);
+    padding-left: var(--content-spacing-horizontal);
+    padding-right: var(--content-spacing-horizontal);
   }
 
   &__list {  
@@ -53,11 +53,11 @@
   }
 
   &__card {
-    padding: var(--benefits-card-spacing-top) var(--benefits-card-horizontal-spacing) var(--benefits-card-spacing-bottom) var(--benefits-card-horizontal-spacing);
+    padding: var(--benefits-card-spacing-top) var(--benefits-card-spacing-horizontal) var(--benefits-card-spacing-bottom) var(--benefits-card-spacing-horizontal);
 
     img {
-      width: var(--benefits-card-img-size);
-      height: var(--benefits-card-img-size);
+      width: var(--benefits-card-image-size);
+      height: var(--benefits-card-image-size);
       object-fit: contain;
       margin: 0 auto;
     }
@@ -88,12 +88,12 @@
     --benefits-list-spacing-top: #{toRem(-298px)};
     --benefits-list-item-spacing: #{toRem(16px)};
 
-    --benefits-card-horizontal-spacing: #{toRem(48px)};
+    --benefits-card-spacing-horizontal: #{toRem(48px)};
     --benefits-card-spacing-top: #{toRem(41px)};
     --benefits-card-spacing-bottom: #{toRem(41px)};
     --benefits-card-title-spacing-top: 0;
     --benefits-card-title-spacing-bottom: #{toRem(16px)};
-    --benefits-card-img-size: #{toRem(56px)};
+    --benefits-card-image-size: #{toRem(56px)};
 
     &__card {
       > div {
@@ -124,7 +124,7 @@
     --benefits-card-spacing-bottom: #{toRem(48px)};
     --benefits-card-title-spacing-top: #{toRem(56px)};
     --benefits-card-title-spacing-bottom: #{toRem(24px)};
-    --benefits-card-img-size: #{toRem(72px)};
+    --benefits-card-image-size: #{toRem(72px)};
     --benefits-card-body-spacing-left: 0;
 
     &__card {
