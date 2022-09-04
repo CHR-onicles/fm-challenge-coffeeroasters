@@ -26,8 +26,10 @@
   &__title {
     margin-bottom: var(--collection-title-spacing-bottom);
     background: linear-gradient(180deg, var(--dark-color-1) 0%, var(--neutral-color-1) 90%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     font-size: var(--collection-title-size);
     text-align: center;
     line-height: 1.2;
