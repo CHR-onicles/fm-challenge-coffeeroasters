@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { BaseCard } from '../../ui';
 
 import { workingSteps } from '../../../data/working-steps';
@@ -25,6 +27,8 @@ const HowItWorks = () => {
               ))
             }
           </ul>
+
+          <Link to="/" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
         </BaseCard>
       </div>
     </section>
