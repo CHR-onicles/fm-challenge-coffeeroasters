@@ -22,8 +22,8 @@ const WhyChooseUs = () => {
           {
             benefits.map(benefit => (
               <li
-                className={ `${styles['benefits__list-item']} | grid__item grid__item--span-lg-4` }
                 key={ benefit.title }
+                className={ `${styles['benefits__list-item']} | grid__item grid__item--span-lg-4` }
               >
                 <BaseCard customClasses={ `${styles['benefits__card']} | stack | bg-cyan-color-1` }>
                   <img

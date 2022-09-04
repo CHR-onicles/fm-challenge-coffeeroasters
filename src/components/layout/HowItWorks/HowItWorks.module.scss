@@ -1,0 +1,83 @@
+@use '../../../scss/abstracts/' as *;
+
+.how-it-works {
+  --howItWorks-spacing-bottom: #{toRem(120px)};
+
+  --howItWorks-title-size: #{toRem(24px)};
+  --howItWorks-title-spacing-bottom: #{toRem(80px)};
+
+  --howItWorks-item-spacing-top: #{toRem(56px)};
+  --howItWorks-item-title-size: #{toRem(28px)};
+  --howItWorks-item-title-spacing-bottom: #{toRem(24px)};
+  --howItWorks-item-text-size: #{toRem(15px)};
+
+  margin-bottom: var(--howItWorks-spacing-bottom);
+
+  &__card {
+    padding: 0 var(--content-spacing-horizontal);
+  }
+
+  &__title {
+    margin-bottom: var(--howItWorks-title-spacing-bottom);
+    font-size: var(--howItWorks-title-size);
+    line-height: 1.3;
+    color: var(--dark-color-4);
+  }
+
+  &__list {
+    > * + * {
+      margin-top: var(--howItWorks-item-spacing-top);
+    }
+  }
+
+  &__item {
+    h3 {
+      margin-bottom: var(--howItWorks-item-title-spacing-bottom);
+      font-size: var(--howItWorks-item-title-size);
+      line-height: 1.1;
+    }
+
+    p {
+      font-size: var(--howItWorks-item-text-size);
+      line-height: 1.7;
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --howItWorks-spacing-bottom: #{toRem(144px)};
+
+    --howItWorks-title-spacing-bottom: #{toRem(40px)};
+
+    --howItWorks-item-spacing-top: 0;
+    --howItWorks-item-title-spacing-bottom: #{toRem(38px)};
+
+    &__card {
+      padding: 0;
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__item {
+      h3,
+      p {
+        text-align: left;
+      }
+
+      p {
+        max-width: 32ch;
+      }
+    }
+  }
+
+  @include media-breakpoint(lg) {
+    --howItWorks-spacing-bottom: #{toRem(168px)};
+
+    --howItWorks-title-spacing-bottom: #{toRem(80px)};
+
+    --howItWorks-item-title-size: #{toRem(32px)};
+    --howItWorks-item-title-spacing-bottom: #{toRem(42px)};
+    --howItWorks-item-text-size: #{toRem(16px)};
+  }
+}

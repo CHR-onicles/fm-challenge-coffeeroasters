@@ -39,13 +39,13 @@ const OurCollection = () => {
           
           <ul
             ref={ collectionListRef }
-            className={ `${styles['collection__list']} grid-cols` }
+            className={ `${styles['collection__list']} | grid-cols` }
           >
             {
               coffeeTypes.map(coffeeType => (
                 <li
-                  className={ `${styles['collection__item']} grid__item grid__item--span-md-10 grid__item--span-lg-3` }
                   key={ coffeeType.name }
+                  className={ `${styles['collection__item']} | grid__item grid__item--span-md-10 grid__item--span-lg-3` }
                 >
                   <img
                     className={ styles['collection__image'] }

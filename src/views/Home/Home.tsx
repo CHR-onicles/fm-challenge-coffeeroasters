@@ -1,4 +1,4 @@
-import { TheHero } from '../../components/layout';
+import { TheHero, HowItWorks } from '../../components/layout';
 import { OurCollection, WhyChooseUs } from './index';
 
 const Home = () => {
@@ -9,6 +9,8 @@ const Home = () => {
       <OurCollection />
 
       <WhyChooseUs />
+
+      <HowItWorks />
     </main>
   );
 };
