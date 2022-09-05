@@ -17,21 +17,27 @@ const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
     setIsActive(prevState => !prevState);
   };
 
+  const handleMediaQueryChange = (mediaQueryList: MediaQueryList) => {
+    if (!navRef.current) {
+      return;
+    }
+
+    if (mediaQueryList.matches) {
+      navRef.current.dataset.variant = 'mobile';
+    } else {
+      navRef.current.removeAttribute('data-variant');
+    }
+  };
+
   useEffect(() => {
     const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 767px)');
+
+    handleMediaQueryChange(mediaQueryList);
 
     mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
       const mql = event.target as MediaQueryList;
 
-      if (!navRef.current) {
-        return;
-      }
-
-      if (mql.matches) {
-        navRef.current.dataset.variant = 'mobile';
-      } else {
-        navRef.current.removeAttribute('data-variant');
-      }
+      handleMediaQueryChange(mql);
     });
   }, []);
 

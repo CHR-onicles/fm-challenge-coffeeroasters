@@ -7,27 +7,33 @@ import styles from './OurCollection.module.scss';
 const OurCollection = () => {
   const collectionListRef = useRef<HTMLUListElement>(null);
 
+  const handleMediaQueryChange = (mediaQueryList: MediaQueryList) => {
+    if (!collectionListRef.current) {
+      return;
+    }
+
+    const liElements = collectionListRef.current.querySelectorAll('li');
+
+    if (mediaQueryList.matches) {
+      liElements.forEach(elem => {
+        elem.classList.add('grid__item--start-md-2');
+      });
+    } else {
+      liElements.forEach(elem => {
+        elem.classList.remove('grid__item--start-md-2');
+      });
+    }
+  };
+
   useEffect(() => {
     const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 992px)');
+
+    handleMediaQueryChange(mediaQueryList);
 
     mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
       const mql = event.target as MediaQueryList;
 
-      if (!collectionListRef.current) {
-        return;
-      }
-
-      const liElements = collectionListRef.current.querySelectorAll('li');
-
-      if (mql.matches) {
-        liElements.forEach(elem => {
-          elem.classList.add('grid__item--start-md-2');
-        });
-      } else {
-        liElements.forEach(elem => {
-          elem.classList.remove('grid__item--start-md-2');
-        });
-      }
+      handleMediaQueryChange(mql);
     });
   }, []);
 
