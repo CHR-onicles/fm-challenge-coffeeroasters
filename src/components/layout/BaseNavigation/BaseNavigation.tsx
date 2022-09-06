@@ -33,18 +33,6 @@ const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
 
   useMediaQuery('(max-width: 767px)', handleMediaQueryChange);
 
-  // useEffect(() => {
-  //   const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 767px)');
-
-  //   handleMediaQueryChange(mediaQueryList);
-
-  //   mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
-  //     const mql = event.target as MediaQueryList;
-
-  //     handleMediaQueryChange(mql);
-  //   });
-  // }, []);
-
   return (
     <Fragment>
       {
