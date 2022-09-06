@@ -1,5 +1,7 @@
-import { Fragment, useRef, useState, useEffect } from 'react';
+import { Fragment, useRef, useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import { useMediaQuery } from '../../../hooks';
 
 import { routes } from '../../../data/routes';
 
@@ -17,7 +19,7 @@ const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
     setIsActive(prevState => !prevState);
   };
 
-  const handleMediaQueryChange = (mediaQueryList: MediaQueryList) => {
+  const handleMediaQueryChange = useCallback((mediaQueryList: MediaQueryList) => {
     if (!navRef.current) {
       return;
     }
@@ -27,19 +29,21 @@ const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
     } else {
       navRef.current.removeAttribute('data-variant');
     }
-  };
-
-  useEffect(() => {
-    const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 767px)');
-
-    handleMediaQueryChange(mediaQueryList);
-
-    mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
-      const mql = event.target as MediaQueryList;
-
-      handleMediaQueryChange(mql);
-    });
   }, []);
+
+  useMediaQuery('(max-width: 767px)', handleMediaQueryChange);
+
+  // useEffect(() => {
+  //   const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 767px)');
+
+  //   handleMediaQueryChange(mediaQueryList);
+
+  //   mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
+  //     const mql = event.target as MediaQueryList;
+
+  //     handleMediaQueryChange(mql);
+  //   });
+  // }, []);
 
   return (
     <Fragment>

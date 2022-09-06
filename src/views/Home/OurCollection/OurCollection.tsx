@@ -1,4 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useCallback } from 'react';
+
+import { useMediaQuery } from '../../../hooks';
 
 import { coffeeTypes } from '../../../data/coffee-types';
 
@@ -7,7 +9,7 @@ import styles from './OurCollection.module.scss';
 const OurCollection = () => {
   const collectionListRef = useRef<HTMLUListElement>(null);
 
-  const handleMediaQueryChange = (mediaQueryList: MediaQueryList) => {
+  const handleMediaQueryChange = useCallback((mediaQueryList: MediaQueryList) => {
     if (!collectionListRef.current) {
       return;
     }
@@ -23,19 +25,9 @@ const OurCollection = () => {
         elem.classList.remove('grid__item--start-md-2');
       });
     }
-  };
-
-  useEffect(() => {
-    const mediaQueryList: MediaQueryList = window.matchMedia('(max-width: 992px)');
-
-    handleMediaQueryChange(mediaQueryList);
-
-    mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
-      const mql = event.target as MediaQueryList;
-
-      handleMediaQueryChange(mql);
-    });
   }, []);
+
+  useMediaQuery('(max-width: 992px)', handleMediaQueryChange);
 
   return (
     <section className={ styles.collection }>

@@ -23,9 +23,11 @@
     --space-#{$scale}: #{$value};
   }
 
+  --header-offset-top: #{toRem(104px)};
   --content-spacing-horizontal: #{toRem(24px)};
 
   @include media-breakpoint(md) {
+    --header-offset-top: 0;
     --content-spacing-horizontal: #{toRem(58px)};
   }
 
