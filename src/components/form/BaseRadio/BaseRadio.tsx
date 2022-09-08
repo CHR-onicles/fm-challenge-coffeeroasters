@@ -1,6 +1,6 @@
 import styles from './BaseRadio.module.scss';
 
-interface BaseRadioProps {
+interface IBaseRadioProps {
   id: string;
   label: string;
   description: string;
@@ -9,7 +9,7 @@ interface BaseRadioProps {
   checked?: boolean;
 }
 
-const BaseRadio = ({ id, label, description, name, value, checked = false }: BaseRadioProps) => {
+const BaseRadio = ({ id, label, description, name, value, checked = false }: IBaseRadioProps) => {
   return (
     <div className={ styles['radio-control'] }>
       <input type="radio" id={ id } value={ value } name={ name } defaultChecked={ checked } />

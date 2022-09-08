@@ -1,10 +1,10 @@
-interface BaseHeroProps {
+interface IBaseHeroProps {
   title: string;
   description: string;
   imgPath: string;
 }
 
-const BaseHero = ({ title, description, imgPath }: BaseHeroProps) => {
+const BaseHero = ({ title, description, imgPath }: IBaseHeroProps) => {
   return (
     <section>
       <div className="container">

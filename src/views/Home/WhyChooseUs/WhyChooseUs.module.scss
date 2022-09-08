@@ -79,6 +79,11 @@
     }
   }
 
+  &__error {
+    margin-top: toRem(30px);
+    text-align: center;
+  }
+
   @include media-breakpoint(md) {
     --benefits-spacing-bottom: #{toRem(144px)};
 

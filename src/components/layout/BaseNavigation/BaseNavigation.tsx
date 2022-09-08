@@ -7,11 +7,11 @@ import { routes } from '../../../data/routes';
 
 import styles from './BaseNavigation.module.scss';
 
-interface BaseNavigationProps {
+interface IBaseNavigationProps {
   isHeaderNav?: boolean;
 }
 
-const BaseNavigation = ({ isHeaderNav = true }: BaseNavigationProps) => {
+const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
   const navRef = useRef<HTMLElement>(null);
   const [ isActive, setIsActive ] = useState<boolean>(false);
 

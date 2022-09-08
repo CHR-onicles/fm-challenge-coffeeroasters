@@ -2,13 +2,13 @@ import { Fragment, ReactNode, createElement, useState, useEffect, DOMElement, DO
 
 type ElemType = 'div' | 'ul' | 'header' | 'footer';
 
-interface BaseUtilityProps {
+interface IBaseUtilityProps {
   className: string;
   elemType?: ElemType;
   children: ReactNode;
 }
 
-const BaseUtility = ({ className, elemType = 'div', children }: BaseUtilityProps) => {
+const BaseUtility = ({ className, elemType = 'div', children }: IBaseUtilityProps) => {
   const handleRenderRootElem = (element: string, className: string, children: ReactNode): DOMElement<DOMAttributes<Element>, Element> => {
     return createElement(element, { className, children });
   };

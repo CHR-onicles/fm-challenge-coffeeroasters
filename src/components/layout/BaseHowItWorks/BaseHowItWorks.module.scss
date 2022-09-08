@@ -69,6 +69,10 @@
     margin-top: var(--howItWorks-cta-spacing-top);
   }
 
+  &__error {
+    text-align: left;
+  }
+
   @include media-breakpoint(md) {
     --howItWorks-spacing-bottom: #{toRem(144px)};
 

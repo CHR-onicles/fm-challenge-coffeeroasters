@@ -1,10 +1,14 @@
 import { BaseCard } from '../../../components/ui';
 
-import { benefits } from '../../../data/benefits';
+import { IBenefit } from '../../../interfaces/benefit-interface';
 
 import styles from './WhyChooseUs.module.scss';
 
-const WhyChooseUs = () => {
+interface IWhyChooseUsProps {
+  benefits: IBenefit[];
+}
+
+const WhyChooseUs = ({ benefits }: IWhyChooseUsProps) => {
   return (
     <section className={ styles.benefits }>
       <div className="container">
@@ -18,29 +22,35 @@ const WhyChooseUs = () => {
           </div>
         </BaseCard>
 
-        <ul className="grid-cols">
-          {
-            benefits.map(benefit => (
-              <li
-                key={ benefit.title }
-                className={ `${styles['benefits__list-item']} | grid__item grid__item--span-lg-4` }
-              >
-                <BaseCard customClasses={ `${styles['benefits__card']} | stack | bg-cyan-color-1` }>
-                  <img
-                    src={ benefit.icon }
-                    alt={ benefit.title }
-                  />
+        {
+          benefits.length ? (
+            <ul className="grid-cols">
+              {
+                benefits.map(benefit => (
+                  <li
+                    key={ benefit.id }
+                    className={ `${styles['benefits__list-item']} | grid__item grid__item--span-lg-4` }
+                  >
+                    <BaseCard customClasses={ `${styles['benefits__card']} | stack | bg-cyan-color-1` }>
+                      <img
+                        src={ benefit.icon }
+                        alt={ benefit.title }
+                      />
 
-                  <div className={ styles['benefits__card-body'] }>
-                    <h3>{ benefit.title }</h3>
+                      <div className={ styles['benefits__card-body'] }>
+                        <h3>{ benefit.title }</h3>
 
-                    <p>{ benefit.description }</p>
-                  </div>
-                </BaseCard>
-              </li>
-            ))
-          }
-        </ul>
+                        <p>{ benefit.description }</p>
+                      </div>
+                    </BaseCard>
+                  </li>
+                ))
+              }
+            </ul>
+          ) : (
+            <p className={ styles['benefits__error'] }>Sorry, benefits data could not be loaded.</p>
+          )
+        }
       </div>
     </section>
   );

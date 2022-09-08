@@ -71,6 +71,11 @@
     }
   }
 
+  &__error {
+    margin-top: toRem(80px);
+    text-align: center;
+  }
+
   @include media-breakpoint(md) {
     --collection-spacing-vertical: #{toRem(144px)};
 
