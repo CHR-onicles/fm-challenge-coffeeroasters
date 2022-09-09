@@ -148,6 +148,10 @@
     --howItWorks-item-text-size: #{toRem(16px)};
     --howItWorks-item-text-width: 31ch;
 
+    &__card {
+      padding: 0 var(--content-spacing-horizontal);
+    }
+
     &__item {
       p {
         max-width: var(--howItWorks-item-text-width);
