@@ -1,13 +1,21 @@
 import { BaseHero } from '../../components/layout';
+import { OurCommitment, OurQuality, OurHeadQuarters } from './index';
 
 const AboutUs = () => {
   return (
     <main>
-      <BaseHero title="About Us" description="Some text for the description" imgPath="some image path" />
+      <BaseHero
+        title="About Us"
+        description="Some text for the description"
+        imgPath="some image path"
+        imgAltText="The story of Coffeeroasters"
+      />
 
-      <section className="container">
-        <h2>About us Component</h2>
-      </section>
+      <OurCommitment />
+
+      <OurQuality />
+
+      <OurHeadQuarters />
     </main>
   );
 };

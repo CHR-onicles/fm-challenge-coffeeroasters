@@ -1,0 +1,23 @@
+@use '../../../scss/abstracts/' as *;
+
+.base-hero {
+  --base-hero-spacing-top: #{toRem(110px)};
+  --base-hero-content-width: 32ch;
+
+  --base-hero-title-spacing-bottom: #{toRem(24px)};
+
+  --base-hero-text-size: #{toRem(15px)};
+  --base-hero-text-width: 32ch;
+  --base-hero-text-align: center;
+
+  position: relative;
+  background-color: var(--dark-color-1);
+
+  &__content {
+    position: absolute;
+    top: var(--base-hero-spacing-top);
+    left: calc(50% - (var(--base-hero-content-width) / 2));
+    max-width: var(--base-hero-content-width);
+    text-align: var(--base-hero-text-align);
+  }
+}
