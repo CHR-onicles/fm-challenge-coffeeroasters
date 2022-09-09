@@ -1,18 +1,18 @@
 @use '../abstracts/' as *;
 
 .container {
-  --horizontal-space: #{toRem(24px)};
+  --container-spacing-horizontal: #{toRem(24px)};
 
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--horizontal-space);
-  padding-right: var(--horizontal-space);
+  padding-left: var(--container-spacing-horizontal);
+  padding-right: var(--container-spacing-horizontal);
 
   @each $breakpoint, $value in $breakpoints {
     @include media-breakpoint(#{$breakpoint}) {
       @if $breakpoint == md {
-        --horizontal-space: 0;
+        --container-spacing-horizontal: 0;
       }
 
       max-width: map-get($containers, #{$breakpoint});

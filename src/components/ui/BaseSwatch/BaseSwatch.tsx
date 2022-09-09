@@ -1,6 +1,6 @@
 import styles from './BaseSwatch.module.scss';
 
-interface Color {
+interface IColor {
   name: string;
   hex: string;
   rgb: string;
@@ -9,11 +9,11 @@ interface Color {
   type?: string;
 };
 
-interface SwatchProps {
-  colorSwatch: Color;
+interface ISwatchProps {
+  colorSwatch: IColor;
 };
 
-const BaseSwatch = ({ colorSwatch }: SwatchProps) => {
+const BaseSwatch = ({ colorSwatch }: ISwatchProps) => {
   const { name, hex, rgb, hsl, colorVar, type } = colorSwatch;
 
   return (

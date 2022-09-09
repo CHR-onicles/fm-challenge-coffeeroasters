@@ -1,0 +1,92 @@
+@use '../../../scss/abstracts/' as *;
+
+.header {
+  &__nav {
+    --nav-offset-top: #{toRem(104px)};
+    --nav-text-size: #{toRem(12px)};
+
+    > .row {
+      gap: toRem(32px);
+    }
+
+    a {
+      font-family: var(--font-family-bold);
+      font-size: var(--nav-text-size);
+      text-transform: uppercase;
+      color: var(--dark-color-1);
+    }
+
+    &[data-variant="mobile"] {
+      --nav-text-size: #{toRem(24px)};
+
+      position: fixed;
+      top: var(--nav-offset-top);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--nav-offset-top));
+      background: linear-gradient(180deg, var(--neutral-color-1) 50.5%, rgba(254, 252, 247, 0) 100%);
+      z-index: var(--zindex-fixed);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+      transition: clip-path 0.35s ease-in-out;
+
+      > .row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: toRem(28px);
+      }
+
+      a {
+        display: block;
+        padding: toRem(4px);
+        font-family: var(--font-family-black);
+        text-align: center;
+        line-height: 1.3;
+        color: var(--dark-color-2);
+      }
+    }
+  }
+
+  &__nav-toggle {
+    &[aria-expanded="true"] + .header__nav {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      transition: clip-path 0.35s ease-in-out;
+    }
+  }
+
+  @include media-breakpoint(md) {
+    &__nav-toggle {
+      display: none;
+    }
+  }
+}
+
+.footer {
+  &__nav {
+    --footer-spacing-left: 0;
+    --nav-text-size: #{toRem(12px)};
+    
+    margin-left: var(--footer-spacing-left);
+
+    > .row {
+      flex-direction: column;
+      gap: toRem(24px);
+    }
+    
+    a {
+      font-family: var(--font-family-bold);
+      font-size: var(--nav-text-size);
+      text-transform: uppercase;
+    }
+
+    @include media-breakpoint(md) {
+      > .row {
+        gap: toRem(32px);
+        flex-direction: row;
+      }
+    }
+
+    @include media-breakpoint(xl) {
+      --footer-spacing-left: #{toRem(86px)};
+    }
+  }
+}

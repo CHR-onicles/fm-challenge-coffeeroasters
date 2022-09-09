@@ -1,0 +1,43 @@
+@use '../../../scss/abstracts/' as *;
+
+.footer {
+  --footer-spacing-vertical: #{toRem(54px)};
+  --footer-spacing-horizontal: #{toRem(54px)};
+  --footer-spacing-bottom: #{toRem(72px)};
+
+ .row {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: var(--footer-spacing-bottom);
+    padding: var(--footer-spacing-vertical) var(--footer-spacing-horizontal);
+    background-color: var(--dark-color-2);
+    border-radius: toRem(10px);
+
+    > a,
+    > nav {
+      margin-bottom: toRem(32px);
+    }
+
+    > a {
+      img {
+        width: toRem(218px) !important;
+      }
+    }
+  }
+
+  @include media-breakpoint(xl) {
+    --footer-spacing-vertical: #{toRem(47px)};
+    --footer-spacing-horizontal: #{toRem(85px)};
+    --footer-spacing-bottom: #{toRem(88px)};
+
+    .row {
+      flex-direction: row;
+      justify-content: flex-start;
+
+      > a,
+      > nav {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

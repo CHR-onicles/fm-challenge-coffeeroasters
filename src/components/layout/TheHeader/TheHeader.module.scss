@@ -1,0 +1,32 @@
+@use '../../../scss/abstracts/' as *;
+
+.header {
+  --header-spacing-top: #{toRem(32px)};
+  --header-spacing-bottom: #{toRem(40px)};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--neutral-color-1);
+  z-index: var(--zindex-fixed);
+
+  > .row {
+    justify-content: space-between;
+    padding-top: var(--header-spacing-top);
+    padding-bottom: var(--header-spacing-bottom);
+  }
+
+  @include media-breakpoint(md) {
+    --header-spacing-top: #{toRem(40px)};
+    --header-spacing-bottom: #{toRem(53px)};
+
+    position: relative;
+    top: unset;
+  }
+
+  @include media-breakpoint(xl) {
+    --header-spacing-top: #{toRem(43px)};
+    --header-spacing-bottom: #{toRem(43px)};
+  }
+}

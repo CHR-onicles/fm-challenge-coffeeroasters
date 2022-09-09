@@ -3,13 +3,13 @@ import { useState, ReactNode } from 'react';
 import styles from './BaseAccordion.module.scss';
 import { ReactComponent as IconArrow } from '../../../assets/images/shared/icon-arrow.svg';
 
-interface BaseAccordionProps {
+interface IBaseAccordionProps {
   id: string;
   label: string;
   children: ReactNode;
 }
 
-const BaseAccordion = ({ id, label, children }: BaseAccordionProps) => {
+const BaseAccordion = ({ id, label, children }: IBaseAccordionProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(false);
 
   const handleToggleDropdown = () => {

@@ -1,0 +1,15 @@
+@use '../../../scss/abstracts/' as *;
+
+.brand {
+  --brand-width: #{toRem(163px)};
+
+  img {
+    width: var(--brand-width);
+    height: auto;
+    object-fit: contain;
+  }
+
+  @include media-breakpoint(md) {
+    --brand-width: #{toRem(236px)};
+  }
+}

@@ -1,14 +1,19 @@
-import { BaseNavigation } from '../index';
+import { BaseBrand, BaseNavigation } from '../index';
+import { BaseSocialMedia } from '../../ui/index';
 
-import { BaseLogo } from '../index';
+import styles from './TheFooter.module.scss';
 
 const TheFooter = () => {
   return (
-    <footer>
-      <div className="container row">
-        <BaseLogo />
-        
-        <BaseNavigation />
+    <footer id="footer" className={ styles.footer }>
+      <div className="container">
+        <div className={ `row ${styles.row}` }>
+          <BaseBrand isLogoDark={ false } />
+          
+          <BaseNavigation isHeaderNav={ false } />
+
+          <BaseSocialMedia />
+        </div>
       </div>
     </footer>
   );

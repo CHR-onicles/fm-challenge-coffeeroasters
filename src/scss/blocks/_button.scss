@@ -34,4 +34,19 @@
     background-color: var(--btn-bg-disabled-color);
     cursor: not-allowed;
   }
+
+  &[data-variant="burger"] {
+    width: toRem(32px);
+    min-width: unset;
+    height: toRem(32px);
+    padding: var(--space-s0);
+    background-color: var(--dark-color-2);
+    mask-image: url('../../assets/images/shared/mobile/icon-hamburger.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    &[aria-expanded="true"] {
+      mask-image: url('../../assets/images/shared/mobile/icon-close.svg');
+    }
+  }
 }
