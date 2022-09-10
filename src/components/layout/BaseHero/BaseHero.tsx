@@ -10,41 +10,43 @@ interface IBaseHeroProps {
   bgImages: string[];
 }
 
+const MEDIAQUERY = {
+  MOBILE: '(max-width: 767px)',
+  TABLET: '(min-width: 768px) and (max-width: 1023px)',
+  DESKTOP: '(min-width: 1024px)',
+};
+
 const BaseHero = ({ title, description, bgImages }: IBaseHeroProps) => {
   const divRef = useRef<HTMLDivElement>(null);
-  const handleMobileHeroImage = useCallback((mediaQueryList: MediaQueryList) => {
+  const handleHeroImage = useCallback((mediaQueryList: MediaQueryList) => {
     if (!divRef.current) {
       return;
     }
 
-    if (mediaQueryList.matches) {
-      divRef.current.style.backgroundImage = `url(${bgImages[0]})`;
-    }
-  }, [bgImages]);
+    let bgImage;
 
-  const handleTabletHeroImage = useCallback((mediaQueryList: MediaQueryList) => {
-    if (!divRef.current) {
-      return;
-    }
+    switch (mediaQueryList.media) {
+      case MEDIAQUERY.MOBILE:
+        bgImage = bgImages[0];
+        break;
 
-    if (mediaQueryList.matches) {
-      divRef.current.style.backgroundImage = `url(${bgImages[1]})`;
-    }
-  }, [bgImages]);
-
-  const handleDesktopHeroImage = useCallback((mediaQueryList: MediaQueryList) => {
-    if (!divRef.current) {
-      return;
+      case MEDIAQUERY.TABLET:
+        bgImage = bgImages[1];
+        break;
+    
+      default:
+        bgImage = bgImages[2];
+        break;
     }
 
     if (mediaQueryList.matches) {
-      divRef.current.style.backgroundImage = `url(${bgImages[2]})`;
+      divRef.current.style.backgroundImage = `url(${bgImage})`;
     }
   }, [bgImages]);
 
-  useMediaQuery('(min-width: 0px) and (max-width: 767px)', handleMobileHeroImage);
-  useMediaQuery('(min-width: 768px) and (max-width: 1023px)', handleTabletHeroImage);
-  useMediaQuery('(min-width: 1024px)', handleDesktopHeroImage);
+  useMediaQuery(MEDIAQUERY.MOBILE, handleHeroImage);
+  useMediaQuery(MEDIAQUERY.TABLET, handleHeroImage);
+  useMediaQuery(MEDIAQUERY.DESKTOP, handleHeroImage);
   
   return (
     <section className={ styles['base-hero'] }>
