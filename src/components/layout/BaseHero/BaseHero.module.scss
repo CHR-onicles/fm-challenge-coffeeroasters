@@ -1,23 +1,60 @@
 @use '../../../scss/abstracts/' as *;
 
 .base-hero {
-  --base-hero-spacing-top: #{toRem(110px)};
+  --base-hero-spacing-vertical: #{toRem(111px)};
+  --base-hero-spacing-bottom: #{toRem(120px)};
   --base-hero-content-width: 32ch;
 
   --base-hero-title-spacing-bottom: #{toRem(24px)};
+  --base-hero-title-text-size: #{toRem(28px)};
 
   --base-hero-text-size: #{toRem(15px)};
   --base-hero-text-width: 32ch;
   --base-hero-text-align: center;
 
-  position: relative;
-  background-color: var(--dark-color-1);
+  margin-bottom: var(--base-hero-spacing-bottom);
+
+  h1,
+  p {
+    color: var(--neutral-color-1);
+  }
+
+  h1 {
+    margin-bottom: var(--base-hero-title-spacing-bottom);
+    font-size: var(--base-hero-title-text-size);
+    line-height: 1.2;
+  }
+  
+  p {
+    font-size: var(--base-hero-text-size);
+    line-height: 1.7;
+  }
 
   &__content {
-    position: absolute;
-    top: var(--base-hero-spacing-top);
-    left: calc(50% - (var(--base-hero-content-width) / 2));
-    max-width: var(--base-hero-content-width);
-    text-align: var(--base-hero-text-align);
+    padding: var(--base-hero-spacing-vertical) var(--content-spacing-horizontal);
+    background-size: cover;
+    border-radius: toRem(10px);
+
+    > div {
+      text-align: var(--base-hero-text-align);
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --base-hero-spacing-vertical: #{toRem(118px)};
+    --base-hero-spacing-bottom: #{toRem(144px)};
+
+    --base-hero-title-text-size: #{toRem(32px)};
+
+    --base-hero-text-align: left;
+  }
+
+  @include media-breakpoint(lg) {
+    --base-hero-spacing-vertical: #{toRem(137px)};
+    --base-hero-spacing-bottom: #{toRem(168px)};
+
+    --base-hero-title-text-size: #{toRem(40px)};
+
+    --base-hero-text-size: #{toRem(16px)};
   }
 }
