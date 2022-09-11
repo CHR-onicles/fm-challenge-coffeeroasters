@@ -1,10 +1,24 @@
+import { IPageContent } from '../../../interfaces/page-content-interface';
+
 // import styles from './OurQuality.modules.scss';
 
-const OurQuality = () => {
+interface IOurQualityProps {
+  content: IPageContent;
+}
+
+const OurQuality = ({ content }: IOurQualityProps) => {
+  const { title, description, imagePath } = content;
+
   return (
     <section>
       <div className="container">
-        <h2>Uncompromising quality</h2>
+        <picture>
+          <source media="(min-width: 1110px)" srcSet={ imagePath[2] } />
+          <source media="(min-width: 768px)" srcSet={ imagePath[1] } />
+          <img src={ imagePath[0] } alt={ title } />
+        </picture>
+        <h2>{ title }</h2>
+        <p>{ description }</p>
       </div>
     </section>
   );
