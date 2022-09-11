@@ -7,10 +7,6 @@ import { getPageContent } from '../../services';
 
 import { IPageContent } from '../../interfaces/page-content-interface';
 
-import mobileHeroImage from '../../assets/images/about/mobile/image-hero-whitecup.jpg';
-import tabletHeroImage from '../../assets/images/about/tablet/image-hero-whitecup.jpg';
-import desktopHeroImage from '../../assets/images/about/desktop/image-hero-whitecup.jpg';
-
 const AboutUs = () => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
 
@@ -18,7 +14,6 @@ const AboutUs = () => {
     try {
       const pageContentData = await getPageContent('about');
 
-      // console.log('handleGetPageContent: ', pageContentData[0].title);
       setPageContent(() => pageContentData);
     } catch(error) {
       setPageContent([]);
