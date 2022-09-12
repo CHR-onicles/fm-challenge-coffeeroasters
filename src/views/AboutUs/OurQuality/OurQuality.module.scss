@@ -1,1 +1,71 @@
 @use '../../../scss/abstracts/' as *;
+
+.our-quality {
+  --quality-spacing-bottom: #{toRem(120px)};
+
+  --quality-content-spacing-bottom: #{toRem(61px)};
+  --quality-content-text-align: center;
+
+  --quality-title-spacing-top: 0;
+  --quality-title-spacing-bottom: #{toRem(24px)};
+  --quality-title-text-size: #{toRem(32px)};
+
+  --quality-text-size: #{toRem(15px)};
+  --quality-text-width: unset;
+
+  --quality-image-spacing-top: #{toRem(-78px)};
+  --quality-image-spacing-bottom: #{toRem(64px)};
+
+  margin-bottom: var(--quality-spacing-bottom);
+
+  h2,
+  p {
+    color: var(--neutral-color-1);
+    text-align: var(--quality-content-text-align);
+  }
+
+  h2 {
+    margin-top: var(--quality-title-spacing-top);
+    margin-bottom: var(--quality-title-spacing-bottom);
+    font-size: var(--quality-title-text-size);
+    line-height: 1.5;
+  }
+
+  p {
+    max-width: var(--quality-text-width);
+    font-size: var(--quality-text-size);
+    line-height: 1.7;
+  }
+
+  &__content {
+    padding: 0 var(--content-spacing-horizontal) var(--quality-content-spacing-bottom) var(--content-spacing-horizontal);
+    background-repeat: none;
+    background-size: cover;
+    border-radius: toRem(10px);
+
+    &-image {
+      margin: var(--quality-image-spacing-top) auto var(--quality-image-spacing-bottom);
+      border-radius: toRem(8px);
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --quality-content-spacing-bottom: #{toRem(67px)};
+
+    --quality-image-spacing-top: #{toRem(-160px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --quality-content-spacing-bottom: #{toRem(88px)};
+    --quality-content-text-align: left;
+
+    --quality-title-spacing-top: #{toRem(88px)};
+    --quality-title-text-size: #{toRem(40px)};
+
+    --quality-text-size: #{toRem(16px)};
+    --quality-text-width: 59ch;
+
+    --quality-image-spacing-top: #{toRem(-88px)};
+    --quality-image-spacing-bottom: 0;
+  }
+}

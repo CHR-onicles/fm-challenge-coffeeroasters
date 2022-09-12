@@ -1,7 +1,7 @@
 @use '../../../scss/abstracts/' as *;
 
 .our-commitment {
-  --commitment-spacing-bottom: #{toRem(120px)};
+  --commitment-spacing-bottom: #{toRem(198px)};
 
   --commitment-image-spacing-bottom: #{toRem(48px)};
 
@@ -11,6 +11,8 @@
   --commitment-title-text-size: #{toRem(32px)};
 
   --commitment-text-size: #{toRem(15px)};
+
+  --commitment-image-border: #{toRem(10px)};
 
   margin-bottom: var(--commitment-spacing-bottom);
 
@@ -33,7 +35,7 @@
   &__content {
     &-image {
       margin-bottom: var(--commitment-image-spacing-bottom);
-      border-radius: toRem(10px);
+      border-radius: var(--commitment-image-border);
     }
 
     &-body {
@@ -45,15 +47,17 @@
   }
 
   @include media-breakpoint(md) {
-    --commitment-spacing-bottom: #{toRem(144px)};
+    --commitment-spacing-bottom: #{toRem(304px)};
 
     --commitment-image-spacing-bottom: 0;
 
     --commitment-content-text-align: left;
+
+    --commitment-image-border: #{toRem(8px)};
   }
 
   @include media-breakpoint(lg) {
-    --commitment-spacing-bottom: #{toRem(168px)};
+    --commitment-spacing-bottom: #{toRem(256px)};
 
     --commitment-title-text-size: #{toRem(40px)};
 
