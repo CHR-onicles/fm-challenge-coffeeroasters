@@ -1,7 +1,7 @@
 @use '../../../scss/abstracts/' as *;
 
 .collection {
-  --collection-spacing-vertical: #{toRem(120px)};
+  --collection-spacing-bottom: #{toRem(120px)};
 
   --collection-list-spacing: #{toRem(48px)};
 
@@ -17,8 +17,7 @@
   --collection-body-title-spacing-top: 0;
   --collection-body-title-spacing-bottom: #{toRem(16px)};
 
-  padding-top: var(--collection-spacing-vertical);
-  padding-bottom: var(--collection-spacing-vertical);
+  margin-bottom: var(--collection-spacing-bottom);
 
   &__content {
     padding: 0 var(--content-spacing-horizontal);
@@ -77,7 +76,7 @@
   }
 
   @include media-breakpoint(md) {
-    --collection-spacing-vertical: #{toRem(144px)};
+    --collection-spacing-bottom: #{toRem(144px)};
 
     --collection-list-spacing: #{toRem(32px)};
 
@@ -114,7 +113,7 @@
   }
 
   @include media-breakpoint(lg) {
-    --collection-spacing-vertical: #{toRem(136px)};
+    --collection-spacing-bottom: #{toRem(200px)};
 
     --collection-list-spacing: 0;
 

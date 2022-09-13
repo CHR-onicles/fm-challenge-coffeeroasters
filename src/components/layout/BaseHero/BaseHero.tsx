@@ -16,6 +16,7 @@ const BaseHero = ({ content }: IBaseHeroProps) => {
           <picture>
             <source media="(min-width: 1110px)" srcSet={ imagePath[2] } />
             <source media="(min-width: 768px)" srcSet={ imagePath[1] } />
+            <source srcSet={ imagePath[0] } />
             <img
               src={ imagePath[0] }
               alt={ title }

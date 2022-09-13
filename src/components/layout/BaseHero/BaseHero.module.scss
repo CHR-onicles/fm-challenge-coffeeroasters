@@ -14,25 +14,21 @@
 
   margin-bottom: var(--base-hero-spacing-bottom);
 
-  h1,
-  p {
-    color: var(--neutral-color-1);
-  }
-
   h1 {
     margin-bottom: var(--base-hero-title-spacing-bottom);
+    color: var(--neutral-color-1);
     font-size: var(--base-hero-title-text-size);
     line-height: 1.2;
   }
   
   p {
+    color: var(--neutral-color-1-opacity-80);
     font-size: var(--base-hero-text-size);
     line-height: 1.7;
   }
 
   &__content {
     position: relative;
-    width: 100%;
     border-radius: toRem(10px);
     overflow: hidden;
   }

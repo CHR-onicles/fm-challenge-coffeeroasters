@@ -47,11 +47,11 @@ const AboutUs = () => {
             <OurCommitment content={ pageContent[1] } />
 
             <OurQuality content={ pageContent[2] } />
+
+            <OurHeadquarters headquarters={ headquarters } />
           </Fragment>
         ) : null
       }
-      
-      <OurHeadquarters headquarters={ headquarters } />
     </main>
   );
 };

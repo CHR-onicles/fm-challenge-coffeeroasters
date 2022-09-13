@@ -1,8 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import mobileHeroImage from '../assets/images/about/mobile/image-hero-whitecup.jpg';
-import tabletHeroImage from '../assets/images/about/tablet/image-hero-whitecup.jpg';
-import desktopHeroImage from '../assets/images/about/desktop/image-hero-whitecup.jpg';
+import mobileHeroImage from '../assets/images/home/mobile/image-hero-coffeepress.jpg';
+import tabletHeroImage from '../assets/images/home/tablet/image-hero-coffeepress.jpg';
+import desktopHeroImage from '../assets/images/home/desktop/image-hero-coffeepress.jpg';
+
+import mobileAboutHeroImage from '../assets/images/about/mobile/image-hero-whitecup.jpg';
+import tabletAboutHeroImage from '../assets/images/about/tablet/image-hero-whitecup.jpg';
+import desktopAboutHeroImage from '../assets/images/about/desktop/image-hero-whitecup.jpg';
 
 import mobileCommitmentImage from '../assets/images/about/mobile/image-commitment.jpg';
 import tabletCommitmentImage from '../assets/images/about/tablet/image-commitment.jpg';
@@ -14,12 +18,27 @@ import desktopQualityImage from '../assets/images/about/desktop/image-quality.jp
 
 export const pageContent = new Map();
 
+pageContent.set('home', [
+  {
+    id: uuidv4(),
+    title: 'Great coffee made simple.',
+    description: 'Start your mornings with the world\'s best coffees. Try our expertly curated artisan coffees from our best roasters delivered directly to your door, at your schedule.',
+    imagePath: [mobileHeroImage, tabletHeroImage, desktopHeroImage],
+  },
+  {
+    id: uuidv4(),
+    title: 'Why choose us?',
+    description: 'A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.',
+    imagePath: null,
+  },
+]);
+
 pageContent.set('about', [
   {
     id: uuidv4(),
     title: 'About Us',
     description: 'Coffeeroasters began its journey of exotic discovery in 1999, highlighting stories of coffee from around the world. We have since been dedicated to bring the perfect cup - from bean to brew - in every shipment.',
-    imagePath: [mobileHeroImage, tabletHeroImage, desktopHeroImage],
+    imagePath: [mobileAboutHeroImage, tabletAboutHeroImage, desktopAboutHeroImage],
   },
   {
     id: uuidv4(),
