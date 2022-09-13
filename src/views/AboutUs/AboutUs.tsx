@@ -42,11 +42,7 @@ const AboutUs = () => {
       {
         pageContent.length ? (
           <Fragment>
-            <BaseHero
-              title={ pageContent[0].title }
-              description={ pageContent[0].description }
-              bgImages={ pageContent[0].imagePath }
-            />
+            <BaseHero content={ pageContent[0] }/>
 
             <OurCommitment content={ pageContent[1] } />
 
