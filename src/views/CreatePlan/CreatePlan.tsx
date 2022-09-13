@@ -43,7 +43,12 @@ const Subscribe = () => {
           <Fragment>
             <BaseHero content={ pageContent[0] }/>
 
-            <BaseHowItWorks steps={ workingSteps } />
+            <BaseHowItWorks
+              steps={ workingSteps }
+              variant="dark"
+              withTitle= { false }
+              withCTA={ false }
+            />
           </Fragment>
         ) : null
       }

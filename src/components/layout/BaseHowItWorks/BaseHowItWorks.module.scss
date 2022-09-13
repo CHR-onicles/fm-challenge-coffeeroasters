@@ -6,6 +6,9 @@
   --howItWorks-title-size: #{toRem(24px)};
   --howItWorks-title-spacing-bottom: #{toRem(80px)};
 
+  --howItWorks-card-spacing-vertical: #{toRem(80px)};
+  --howItWorks-card-spacing-horizontal: 0;
+
   --howItWorks-list-spacing-top: #{toRem(79px)};
   --howItWorks-list-spacing: #{toRem(56px)};
 
@@ -73,10 +76,32 @@
     text-align: left;
   }
 
+  &[data-variant="dark"] {
+    .how-it-works {
+      &__card {
+        background-color: var(--dark-color-2);
+
+        > div {
+          padding: var(--howItWorks-card-spacing-vertical) var(--howItWorks-card-spacing-horizontal);
+        }
+      }
+
+      &__item {
+        h3,
+        p {
+          color: var(--neutral-color-1);
+        }
+      }
+    }
+  }
+
   @include media-breakpoint(md) {
     --howItWorks-spacing-bottom: #{toRem(144px)};
 
     --howItWorks-title-spacing-bottom: #{toRem(40px)};
+
+    --howItWorks-card-spacing-vertical: #{toRem(97px)};
+    --howItWorks-card-spacing-horizontal: #{toRem(40px)};
 
     --howItWorks-list-spacing: 0;
 
@@ -142,6 +167,9 @@
     --howItWorks-spacing-bottom: #{toRem(200px)};
 
     --howItWorks-title-spacing-bottom: #{toRem(80px)};
+
+    --howItWorks-card-spacing-vertical: #{toRem(100px)};
+    --howItWorks-card-spacing-horizontal: 0;
 
     --howItWorks-item-title-size: #{toRem(32px)};
     --howItWorks-item-title-spacing-bottom: #{toRem(42px)};

@@ -8,15 +8,21 @@ import styles from './BaseHowItWorks.module.scss';
 
 interface IBaseHowItWorksProps {
   steps: IWorkingStep[];
-  isDark?: boolean;
+  variant?: string;
+  withTitle?: boolean;
+  withCTA?: boolean;
 }
 
-const BaseHowItWorks = ({ steps, isDark = false }: IBaseHowItWorksProps) => {
+const BaseHowItWorks = ({ steps, variant = 'default', withTitle = true, withCTA = true }: IBaseHowItWorksProps) => {
   return (
-    <section className={ styles['how-it-works'] } data-variant={ isDark ? 'dark' : '' }>
+    <section className={ styles['how-it-works'] } data-variant={ variant }>
       <div className="container">
         <BaseCard customClasses={ styles['how-it-works__card'] }>
-          <h2 className={ styles['how-it-works__title'] }>How it works</h2>
+          {
+            withTitle ? (
+              <h2 className={ styles['how-it-works__title'] }>How it works</h2>
+            ) : null
+          }
 
           {
             steps.length
@@ -40,7 +46,11 @@ const BaseHowItWorks = ({ steps, isDark = false }: IBaseHowItWorksProps) => {
             )
           }
 
-          <Link to="/" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
+          {
+            withCTA ? (
+              <Link to="/" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
+            ) : null
+          }
         </BaseCard>
       </div>
     </section>
