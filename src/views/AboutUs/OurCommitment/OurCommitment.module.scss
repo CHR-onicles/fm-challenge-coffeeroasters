@@ -1,0 +1,70 @@
+@use '../../../scss/abstracts/' as *;
+
+.our-commitment {
+  --commitment-spacing-bottom: #{toRem(198px)};
+
+  --commitment-image-spacing-bottom: #{toRem(48px)};
+
+  --commitment-content-text-align: center;
+
+  --commitment-title-spacing-bottom: #{toRem(30px)};
+  --commitment-title-text-size: #{toRem(32px)};
+
+  --commitment-text-size: #{toRem(15px)};
+
+  --commitment-image-border: #{toRem(10px)};
+
+  margin-bottom: var(--commitment-spacing-bottom);
+
+  h2,
+  p {
+    text-align: var(--commitment-content-text-align);
+  }
+
+  h2 {
+    margin-bottom: var(--commitment-title-spacing-bottom);
+    font-size: var(--commitment-title-text-size);
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: var(--commitment-text-size);
+    line-height: 1.7;
+  }
+
+  &__content {
+    &-image {
+      margin-bottom: var(--commitment-image-spacing-bottom);
+      border-radius: var(--commitment-image-border);
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --commitment-spacing-bottom: #{toRem(304px)};
+
+    --commitment-image-spacing-bottom: 0;
+
+    --commitment-content-text-align: left;
+
+    --commitment-image-border: #{toRem(8px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --commitment-spacing-bottom: #{toRem(256px)};
+
+    --commitment-title-text-size: #{toRem(40px)};
+
+    --commitment-text-size: #{toRem(16px)};
+
+    &__content {
+      padding: 0 var(--content-spacing-horizontal);
+    }
+  }
+}

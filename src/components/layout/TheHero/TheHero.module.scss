@@ -2,7 +2,10 @@
 
 .hero {
   --hero-spacing-top: #{toRem(100px)};
-  --hero-content-width: 32ch;
+  --hero-spacing-bottom: #{toRem(120px)};
+
+  --hero-body-width: 32ch;
+  --hero-body-text-align: center;
 
   --hero-title-spacing-bottom: #{toRem(24px)};
 
@@ -10,52 +13,56 @@
   --hero-text-width: 32ch;
   --hero-text-spacing-bottom: #{toRem(40px)};
   --hero-text-align: center;
-  
-  position: relative;
 
-  &__content {
-    position: absolute;
-    top: var(--hero-spacing-top);
-    left: calc(50% - (var(--hero-content-width) / 2));
-    max-width: var(--hero-content-width);
-    text-align: var(--hero-text-align);
+  margin-bottom: var(--hero-spacing-bottom);
 
-    h1 {
-      margin-bottom: var(--hero-title-spacing-bottom);
-      color: var(--neutral-color-1);
-      line-height: 1;
-    }
-
-    > p {
-      max-width: var(--hero-text-width);
-      margin-bottom: var(--hero-text-spacing-bottom);
-      color: var(--neutral-color-1-opacity-80);
-      font-size: var(--hero-text-size);
-      line-height: 1.6;
-    }
+  h1 {
+    margin-bottom: var(--hero-title-spacing-bottom);
+    color: var(--neutral-color-1);
+    line-height: 1;
   }
 
-  &__image {
-    width: 100%;
+  p {
+    max-width: var(--hero-text-width);
+    margin-bottom: var(--hero-text-spacing-bottom);
+    color: var(--neutral-color-1-opacity-80);
+    font-size: var(--hero-text-size);
+    line-height: 1.7;
+  }
+
+  &__content {
+    position: relative;
     border-radius: toRem(10px);
     overflow: hidden;
   }
 
+  &__body {
+    position: absolute;
+    top: var(--hero-spacing-top);
+    left: calc(50% - (var(--hero-body-width) / 2));
+    max-width: var(--hero-body-width);
+    text-align: var(--hero-body-text-align);
+  }
+
   @include media-breakpoint(md) {
     --hero-spacing-top: #{toRem(104px)};
-    --hero-content-width: 45ch;
+    --hero-spacing-bottom: #{toRem(144px)};
+
+    --hero-body-width: 45ch;
+    --hero-body-text-align: left;
 
     --hero-text-width: 45ch;
-    --hero-text-align: left;
 
-    &__content {
+    &__body {
       left: var(--content-spacing-horizontal);
     }
   }
 
   @include media-breakpoint(lg) {
     --hero-spacing-top: #{toRem(117px)};
-    --hero-content-width: 55ch;
+    --hero-spacing-bottom: #{toRem(136px)};
+
+    --hero-body-width: 55ch;
 
     --hero-title-spacing-bottom: #{toRem(32px)};
     

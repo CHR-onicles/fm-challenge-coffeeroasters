@@ -1,0 +1,66 @@
+@use '../../../scss/abstracts/' as *;
+
+.base-hero {
+  --base-hero-spacing-top: #{toRem(111px)};
+  --base-hero-spacing-bottom: #{toRem(120px)};
+
+  --base-hero-body-width: 31ch;
+  --base-hero-body-text-align: center;
+
+  --base-hero-title-spacing-bottom: #{toRem(24px)};
+  --base-hero-title-text-size: #{toRem(28px)};
+
+  --base-hero-text-size: #{toRem(15px)};
+
+  margin-bottom: var(--base-hero-spacing-bottom);
+
+  h1 {
+    margin-bottom: var(--base-hero-title-spacing-bottom);
+    color: var(--neutral-color-1);
+    font-size: var(--base-hero-title-text-size);
+    line-height: 1.2;
+  }
+  
+  p {
+    color: var(--neutral-color-1-opacity-80);
+    font-size: var(--base-hero-text-size);
+    line-height: 1.7;
+  }
+
+  &__content {
+    position: relative;
+    border-radius: toRem(10px);
+    overflow: hidden;
+  }
+
+  &__body {
+    position: absolute;
+    top: var(--base-hero-spacing-top);
+    left: calc(50% - (var(--base-hero-body-width) / 2));
+    max-width: var(--base-hero-body-width);
+    text-align: var(--base-hero-body-text-align);
+  }
+
+  @include media-breakpoint(md) {
+    --base-hero-spacing-top: #{toRem(118px)};
+    --base-hero-spacing-bottom: #{toRem(144px)};
+
+    --base-hero-body-width: 49ch;
+    --base-hero-body-text-align: left;
+
+    --base-hero-title-text-size: #{toRem(32px)};
+
+    &__body {
+      left: var(--content-spacing-horizontal);
+    }
+  }
+
+  @include media-breakpoint(lg) {
+    --base-hero-spacing-top: #{toRem(137px)};
+    --base-hero-spacing-bottom: #{toRem(168px)};
+
+    --base-hero-title-text-size: #{toRem(40px)};
+
+    --base-hero-text-size: #{toRem(16px)};
+  }
+}

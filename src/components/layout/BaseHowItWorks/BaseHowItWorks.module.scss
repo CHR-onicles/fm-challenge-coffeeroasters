@@ -139,7 +139,7 @@
   }
 
   @include media-breakpoint(lg) {
-    --howItWorks-spacing-bottom: #{toRem(168px)};
+    --howItWorks-spacing-bottom: #{toRem(200px)};
 
     --howItWorks-title-spacing-bottom: #{toRem(80px)};
 
