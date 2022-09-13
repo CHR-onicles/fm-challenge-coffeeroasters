@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { BaseHero, BaseHowItWorks } from '../../components/layout';
+import { Order } from './index';
 
 import { getPageContent, getWorkingSteps } from '../../services';
 
@@ -49,6 +50,8 @@ const Subscribe = () => {
               withTitle= { false }
               withCTA={ false }
             />
+
+            <Order />
           </Fragment>
         ) : null
       }

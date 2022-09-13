@@ -161,6 +161,16 @@
         max-width: var(--howItWorks-item-text-width);
       }
     }
+
+    &[data-variant="dark"] {
+      .how-it-works {  
+        &__item {
+          &::after {
+            background-color: var(--dark-color-2);
+          }
+        }
+      }
+    }
   }
 
   @include media-breakpoint(lg) {
