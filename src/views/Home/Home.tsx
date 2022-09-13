@@ -54,7 +54,7 @@ const Home = () => {
     } catch (error) {
       setWorkingSteps([]);
     }
-  }
+  };
 
   useEffect(() => {
     handleGetPageContent();

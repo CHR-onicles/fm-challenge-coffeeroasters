@@ -7,12 +7,13 @@ import { IWorkingStep } from '../../../interfaces/working-step-interface';
 import styles from './BaseHowItWorks.module.scss';
 
 interface IBaseHowItWorksProps {
-  steps: IWorkingStep[]
+  steps: IWorkingStep[];
+  isDark?: boolean;
 }
 
-const BaseHowItWorks = ({ steps }: IBaseHowItWorksProps) => {
+const BaseHowItWorks = ({ steps, isDark = false }: IBaseHowItWorksProps) => {
   return (
-    <section className={ styles['how-it-works'] }>
+    <section className={ styles['how-it-works'] } data-variant={ isDark ? 'dark' : '' }>
       <div className="container">
         <BaseCard customClasses={ styles['how-it-works__card'] }>
           <h2 className={ styles['how-it-works__title'] }>How it works</h2>

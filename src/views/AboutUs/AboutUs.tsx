@@ -30,7 +30,7 @@ const AboutUs = () => {
     } catch (error) {
       setHeadquarters([]);
     }
-  }
+  };
 
   useEffect(() => {
     handleGetPageContent();
