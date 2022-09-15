@@ -1,4 +1,5 @@
 import { BaseAccordion } from '../../../components/ui';
+import { BaseRadio } from '../../../components/form';
 
 import { IPlan } from '../../../interfaces/plan-interface';
 
@@ -23,26 +24,33 @@ const Order = ({ orderOptions }: IOrderProps) => {
             </div>
 
             <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
-              {
-                orderOptions.map(orderOption => (
-                  <BaseAccordion
-                    id={ orderOption.slug }
-                    label={ orderOption.title }
-                    key={ orderOption.slug }
-                  >
-                    <ul>
-                      {
-                        orderOption.options.map(option => (
-                          <li key={ option.id }>
-                            <h3>{ option.title }</h3>
-                            <p>{ option.description }</p>
-                          </li>
-                        ))
-                      }
-                    </ul>
-                  </BaseAccordion>
-                ))
-              }
+              <form>
+                {
+                  orderOptions.map(orderOption => (
+                    <BaseAccordion
+                      id={ orderOption.slug }
+                      label={ orderOption.title }
+                      key={ orderOption.slug }
+                    >
+                      <div className="row">
+                        {
+                          orderOption.options.map(option => (
+                            <BaseRadio
+                              key={ option.id }
+                              id={ option.id }
+                              value={ option.title }
+                              name={ orderOption.slug }
+                              label={ option.title }
+                              description={ option.description }
+                            />
+                          ))
+                        }
+                      </div>
+                    </BaseAccordion>
+                  ))
+                }
+                <button type="submit" className="btn">Create my plan!</button>
+              </form>
             </div>
           </div>
         </div>
