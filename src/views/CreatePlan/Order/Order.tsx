@@ -11,7 +11,7 @@ interface IOrderProps {
   orderOptions: IPlan[];
 }
 
-interface IAccordionItem {
+interface IQuickLink {
   id: string;
   slug: string;
   label: string;
@@ -19,7 +19,7 @@ interface IAccordionItem {
 }
 
 const Order = ({ orderOptions }: IOrderProps) => {
-  const [ accordionItems, setAccordionItems ] = useState<IAccordionItem[]>(
+  const [ quickLinks, setQuickLinks ] = useState<IQuickLink[]>(
     orderOptions.map((orderOption, index) => ({
       id: orderOption.id,
       slug: orderOption.slug,
@@ -31,16 +31,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleToggleAccordion = (slug: string) => {
-    setAccordionItems((prevAccordionItems) => {
-      console.log('handleToggleAccordion - prevAccordionItems: ', prevAccordionItems);
-      const updatedAccordionItems = prevAccordionItems.map(accordionItem => ({
-        ...accordionItem,
-        isActive: accordionItem.slug === slug ? !accordionItem.isActive : false
+    setQuickLinks((quickLinks) => {
+      const updatedQuickLinks = quickLinks.map(quicklink => ({
+        ...quicklink,
+        isActive: quicklink.slug === slug ? !quicklink.isActive : false
       }));
 
-      console.log('handleToggleAccordion - updatedAccordionItems: ', updatedAccordionItems);
 
-      return updatedAccordionItems;
+      return updatedQuickLinks;
     });
   };
 
@@ -66,14 +64,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
             <div className="grid__items grid__item--span-lg-3">
               <ul className={ styles['order__link-list'] }>
                 {
-                  accordionItems.map(accordionItem => (
-                    <li className={ styles['order__link-list-item'] } key={ accordionItem.id }>
+                  quickLinks.map(quickLink => (
+                    <li className={ styles['order__link-list-item'] } key={ quickLink.id }>
                       <button
                         type="button"
-                        className={ `${styles['order__link-list-btn']} ${accordionItem.isActive ? `${styles['active']}` : ''} | btn` }
-                        onClick={ () => handleToggleAccordion(accordionItem.slug) }
+                        className={ `${styles['order__link-list-btn']} ${quickLink.isActive ? `${styles['active']}` : ''} | btn` }
+                        onClick={ () => handleToggleAccordion(quickLink.slug) }
                       >
-                        { accordionItem.label }
+                        { quickLink.label }
                       </button>
                     </li>
                   ))
@@ -88,7 +86,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
                     <BaseAccordion
                       key={ orderOption.id }
                       id={ orderOption.slug }
-                      initialState={ accordionItems[index].isActive }
+                      initialState={ quickLinks[index].isActive }
                       label={ orderOption.title }
                     >
                       <div className="row">

@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 
 import styles from './BaseAccordion.module.scss';
 import { ReactComponent as IconArrow } from '../../../assets/images/shared/icon-arrow.svg';
@@ -16,6 +16,10 @@ const BaseAccordion = ({ id, label, initialState = false, children }: IBaseAccor
   const handleToggleDropdown = () => {
     setIsActive((prevState => !prevState));
   };
+
+  useEffect(() => {
+    setIsActive(initialState);
+  }, [initialState]);
 
   return (
     <div id={ id } className={ styles.accordion }>
