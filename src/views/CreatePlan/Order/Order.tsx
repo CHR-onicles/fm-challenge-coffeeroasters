@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from 'react';
+import { useState, useRef, FormEvent } from 'react';
 
 import { BaseAccordion } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
@@ -11,8 +11,38 @@ interface IOrderProps {
   orderOptions: IPlan[];
 }
 
+interface IAccordionItem {
+  id: string;
+  slug: string;
+  label: string;
+  isActive: boolean;
+}
+
 const Order = ({ orderOptions }: IOrderProps) => {
+  const [ accordionItems, setAccordionItems ] = useState<IAccordionItem[]>(
+    orderOptions.map((orderOption, index) => ({
+      id: orderOption.id,
+      slug: orderOption.slug,
+      label: orderOption.quickLink,
+      isActive: index === 0 ? true : false
+    }))
+  );
+
   const formRef = useRef<HTMLFormElement>(null);
+
+  const handleToggleAccordion = (slug: string) => {
+    setAccordionItems((prevAccordionItems) => {
+      console.log('handleToggleAccordion - prevAccordionItems: ', prevAccordionItems);
+      const updatedAccordionItems = prevAccordionItems.map(accordionItem => ({
+        ...accordionItem,
+        isActive: accordionItem.slug === slug ? !accordionItem.isActive : false
+      }));
+
+      console.log('handleToggleAccordion - updatedAccordionItems: ', updatedAccordionItems);
+
+      return updatedAccordionItems;
+    });
+  };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -36,9 +66,15 @@ const Order = ({ orderOptions }: IOrderProps) => {
             <div className="grid__items grid__item--span-lg-3">
               <ul className={ styles['order__link-list'] }>
                 {
-                  orderOptions.map(orderOption => (
-                    <li className={ styles['order__link-list-item'] } key={ orderOption.id }>
-                      <button type="button" className="btn">{ orderOption.quickLink }</button>
+                  accordionItems.map(accordionItem => (
+                    <li className={ styles['order__link-list-item'] } key={ accordionItem.id }>
+                      <button
+                        type="button"
+                        className={ `${styles['order__link-list-btn']} ${accordionItem.isActive ? `${styles['active']}` : ''} | btn` }
+                        onClick={ () => handleToggleAccordion(accordionItem.slug) }
+                      >
+                        { accordionItem.label }
+                      </button>
                     </li>
                   ))
                 }
@@ -48,11 +84,12 @@ const Order = ({ orderOptions }: IOrderProps) => {
             <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
               <form className={ styles['order__form'] } ref={ formRef } onSubmit={ handleSubmit }>
                 {
-                  orderOptions.map(orderOption => (
+                  orderOptions.map((orderOption, index) => (
                     <BaseAccordion
+                      key={ orderOption.id }
                       id={ orderOption.slug }
+                      initialState={ accordionItems[index].isActive }
                       label={ orderOption.title }
-                      key={ orderOption.slug }
                     >
                       <div className="row">
                         {

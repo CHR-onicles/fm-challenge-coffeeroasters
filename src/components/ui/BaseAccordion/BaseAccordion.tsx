@@ -6,11 +6,12 @@ import { ReactComponent as IconArrow } from '../../../assets/images/shared/icon-
 interface IBaseAccordionProps {
   id: string;
   label: string;
+  initialState?: boolean;
   children: ReactNode;
 }
 
-const BaseAccordion = ({ id, label, children }: IBaseAccordionProps) => {
-  const [ isActive, setIsActive ] = useState<boolean>(false);
+const BaseAccordion = ({ id, label, initialState = false, children }: IBaseAccordionProps) => {
+  const [ isActive, setIsActive ] = useState<boolean>(initialState);
 
   const handleToggleDropdown = () => {
     setIsActive((prevState => !prevState));

@@ -11,6 +11,7 @@
 
   --order-button-spacing-top: #{toRem(56px)};
   --order-button-align: center;
+  --btn-bg-active-color: transparent;
 
   margin-bottom: var(--order-spacing-bottom);
 
@@ -23,27 +24,37 @@
       &:not(:last-child) {
         border-bottom: 1px solid var(--dark-color-1-opacity-25);
       }
+    }
 
-      > button {
-        justify-content: flex-start;
-        width: 100%;
-        padding: toRem(24px) 0;
+    &-btn {
+      justify-content: flex-start;
+      width: 100%;
+      padding: toRem(24px) 0;
+      background-color: transparent;
+      border-radius: 0;
+      color: var(--dark-color-1);
+      font-size: toRem(24px);
+
+      &:hover,
+      &:focus {
         background-color: transparent;
-        border-radius: 0;
-        color: var(--dark-color-1);
-        font-size: toRem(24px);
+        color: var(--dark-color-2-opacity-80);
+      }
 
-        &:hover {
-          background-color: transparent;
-          color: var(--dark-color-2-opacity-80);
-        }
+      &::before {
+        display: block;
+        content: counter(step, decimal-leading-zero);
+        margin-right: toRem(24px);
+        line-height: 1;
+        color: var(--dark-color-1);
+      }
+
+      &.active {
+        background-color: transparent;
+        color: var(--dark-color-2);
 
         &::before {
-          display: block;
-          content: counter(step, decimal-leading-zero);
-          margin-right: toRem(24px);
-          line-height: 1;
-          color: var(--dark-color-1);
+          color: var(--cyan-color-1);
         }
       }
     }
