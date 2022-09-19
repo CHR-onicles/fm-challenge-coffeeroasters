@@ -7,14 +7,19 @@ interface IBaseAccordionProps {
   id: string;
   label: string;
   initialState?: boolean;
+  onMarkAsActive?: (slug: string) => void;
   children: ReactNode;
 }
 
-const BaseAccordion = ({ id, label, initialState = false, children }: IBaseAccordionProps) => {
+const BaseAccordion = ({ id, label, initialState = false, onMarkAsActive, children }: IBaseAccordionProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(initialState);
 
   const handleToggleDropdown = () => {
     setIsActive((prevState => !prevState));
+
+    if (onMarkAsActive) {
+      onMarkAsActive(id);
+    }
   };
 
   useEffect(() => {

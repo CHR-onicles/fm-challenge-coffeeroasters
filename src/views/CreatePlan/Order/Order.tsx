@@ -30,7 +30,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleToggleAccordion = (slug: string) => {
+  const handleMarkAsActive = (slug: string) => {
     setQuickLinks((quickLinks) => {
       const updatedQuickLinks = quickLinks.map(quicklink => ({
         ...quicklink,
@@ -61,7 +61,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
       <div className="container">
         <div className={ styles['order__content'] }>
           <div className="grid-cols">
-            <div className="grid__items grid__item--span-lg-3">
+            <div className={ `${styles['order__col-left']} | grid__items grid__item--span-lg-3` }>
               <ul className={ styles['order__link-list'] }>
                 {
                   quickLinks.map(quickLink => (
@@ -69,7 +69,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
                       <button
                         type="button"
                         className={ `${styles['order__link-list-btn']} ${quickLink.isActive ? `${styles['active']}` : ''} | btn` }
-                        onClick={ () => handleToggleAccordion(quickLink.slug) }
+                        onClick={ () => handleMarkAsActive(quickLink.slug) }
                       >
                         { quickLink.label }
                       </button>
@@ -88,8 +88,9 @@ const Order = ({ orderOptions }: IOrderProps) => {
                       id={ orderOption.slug }
                       initialState={ quickLinks[index].isActive }
                       label={ orderOption.title }
+                      onMarkAsActive={ handleMarkAsActive }
                     >
-                      <div className="row">
+                      <div className={ `${styles['order__form-group']} | row` }>
                         {
                           orderOption.options.map(option => (
                             <BaseRadio

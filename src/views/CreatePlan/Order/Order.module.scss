@@ -15,7 +15,13 @@
 
   margin-bottom: var(--order-spacing-bottom);
 
+  &__col-left {
+    display: none;
+  }
+
   &__link-list {
+    position: sticky;
+    top: 0;
     counter-reset: step;
 
     &-item {
@@ -106,6 +112,10 @@
     --order-summary-spacing-horizontal: #{toRem(44px)};
 
     --order-button-spacing-top: #{toRem(40px)};
+
+    &__form-group {
+      flex-wrap: nowrap;
+    }
   }
 
   @include media-breakpoint(lg) {
@@ -120,6 +130,10 @@
 
     &__content {
       padding: 0 var(--content-spacing-horizontal);
+    }
+
+    &__col-left {
+      display: block;
     }
   }
 }
