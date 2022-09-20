@@ -37,7 +37,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
   );
 
   const [ formData, setFormData ] = useState<IFormData>({
-    preferences: 'Capsule',
+    preferences: '',
     beanType: '',
     quantity: '',
     grindOption: '',
@@ -55,6 +55,18 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
 
       return updatedQuickLinks;
+    });
+  };
+
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    const input = event.target as HTMLInputElement;
+
+    setFormData((prevFormData) => {
+      const updatedFormData = { ...prevFormData };
+
+      updatedFormData[input.name as keyof IFormData] = input.value;
+
+      return updatedFormData;
     });
   };
 
@@ -112,10 +124,11 @@ const Order = ({ orderOptions }: IOrderProps) => {
                             <BaseRadio
                               key={ option.id }
                               id={ option.id }
-                              value={ formData[orderOption.slug as keyof IFormData] }
+                              value={ option.title }
                               name={ orderOption.slug }
                               label={ option.title }
                               description={ option.description }
+                              onHandleChange={ handleChange }
                             />
                           ))
                         }
@@ -129,8 +142,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
                   <p className="h4">
                     “I drink my coffee { formData.preferences === 'Capsule' ? `using` : `as` } <span>{formData.preferences === '' ? `_____` : formData.preferences}</span>, 
-                    with a <span>{formData.beanType === '' ? `_____` : formData.beanType}</span> type of bean. <span>{formData.quantity === '' ? `_____` : formData.quantity}</span> 
-                    {formData.preferences === 'Capsule' ? null : `ground ala `}{formData.preferences === 'Capsule' ? null : <span>{formData.grindOption === '' ? `_____` : formData.grindOption}</span>}, 
+                    with a <span>{formData.beanType === '' ? `_____` : formData.beanType}</span> type of bean. <span>{formData.quantity === '' ? `_____` : formData.quantity}</span> {formData.preferences === 'Capsule' ? null : `ground ala `}{formData.preferences === 'Capsule' ? null : <span>{formData.grindOption === '' ? `_____` : formData.grindOption}</span>}, 
                     sent to me <span>{formData.deliveries === '' ? `_____` : formData.deliveries}</span>.”
                   </p>
                 </div>

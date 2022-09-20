@@ -1,6 +1,10 @@
 import { BaseRadio } from "../../../components/form";
 
 const ButtonsSection = () => {
+  const handleChange = () => {
+    console.log('handleChange');
+  };
+
   return (
     <section className="container | mb-s5">
       <h2 className="sr-only">Buttons</h2>
@@ -35,6 +39,7 @@ const ButtonsSection = () => {
             name="options" 
             label="Option 1"
             description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+            onHandleChange={ handleChange }
           />
         </div>
 
@@ -47,6 +52,7 @@ const ButtonsSection = () => {
             name="options" 
             label="Option 2"
             description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+            onHandleChange={ handleChange }
           />
         </div>
 
@@ -59,6 +65,7 @@ const ButtonsSection = () => {
             name="options" 
             label="Option 3"
             description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+            onHandleChange={ handleChange }
             checked={ true }
           />
         </div>
