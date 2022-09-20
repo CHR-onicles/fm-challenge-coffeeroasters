@@ -47,7 +47,7 @@ export const plans: IPlan[] = [
       },
     ],
     quickLink: 'Bean Type',
-    slug: 'bean-type',
+    slug: 'beanType',
   },
   {
     id: uuidv4(),
@@ -93,7 +93,7 @@ export const plans: IPlan[] = [
       },
     ],
     quickLink: 'Grind Option',
-    slug: 'grind-option',
+    slug: 'grindOption',
   },
   {
     id: uuidv4(),

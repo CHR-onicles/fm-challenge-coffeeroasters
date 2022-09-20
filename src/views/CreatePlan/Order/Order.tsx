@@ -18,6 +18,14 @@ interface IQuickLink {
   isActive: boolean;
 }
 
+interface IFormData {
+  preferences: string;
+  beanType: string;
+  quantity: string;
+  grindOption: string;
+  deliveries: string;
+}
+
 const Order = ({ orderOptions }: IOrderProps) => {
   const [ quickLinks, setQuickLinks ] = useState<IQuickLink[]>(
     orderOptions.map((orderOption, index) => ({
@@ -27,6 +35,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
       isActive: index === 0 ? true : false
     }))
   );
+
+  const [ formData, setFormData ] = useState<IFormData>({
+    preferences: 'Capsule',
+    beanType: '',
+    quantity: '',
+    grindOption: '',
+    deliveries: '',
+  });
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -96,7 +112,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
                             <BaseRadio
                               key={ option.id }
                               id={ option.id }
-                              value={ option.title }
+                              value={ formData[orderOption.slug as keyof IFormData] }
                               name={ orderOption.slug }
                               label={ option.title }
                               description={ option.description }
@@ -111,7 +127,12 @@ const Order = ({ orderOptions }: IOrderProps) => {
                 <div className={ styles['order__summary'] }>
                   <h3>Order Summary</h3>
 
-                  <p className="h4">{`“I drink my coffee using Capsules, with a _____ type of bean. _____ , sent to me _____.”`}</p>
+                  <p className="h4">
+                    “I drink my coffee { formData.preferences === 'Capsule' ? `using` : `as` } <span>{formData.preferences === '' ? `_____` : formData.preferences}</span>, 
+                    with a <span>{formData.beanType === '' ? `_____` : formData.beanType}</span> type of bean. <span>{formData.quantity === '' ? `_____` : formData.quantity}</span> 
+                    {formData.preferences === 'Capsule' ? null : `ground ala `}{formData.preferences === 'Capsule' ? null : <span>{formData.grindOption === '' ? `_____` : formData.grindOption}</span>}, 
+                    sent to me <span>{formData.deliveries === '' ? `_____` : formData.deliveries}</span>.”
+                  </p>
                 </div>
 
                 <button type="submit" className={ `${styles['order__btn-submit']} | btn` }>Create my plan!</button>
