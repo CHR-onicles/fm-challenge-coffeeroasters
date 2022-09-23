@@ -30,9 +30,11 @@ const BaseAccordion = ({ id, label, initialState = false, onMarkAsActive, childr
     <div id={ id } className={ styles.accordion }>
       <button
         type="button"
-        className={ `${styles['accordion__toggle']} ${isActive ? `${styles['accordion__toggle-active']}` : ``}` }
+        className={ `row | ${styles['accordion__toggle']} ${isActive ? `${styles['accordion__toggle-active']}` : ``}` }
         onClick={ handleToggleDropdown }
-      >{ label } <IconArrow /></button>
+      >
+        <span>{ label }</span> <IconArrow />
+      </button>
 
       <div className={ `${isActive ? `${styles['accordion__dropdown-active']}` : `${styles['accordion__dropdown']}`}` }>
         { children }

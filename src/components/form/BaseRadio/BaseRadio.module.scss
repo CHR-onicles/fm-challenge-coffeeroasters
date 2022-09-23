@@ -1,37 +1,39 @@
 @use '../../../scss/abstracts/' as *;
 
 .radio-control {
-  --control-vertical-space: #{toRem(32px)};
-  --control-horizontal-space: #{toRem(24px)};
-  --control-width: #{toRem(230px)};
-  --control-height: #{toRem(250px)};
-  --control-bg-color: var(--neutral-color-2);
-  --control-bg-color-hover: var(--orange-color-1);
-  --control-bg-color-active: var(--cyan-color-1);
-  --control-label-font-size: #{toRem(24px)};
-  --control-desc-font-size: #{toRem(16px)};
+  --radio-control-width: none;
+  --radio-control-height: auto;
+
+  --radio-control-label-spacing-vertical: #{toRem(24px)};
+  --radio-control-label-spacing-horizontal: #{toRem(24px)};
+
+  --radio-control-bg-color: var(--neutral-color-2);
+  --radio-control-bg-color-hover: var(--orange-color-1);
+  --radio-control-bg-color-active: var(--cyan-color-1);
+  --radio-control-label-font-size: #{toRem(24px)};
+  --radio-control-desc-font-size: #{toRem(16px)};
 
   position: relative;
-  max-width: var(--control-width);
-  height: var(--control-height);
+  max-width: var(--radio-control-width);
+  height: var(--radio-control-height);
   margin: 0 auto;
 
   &__label {
     width: 100%;
     height: 100%;
-    padding: var(--control-vertical-space) var(--control-horizontal-space);
-    background-color: var(--control-bg-color);
+    padding: var(--radio-control-label-spacing-vertical) var(--radio-control-label-spacing-horizontal);
+    background-color: var(--radio-control-bg-color);
     border-radius: toRem(8px);
     font-family: var(--font-family-black);
-    font-size: var(--control-label-font-size);
+    font-size: var(--radio-control-label-font-size);
     text-align: left;
     color: var(--dark-color-2);
     cursor: pointer;
-    transition: background-color 0.35s ease-in-out
+    transition: background-color 0.35s ease-in-out,
                 color 0.35s ease-in-out;
 
     &:hover {
-      background-color: var(--control-bg-color-hover);
+      background-color: var(--radio-control-bg-color-hover);
     }
   }
 
@@ -43,7 +45,7 @@
 
     &:checked {
       + label {
-        background-color: var(--control-bg-color-active);
+        background-color: var(--radio-control-bg-color-active);
         color: var(--neutral-color-1);
 
         > span {
@@ -56,7 +58,14 @@
   &__description {
     margin-top: toRem(24px);
     font-family: var(--font-family-regular);
-    font-size: var(--control-desc-font-size);
+    font-size: var(--radio-control-desc-font-size);
     color: var(--dark-color-2);
+  }
+  
+  @include media-breakpoint(md) {
+    --radio-control-width: #{toRem(230px)};
+    --radio-control-height: #{toRem(250px)};
+
+    --radio-control-label-spacing-vertical: #{toRem(32px)};
   }
 }

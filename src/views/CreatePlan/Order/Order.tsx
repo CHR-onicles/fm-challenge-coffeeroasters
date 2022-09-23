@@ -1,9 +1,10 @@
 import { useState, useRef, FormEvent } from 'react';
 
-import { BaseAccordion } from '../../../components/ui';
+import { BaseAccordion, BaseOrderSummary } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
 
 import { IPlan } from '../../../interfaces/plan-interface';
+import { IFormData } from '../../../interfaces/form-data-interface';
 
 import styles from './Order.module.scss';
 
@@ -16,14 +17,6 @@ interface IQuickLink {
   slug: string;
   label: string;
   isActive: boolean;
-}
-
-interface IFormData {
-  preferences: string;
-  beanType: string;
-  quantity: string;
-  grindOption: string;
-  deliveries: string;
 }
 
 const Order = ({ orderOptions }: IOrderProps) => {
@@ -118,7 +111,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
                       label={ orderOption.title }
                       onMarkAsActive={ handleMarkAsActive }
                     >
-                      <div className={ `${styles['order__form-group']} | row` }>
+                      <div className={ `row | ${styles['order__form-group']}` }>
                         {
                           orderOption.options.map(option => (
                             <BaseRadio
@@ -146,6 +139,8 @@ const Order = ({ orderOptions }: IOrderProps) => {
                     sent to me <span>{formData.deliveries === '' ? `_____` : formData.deliveries}</span>.”
                   </p>
                 </div>
+
+                <BaseOrderSummary formData={ formData } />
 
                 <button type="submit" className={ `${styles['order__btn-submit']} | btn` }>Create my plan!</button>
               </form>

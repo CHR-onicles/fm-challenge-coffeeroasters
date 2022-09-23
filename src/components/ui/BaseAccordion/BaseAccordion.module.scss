@@ -1,19 +1,26 @@
 @use '../../../scss/abstracts/' as *;
 
 .accordion {
-  --title-font-size: #{toRem(40px)};
+  --base-accordion-title-font-size: #{toRem(24px)};
+  --base-accordion-title-width: 13ch;
+
+  --base-accordion-spacing-top: #{toRem(32px)};
 
   &__toggle {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
     width: 100%;
     font-family: var(--font-family-black);
-    font-size: var(--title-font-size);
+    font-size: var(--base-accordion-title-font-size);
     color: var(--dark-color-1);
     cursor: pointer;
 
+    > span {
+      max-width: var(--base-accordion-title-width);
+    }
+
     > svg {
+      flex-shrink: 0;
       margin-left: auto;
       transform-origin: center;
       transform: rotate(0deg);
@@ -48,7 +55,20 @@
 
     &-active {
       display: block;
-      margin-top: toRem(56px);
+      margin-top: var(--base-accordion-spacing-top);
     }
+  }
+  
+  @include media-breakpoint(md) {
+    --base-accordion-title-font-size: #{toRem(32px)};
+    --base-accordion-title-width: unset;
+
+    --base-accordion-spacing-top: #{toRem(40px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --base-accordion-title-font-size: #{toRem(40px)};
+
+    --base-accordion-spacing-top: #{toRem(56px)};
   }
 }
