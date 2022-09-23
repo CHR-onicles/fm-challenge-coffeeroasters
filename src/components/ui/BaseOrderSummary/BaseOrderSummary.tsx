@@ -1,12 +1,15 @@
 import { IFormData } from '../../../interfaces/form-data-interface';
 
+import styles from './BaseOrderSummary.module.scss';
+
 interface IBaseOrderSummaryProps {
   formData: IFormData;
+  variant?: string;
 }
 
-const BaseOrderSummary = ({ formData }: IBaseOrderSummaryProps) => {
+const BaseOrderSummary = ({ formData, variant = 'default' }: IBaseOrderSummaryProps) => {
   return (
-    <div>
+    <div className={ styles['order-summary'] } data-variant={ variant }>
       <h3>Order Summary</h3>
 
       <p className="h4">

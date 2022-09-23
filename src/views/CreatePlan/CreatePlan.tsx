@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
-import { BaseHero, BaseHowItWorks } from '../../components/layout';
+import { BaseHero } from '../../components/layout';
+import { BaseHowItWorks } from '../../components/ui';
 import { Order } from './index';
 
 import { getPageContent, getWorkingSteps, getPlans } from '../../services';

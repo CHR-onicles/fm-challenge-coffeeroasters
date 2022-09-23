@@ -1,0 +1,53 @@
+@use '../../../scss/abstracts/' as *;
+
+.order-summary {
+  --order-summary-spacing-top: #{toRem(120px)};
+  --order-summary-spacing-vertical: #{toRem(24px)};
+  --order-summary-spacing-horizontal: #{toRem(32px)};
+
+  margin-top: var(--order-summary-spacing-top);
+  padding: var(--order-summary-spacing-vertical) var(--order-summary-spacing-horizontal);
+  background-color: var(--dark-color-2);
+  border-radius: toRem(10px);
+
+  h3 {
+    margin-bottom: toRem(8px);
+    font-family: var(--font-family-regular);
+    font-size: toRem(16px);
+    text-transform: uppercase;
+    color: var(--neutral-color-1-opacity-50);
+  }
+
+  p {
+    color: var(--neutral-color-1);
+    line-height: 1.7;
+  }
+
+  span {
+    color: var(--cyan-color-1);
+  }
+
+  &[data-variant="light"] {
+    padding: 0;
+    background-color: transparent;
+
+    h3 {
+      display: none;
+    }
+
+    p {
+      color: var(--dark-color-1);
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --order-summary-spacing-top: #{toRem(144px)};
+    --order-summary-spacing-vertical: #{toRem(27px)};
+    --order-summary-spacing-horizontal: #{toRem(44px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --order-summary-spacing-top: #{toRem(88px)};
+    --order-summary-spacing-horizontal: #{toRem(64px)};
+  }
+}
