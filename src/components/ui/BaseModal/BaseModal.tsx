@@ -12,12 +12,13 @@ const BaseModal = ({ title, onConfirm, children }: IBaseModalProps) => {
   return (
     <Fragment>
       <div className={ styles['modal__backdrop'] }></div>
+
       <div className={ styles['modal__container'] }>
-        <header>
+        <header className={ styles['modal__header'] }>
           <h2>{ title }</h2>
         </header>
 
-        <div>
+        <div className={ styles['modal__body'] }>
           { children }
         </div>
       </div>

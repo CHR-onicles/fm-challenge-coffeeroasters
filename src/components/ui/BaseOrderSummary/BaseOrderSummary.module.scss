@@ -5,7 +5,7 @@
   --order-summary-spacing-vertical: #{toRem(24px)};
   --order-summary-spacing-horizontal: #{toRem(32px)};
 
-  margin-top: var(--order-summary-spacing-top);
+  // margin-top: var(--order-summary-spacing-top);
   padding: var(--order-summary-spacing-vertical) var(--order-summary-spacing-horizontal);
   background-color: var(--dark-color-2);
   border-radius: toRem(10px);

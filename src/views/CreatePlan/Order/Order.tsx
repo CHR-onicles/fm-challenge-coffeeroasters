@@ -1,4 +1,5 @@
 import { useState, useRef, FormEvent } from 'react';
+import { createPortal } from 'react-dom'
 
 import { BaseAccordion, BaseOrderSummary, BaseModal } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
@@ -136,14 +137,24 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
                 <BaseOrderSummary formData={ formData } />
 
-                <button type="submit" className={ `${styles['order__btn-submit']} | btn` }>Create my plan!</button>
+                <button type="submit" className={ `btn | ${styles['order__btn-submit']}` }>Create my plan!</button>
               </form>
 
-              <BaseModal title="Order Summary">
-                <BaseOrderSummary formData={ formData } variant="light" />
-                
-                <button type="button" className="btn" onClick={ handleConfirmCheckout }>Checkout</button>
-              </BaseModal>
+              {
+                createPortal(
+                <BaseModal title="Order Summary">
+                  <BaseOrderSummary formData={ formData } variant="light" />
+
+                  <p className={ styles['order__modal-text'] }>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
+                  
+                  <div className={ `row | ${styles['order__modal-action']}`}>
+                    <h3>$14.00/mo</h3>
+
+                    <button type="button" className="btn" onClick={ handleConfirmCheckout }>Checkout</button>
+                  </div>
+                </BaseModal>,
+                document.getElementById('modal-root') as HTMLElement)
+              }
             </div>
           </div>
         </div>

@@ -14,11 +14,25 @@
   &__container {
     position: fixed;
     top: toRem(214px);
-    left: calc(50% - toRem(225px));
+    left: calc(50% - toRem(270px));
     width: 100%;
-    max-width: toRem(450px);
+    max-width: toRem(540px);
     background-color: var(--neutral-color-1);
     border-radius: toRem(8px);
     z-index: var(--zindex-modal);
+    overflow: hidden;
+  }
+
+  &__header {
+    padding: toRem(48px) toRem(56px);
+    background-color: var(--dark-color-2);
+
+    > * {
+      color: var(--neutral-color-1);
+    }
+  }
+
+  &__body {
+    padding: toRem(56px);
   }
 }
