@@ -1,0 +1,24 @@
+@use '../../../scss/abstracts/' as *;
+
+.modal {
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--dark-color-2-opacity-80);
+    z-index: var(--zindex-modal-backdrop);
+  }
+
+  &__container {
+    position: fixed;
+    top: toRem(214px);
+    left: calc(50% - toRem(225px));
+    width: 100%;
+    max-width: toRem(450px);
+    background-color: var(--neutral-color-1);
+    border-radius: toRem(8px);
+    z-index: var(--zindex-modal);
+  }
+}

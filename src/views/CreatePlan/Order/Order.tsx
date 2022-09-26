@@ -1,6 +1,6 @@
 import { useState, useRef, FormEvent } from 'react';
 
-import { BaseAccordion, BaseOrderSummary } from '../../../components/ui';
+import { BaseAccordion, BaseOrderSummary, BaseModal } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
 
 import { IPlan } from '../../../interfaces/plan-interface';
@@ -77,6 +77,10 @@ const Order = ({ orderOptions }: IOrderProps) => {
     }
   };
 
+  const handleConfirmCheckout = () => {
+    console.log('handleConfirmCheckout called');
+  };
+
   return (
     <section className={ styles.order }>
       <div className="container">
@@ -134,6 +138,12 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
                 <button type="submit" className={ `${styles['order__btn-submit']} | btn` }>Create my plan!</button>
               </form>
+
+              <BaseModal title="Order Summary">
+                <BaseOrderSummary formData={ formData } variant="light" />
+                
+                <button type="button" className="btn" onClick={ handleConfirmCheckout }>Checkout</button>
+              </BaseModal>
             </div>
           </div>
         </div>

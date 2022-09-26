@@ -4,3 +4,4 @@ export { default as BaseSwatch } from './BaseSwatch/BaseSwatch';
 export { default as BaseSocialMedia } from './BaseSocialMedia/BaseSocialMedia';
 export { default as BaseHowItWorks } from './BaseHowItWorks/BaseHowItWorks';
 export { default as BaseOrderSummary } from './BaseOrderSummary/BaseOrderSummary';
+export { default as BaseModal } from './BaseModal/BaseModal';
