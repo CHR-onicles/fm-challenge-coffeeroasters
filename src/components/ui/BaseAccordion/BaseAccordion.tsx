@@ -7,11 +7,12 @@ interface IBaseAccordionProps {
   id: string;
   label: string;
   initialState?: boolean;
+  isDisabled?: boolean;
   onMarkAsActive?: (slug: string) => void;
   children: ReactNode;
 }
 
-const BaseAccordion = ({ id, label, initialState = false, onMarkAsActive, children }: IBaseAccordionProps) => {
+const BaseAccordion = ({ id, label, initialState = false, isDisabled = false, onMarkAsActive, children }: IBaseAccordionProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(initialState);
 
   const handleToggleDropdown = () => {
@@ -31,6 +32,7 @@ const BaseAccordion = ({ id, label, initialState = false, onMarkAsActive, childr
       <button
         type="button"
         className={ `row | ${styles['accordion__toggle']} ${isActive ? `${styles['accordion__toggle-active']}` : ``}` }
+        disabled={ isDisabled }
         onClick={ handleToggleDropdown }
       >
         <span>{ label }</span> <IconArrow />

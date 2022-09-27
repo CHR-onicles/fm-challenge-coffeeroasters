@@ -47,6 +47,16 @@
         color: var(--dark-color-2-opacity-80);
       }
 
+      &:disabled,
+      &:hover:disabled {
+        background-color: transparent;
+        color: var(--dark-color-2-opacity-25);
+
+        &::before {
+          color: var(--dark-color-2-opacity-25);
+        }
+      }
+
       &::before {
         display: block;
         content: counter(step, decimal-leading-zero);
