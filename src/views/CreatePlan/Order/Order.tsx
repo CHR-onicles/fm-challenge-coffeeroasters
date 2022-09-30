@@ -53,6 +53,8 @@ const Order = ({ orderOptions }: IOrderProps) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleMarkAsActive = (slug: string) => {
+    const targetElem = document.getElementById(slug);
+
     setQuickLinks((quickLinks) => {
       const updatedQuickLinks = quickLinks.map(quickLink => ({
         ...quickLink,
@@ -61,6 +63,8 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
       return updatedQuickLinks;
     });
+
+    targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
@@ -103,6 +107,23 @@ const Order = ({ orderOptions }: IOrderProps) => {
       });
     }
   }, [formData]);
+
+  const handleGetDeliveryPrice = (index: number): number => {
+    let priceList;
+    priceList = priceMap.get('250g');
+
+    if (!formData.quantity.length && priceList) {
+      return priceList[index];
+    }
+
+    priceList = priceMap.get(formData.quantity);
+
+    if (priceList) {
+      return priceList[index];
+    }
+
+    return 0;
+  };
 
   const handleCalculateCost = () => {
     const { quantity, deliveries } = formData;
@@ -158,6 +179,10 @@ const Order = ({ orderOptions }: IOrderProps) => {
     handleCalculateCost();
   };
 
+  const handleDismissModal = () => {
+    setIsModalVisible((prevIsModalVisible) => !prevIsModalVisible);
+  };
+
   const handleConfirmCheckout = () => {
     console.log('handleConfirmCheckout called');
   };
@@ -204,14 +229,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
                     >
                       <div className={ `row | ${styles['order__form-group']}` }>
                         {
-                          orderOption.options.map(option => (
+                          orderOption.options.map((option, index) => (
                             <BaseRadio
                               key={ option.id }
                               id={ option.id }
                               value={ option.title }
                               name={ orderOption.slug }
                               label={ option.title }
-                              description={ option.description }
+                              description={ orderOption.slug === 'deliveries' ? `$${handleGetDeliveryPrice(index).toFixed(2)} ${option.description}` : option.description }
                               onHandleChange={ handleChange }
                             />
                           ))
@@ -229,7 +254,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
               {
                 isModalVisible ? (
                   createPortal(
-                    <BaseModal title="Order Summary">
+                    <BaseModal title="Order Summary" onDismiss={ handleDismissModal }>
                       <BaseOrderSummary formData={ formData } variant="light" />
     
                       <p className={ styles['order__modal-text'] }>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
@@ -237,7 +262,9 @@ const Order = ({ orderOptions }: IOrderProps) => {
                       <div className={ `row | ${styles['order__modal-action']}`}>
                         <h3>{ `$${shipmentCost?.toFixed(2)}` }/mo</h3>
     
-                        <button type="button" className="btn" onClick={ handleConfirmCheckout }>Checkout</button>
+                        <button type="button" className="btn" onClick={ handleConfirmCheckout }>
+                          Checkout<span>&nbsp;-&nbsp;{ `$${shipmentCost?.toFixed(2)}` }/mo</span>
+                        </button>
                       </div>
                     </BaseModal>,
                     document.getElementById('modal-root') as HTMLElement)

@@ -48,7 +48,7 @@ const BaseHowItWorks = ({ steps, variant = 'default', withTitle = true, withCTA 
 
           {
             withCTA ? (
-              <Link to="/" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
+              <Link to="/create-plan" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
             ) : null
           }
         </BaseCard>

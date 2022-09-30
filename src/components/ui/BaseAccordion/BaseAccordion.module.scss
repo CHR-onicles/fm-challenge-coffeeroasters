@@ -14,6 +14,7 @@
     font-size: var(--base-accordion-title-font-size);
     color: var(--dark-color-1);
     cursor: pointer;
+    transition: color 0.25s ease-in-out;
 
     > span {
       max-width: var(--base-accordion-title-width);
@@ -33,12 +34,16 @@
     }
 
     &-active {
+      color: var(--dark-color-2-opacity-80);
+      
       > svg {
         transform: rotate(-180deg);
       }
     }
 
     &:hover {
+      color: var(--dark-color-2-opacity-80);
+
       path {
         fill: var(--cyan-color-2);
       }

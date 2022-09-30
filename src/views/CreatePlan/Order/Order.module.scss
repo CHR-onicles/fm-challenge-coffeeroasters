@@ -11,6 +11,7 @@
 
   --order-button-spacing-top: #{toRem(56px)};
   --order-button-align: center;
+
   --btn-bg-active-color: transparent;
 
   margin-bottom: var(--order-spacing-bottom);
@@ -99,7 +100,15 @@
     
     &-action {
       justify-content: space-between;
-      margin-top: toRem(47px);
+      margin-top: toRem(24px);
+
+      h3 {
+        display: none;
+      }
+
+      button {
+        width: 100%;
+      }
     }
   }
 
@@ -116,6 +125,22 @@
 
     &__form-group {
       flex-wrap: nowrap;
+    }
+
+    &__modal-action {
+      margin-top: toRem(48px);
+
+      h3 {
+        display: block;
+      }
+
+      button {
+        width: auto;
+        
+        span {
+          display: none;
+        }
+      }
     }
   }
 
