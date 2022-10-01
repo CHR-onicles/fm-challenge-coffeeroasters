@@ -33,7 +33,7 @@ const WhyChooseUs = ({ content, benefits }: IWhyChooseUsProps) => {
                 benefits.map(benefit => (
                   <li
                     key={ benefit.id }
-                    className={ `${styles['benefits__list-item']} | grid__item grid__item--span-lg-4` }
+                    className={ `grid__item grid__item--span-lg-4 | ${styles['benefits__list-item']}` }
                   >
                     <BaseCard customClasses={ `${styles['benefits__card']} | stack | bg-cyan-color-1` }>
                       <img

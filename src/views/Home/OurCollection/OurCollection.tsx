@@ -49,7 +49,7 @@ const OurCollection = ({ coffeeTypes }: IOurCollectionProps) => {
                   coffeeTypes.map(coffeeType => (
                     <li
                       key={ coffeeType.id }
-                      className={ `${styles['collection__item']} | grid__item grid__item--span-md-10 grid__item--span-lg-3` }
+                      className={ `grid__item grid__item--span-md-10 grid__item--span-lg-3 | ${styles['collection__item']}` }
                     >
                       <img
                         className={ styles['collection__image'] }

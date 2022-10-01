@@ -196,14 +196,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
       <div className="container">
         <div className={ styles['order__content'] }>
           <div className="grid-cols">
-            <div className={ `${styles['order__col-left']} | grid__items grid__item--span-lg-3` }>
+            <div className={ `grid__items grid__item--span-lg-3 | ${styles['order__col-left']}` }>
               <ul className={ styles['order__link-list'] }>
                 {
                   quickLinks.map(quickLink => (
                     <li className={ styles['order__link-list-item'] } key={ quickLink.id }>
                       <button
                         type="button"
-                        className={ `${styles['order__link-list-btn']} ${quickLink.isActive ? `${styles['active']}` : ''} | btn` }
+                        className={ `btn | ${styles['order__link-list-btn']} ${quickLink.isActive ? `${styles['active']}` : ''}` }
                         disabled={ quickLink.isDisabled }
                         onClick={ () => handleMarkAsActive(quickLink.slug) }
                       >

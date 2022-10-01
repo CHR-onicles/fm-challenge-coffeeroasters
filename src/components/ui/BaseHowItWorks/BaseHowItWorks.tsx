@@ -27,12 +27,12 @@ const BaseHowItWorks = ({ steps, variant = 'default', withTitle = true, withCTA 
           {
             steps.length
             ? (
-              <ul className={ `${styles['how-it-works__list']} | grid-cols` }>
+              <ul className={ `grid-cols | ${styles['how-it-works__list']}` }>
                 {
                   steps.map(step => (
                     <li
                       key={ step.id }
-                      className={ `${styles['how-it-works__item']} | grid__item grid__item--span-md-4 grid__item--span-lg-4` }
+                      className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['how-it-works__item']}` }
                     >
                       <h3>{ step.title }</h3>
 
@@ -48,7 +48,7 @@ const BaseHowItWorks = ({ steps, variant = 'default', withTitle = true, withCTA 
 
           {
             withCTA ? (
-              <Link to="/create-plan" className={ `${styles['how-it-works__cta']} | btn` }>Create your plan</Link>
+              <Link to="/create-plan" className={ `btn | ${styles['how-it-works__cta']}` }>Create your plan</Link>
             ) : null
           }
         </BaseCard>

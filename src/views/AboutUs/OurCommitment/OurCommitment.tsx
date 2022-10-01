@@ -26,7 +26,7 @@ const OurCommitment = ({ content }: IOurCommitmentProps) => {
               </picture>
             </div>
 
-            <div className={ `${styles['our-commitment__content-body']} | grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7` }>
+            <div className={ `grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7 | ${styles['our-commitment__content-body']}` }>
               <h2>{ title }</h2>
 
               <p>{ description }</p>
