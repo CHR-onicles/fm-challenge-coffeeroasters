@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
-import { TheHero, BaseHowItWorks } from '../../components/layout';
+import { TheHero } from '../../components/layout';
+import { BaseHowItWorks } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
 import { getPageContent, getCoffeeCollection, getBenefits, getWorkingSteps } from '../../services';
@@ -54,7 +55,7 @@ const Home = () => {
     } catch (error) {
       setWorkingSteps([]);
     }
-  }
+  };
 
   useEffect(() => {
     handleGetPageContent();

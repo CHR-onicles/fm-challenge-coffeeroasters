@@ -8,7 +8,7 @@
   --base-hero-body-text-align: center;
 
   --base-hero-title-spacing-bottom: #{toRem(24px)};
-  --base-hero-title-text-size: #{toRem(28px)};
+  --base-hero-title-text-size: #{toRem(40px)};
 
   --base-hero-text-size: #{toRem(15px)};
 
@@ -48,18 +48,16 @@
     --base-hero-body-width: 49ch;
     --base-hero-body-text-align: left;
 
-    --base-hero-title-text-size: #{toRem(32px)};
-
     &__body {
       left: var(--content-spacing-horizontal);
     }
   }
 
   @include media-breakpoint(lg) {
-    --base-hero-spacing-top: #{toRem(137px)};
+    --base-hero-spacing-top: #{toRem(134px)};
     --base-hero-spacing-bottom: #{toRem(168px)};
 
-    --base-hero-title-text-size: #{toRem(40px)};
+    --base-hero-title-text-size: #{toRem(72px)};
 
     --base-hero-text-size: #{toRem(16px)};
   }

@@ -15,12 +15,12 @@ const OurHeadquarters = ({ headquarters }: IOurHeadquartersProps) => {
 
           {
             headquarters.length ? (
-              <ul className={ `${styles['headquarters__list']} | grid-cols` }>
+              <ul className={ `grid-cols | ${styles['headquarters__list']}` }>
                 {
                   headquarters.map(headquarter => (
                     <li
                       key={ headquarter.id }
-                      className={ `${styles['headquarters__item']} | grid__item grid__item--span-md-4 grid__item--span-lg-4` }
+                      className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['headquarters__item']}` }
                     >
                       <img
                         src={ headquarter.imagePath }

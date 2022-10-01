@@ -1,18 +1,74 @@
-// import { BaseHero } from '../../components/layout';
+import { useState, useEffect, Fragment } from 'react';
+
+import { BaseHero } from '../../components/layout';
+import { BaseHowItWorks } from '../../components/ui';
+import { Order } from './index';
+
+import { getPageContent, getWorkingSteps, getPlans } from '../../services';
+
+import { IPageContent } from '../../interfaces/page-content-interface';
+import { IWorkingStep } from '../../interfaces/working-step-interface';
+import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
+  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
+  const [ workingSteps, setWorkingSteps ] = useState<IWorkingStep[]>([]);
+  const [ plans, setPlans ] = useState<IPlan[]>([]);
+
+  const handleGetPageContent = async () => {
+    try {
+      const pageContentData = await getPageContent('plan');
+
+      setPageContent(pageContentData);
+    } catch (error) {
+      setPageContent([]);
+    }
+  };
+
+  const handleGetWorkingSteps = async () => {
+    try {
+      const workingStepsData = await getWorkingSteps();
+
+      setWorkingSteps(workingStepsData);
+    } catch (error) {
+      setWorkingSteps([]);
+    }
+  };
+
+  const handleGetPlans = async () => {
+    try {
+      const plansData = await getPlans();
+
+      setPlans(plansData);
+    } catch (error) {
+      setPlans([]);
+    }
+  };
+
+  useEffect(() => {
+    handleGetPageContent();
+    handleGetWorkingSteps();
+    handleGetPlans();
+  }, []);
+
   return (
     <main>
-      {/* <BaseHero
-        title="Create your plan"
-        description="Some text for the description"
-        imgPath="some image path"
-        imgAltText="Build your subscription plan"
-      /> */}
+      {
+        pageContent.length ? (
+          <Fragment>
+            <BaseHero content={ pageContent[0] }/>
 
-      <section className="container">
-        <h2>CreatePlan Component</h2>
-      </section>
+            <BaseHowItWorks
+              steps={ workingSteps }
+              variant="dark"
+              withTitle= { false }
+              withCTA={ false }
+            />
+
+            <Order orderOptions={ plans } />
+          </Fragment>
+        ) : null
+      }
     </main>
   );
 };

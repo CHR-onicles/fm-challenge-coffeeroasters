@@ -1,0 +1,165 @@
+@use '../../../scss/abstracts/' as *;
+
+.order {
+  --order-spacing-bottom: #{toRem(120px)};
+
+  --order-form-spacing: #{toRem(110px)};
+
+  --order-summary-spacing-top: #{toRem(120px)};
+  --order-summary-spacing-vertical: #{toRem(24px)};
+  --order-summary-spacing-horizontal: #{toRem(32px)};
+
+  --order-button-spacing-top: #{toRem(56px)};
+  --order-button-align: center;
+
+  --btn-bg-active-color: transparent;
+
+  margin-bottom: var(--order-spacing-bottom);
+
+  &__col-left {
+    display: none;
+  }
+
+  &__link-list {
+    position: sticky;
+    top: 0;
+    counter-reset: step;
+
+    &-item {
+      counter-increment: step;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--dark-color-1-opacity-25);
+      }
+    }
+
+    &-btn {
+      justify-content: flex-start;
+      width: 100%;
+      padding: toRem(24px) 0;
+      background-color: transparent;
+      border-radius: 0;
+      color: var(--dark-color-1);
+      font-size: toRem(24px);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: var(--dark-color-2-opacity-80);
+      }
+
+      &:disabled,
+      &:hover:disabled {
+        background-color: transparent;
+        color: var(--dark-color-2-opacity-25);
+
+        &::before {
+          color: var(--dark-color-2-opacity-25);
+        }
+      }
+
+      &::before {
+        display: block;
+        content: counter(step, decimal-leading-zero);
+        margin-right: toRem(24px);
+        line-height: 1;
+        color: var(--dark-color-1);
+      }
+
+      &.active {
+        background-color: transparent;
+        color: var(--dark-color-2);
+
+        &::before {
+          color: var(--cyan-color-1);
+        }
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    > [class^="BaseAccordion_accordion"] {
+      margin-bottom: var(--order-form-spacing);
+    }
+  }
+
+  &__btn-submit {
+    align-self: var(--order-button-align);
+    margin-top: var(--order-button-spacing-top);
+  }
+
+  &__modal {
+    &-text {
+      margin-top: toRem(8px);
+    }
+    
+    &-action {
+      justify-content: space-between;
+      margin-top: toRem(24px);
+
+      h3 {
+        display: none;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  @include media-breakpoint(md) {
+    --order-spacing-bottom: #{toRem(144px)};
+
+    --order-form-spacing: #{toRem(100px)};
+
+    --order-summary-spacing-top: #{toRem(144px)};
+    --order-summary-spacing-vertical: #{toRem(27px)};
+    --order-summary-spacing-horizontal: #{toRem(44px)};
+
+    --order-button-spacing-top: #{toRem(40px)};
+
+    &__form-group {
+      flex-wrap: nowrap;
+    }
+
+    &__modal-action {
+      margin-top: toRem(48px);
+
+      h3 {
+        display: block;
+      }
+
+      button {
+        width: auto;
+        
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint(lg) {
+    --order-spacing-bottom: #{toRem(168px)};
+
+    --order-form-spacing: #{toRem(88px)};
+
+    --order-summary-spacing-top: #{toRem(88px)};
+    --order-summary-spacing-horizontal: #{toRem(64px)};
+
+    --order-button-align: flex-end;
+
+    &__content {
+      padding: 0 var(--content-spacing-horizontal);
+    }
+
+    &__col-left {
+      display: block;
+    }
+  }
+}

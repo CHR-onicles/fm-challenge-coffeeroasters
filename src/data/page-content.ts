@@ -16,6 +16,10 @@ import mobileQualityImage from '../assets/images/about/mobile/image-quality.jpg'
 import tabletQualityImage from '../assets/images/about/tablet/image-quality.jpg';
 import desktopQualityImage from '../assets/images/about/desktop/image-quality.jpg';
 
+import mobilePlanHeroImage from '../assets/images/plan/mobile/image-hero-blackcup.jpg';
+import tabletPlanHeroImage from '../assets/images/plan/tablet/image-hero-blackcup.jpg';
+import desktopPlanHeroImage from '../assets/images/plan/desktop/image-hero-blackcup.jpg';
+
 export const pageContent = new Map();
 
 pageContent.set('home', [
@@ -51,5 +55,14 @@ pageContent.set('about', [
     title: 'Uncompromising quality',
     description: 'Although we work with growers who pay close attention to all stages of harvest and processing, we employ, on our end, a rigorous quality control program to avoid over-roasting or baking the coffee dry. Every bag of coffee is tagged with a roast date and batch number. Our goal is to roast consistent, user-friendly coffee, so that brewing is easy and enjoyable.',
     imagePath: [mobileQualityImage, tabletQualityImage, desktopQualityImage],
+  },
+]);
+
+pageContent.set('plan', [
+  {
+    id: uuidv4(),
+    title: 'Create plan',
+    description: 'Coffee the way you wanted it to be. For coffee delivered tomorrow, or next week. For whatever brew method you use. For choice, for convenience, for quality.',
+    imagePath: [mobilePlanHeroImage, tabletPlanHeroImage, desktopPlanHeroImage],
   },
 ]);

@@ -1,0 +1,69 @@
+@use '../../../scss/abstracts/' as *;
+
+.modal {
+  --modal-spacing-horizontal: #{toRem(24px)};
+
+  --modal-container-spacing-top: #{toRem(35px)};
+  --modal-container-width: #{toRem(327px)};
+
+  --modal-header-spacing-vertical: #{toRem(28px)};
+  --modal-header-title-size: #{toRem(24px)};
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--dark-color-2-opacity-80);
+    z-index: var(--zindex-modal-backdrop);
+  }
+
+  &__container {
+    position: fixed;
+    top: var(--modal-container-spacing-top);
+    left: calc(50% - (var(--modal-container-width) / 2));
+    width: 100%;
+    max-width: var(--modal-container-width);
+    background-color: var(--neutral-color-1);
+    border-radius: toRem(8px);
+    z-index: var(--zindex-modal);
+    overflow: hidden;
+  }
+
+  &__header {
+    position: relative;
+    padding: var(--modal-header-spacing-vertical) var(--modal-spacing-horizontal);
+    background-color: var(--dark-color-2);
+
+    h2 {
+      font-size: var(--modal-header-title-size);
+      color: var(--neutral-color-1);
+    }
+
+    button {
+      position: absolute;
+      top: toRem(12px);
+      right: toRem(12px);
+
+      &[data-variant="burger"] {
+        background-color: var(--neutral-color-1);
+        mask-image: url('../../../assets/images/shared/mobile/icon-close.svg');
+      }
+    }
+  }
+
+  &__body {
+    padding: var(--modal-spacing-horizontal);
+  }
+
+  @include media-breakpoint(md) {
+    --modal-spacing-horizontal: #{toRem(56px)};
+
+    --modal-container-spacing-top: #{toRem(214px)};
+    --modal-container-width: #{toRem(540px)};
+
+    --modal-header-spacing-vertical: #{toRem(48px)};
+    --modal-header-title-size: #{toRem(40px)};
+  }
+}
