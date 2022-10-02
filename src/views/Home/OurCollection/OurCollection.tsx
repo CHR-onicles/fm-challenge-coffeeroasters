@@ -2,15 +2,17 @@ import { useRef, useCallback } from 'react';
 
 import { useMediaQuery } from '../../../hooks';
 
-import { ICoffeeType } from '../../../interfaces/coffee-type-interface';
+import { IPageContent } from '../../../interfaces/page-content-interface';
 
 import styles from './OurCollection.module.scss';
 
 interface IOurCollectionProps {
-  coffeeTypes: ICoffeeType[];
+  content: IPageContent;
 }
 
-const OurCollection = ({ coffeeTypes }: IOurCollectionProps) => {
+const OurCollection = ({ content }: IOurCollectionProps) => {
+  const { title, listing } = content;
+
   const collectionListRef = useRef<HTMLUListElement>(null);
 
   const handleMediaQueryChange = useCallback((mediaQueryList: MediaQueryList) => {
@@ -37,16 +39,16 @@ const OurCollection = ({ coffeeTypes }: IOurCollectionProps) => {
     <section className={ styles.collection }>
       <div className="container">
         <div className={ styles['collection__content'] }>
-          <h2 className={ styles['collection__title'] }>our collection</h2>
+          <h2 className={ styles['collection__title'] }>{ title }</h2>
           
           {
-            coffeeTypes.length ? (
+            listing?.length ? (
               <ul
                 ref={ collectionListRef }
                 className={ `${styles['collection__list']} | grid-cols` }
               >
                 {
-                  coffeeTypes.map(coffeeType => (
+                  listing.map(coffeeType => (
                     <li
                       key={ coffeeType.id }
                       className={ `grid__item grid__item--span-md-10 grid__item--span-lg-3 | ${styles['collection__item']}` }
@@ -54,11 +56,11 @@ const OurCollection = ({ coffeeTypes }: IOurCollectionProps) => {
                       <img
                         className={ styles['collection__image'] }
                         src={ coffeeType.imagePath }
-                        alt={ coffeeType.name }
+                        alt={ coffeeType.title }
                       />
 
                       <div className={ styles['collection__body'] }>
-                        <h3 className="h4">{ coffeeType.name }</h3>
+                        <h3 className="h4">{ coffeeType.title }</h3>
 
                         <p>{ coffeeType.description }</p>
                       </div>

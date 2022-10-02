@@ -2,34 +2,36 @@ import { Link } from 'react-router-dom';
 
 import { BaseCard } from '../../ui';
 
-import { IWorkingStep } from '../../../interfaces/working-step-interface';
+import { IPageContent } from '../../../interfaces/page-content-interface';
 
 import styles from './BaseHowItWorks.module.scss';
 
 interface IBaseHowItWorksProps {
-  steps: IWorkingStep[];
+  content: IPageContent;
   variant?: string;
   withTitle?: boolean;
   withCTA?: boolean;
 }
 
-const BaseHowItWorks = ({ steps, variant = 'default', withTitle = true, withCTA = true }: IBaseHowItWorksProps) => {
+const BaseHowItWorks = ({ content, variant = 'default', withTitle = true, withCTA = true }: IBaseHowItWorksProps) => {
+  const { title, listing } = content;
+
   return (
     <section className={ styles['how-it-works'] } data-variant={ variant }>
       <div className="container">
         <BaseCard customClasses={ styles['how-it-works__card'] }>
           {
             withTitle ? (
-              <h2 className={ styles['how-it-works__title'] }>How it works</h2>
+              <h2 className={ styles['how-it-works__title'] }>{ title }</h2>
             ) : null
           }
 
           {
-            steps.length
+            listing?.length
             ? (
               <ul className={ `grid-cols | ${styles['how-it-works__list']}` }>
                 {
-                  steps.map(step => (
+                  listing.map(step => (
                     <li
                       key={ step.id }
                       className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['how-it-works__item']}` }

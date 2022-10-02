@@ -4,18 +4,12 @@ import { TheHero } from '../../components/layout';
 import { BaseHowItWorks } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
-import { getPageContent, getCoffeeCollection, getBenefits, getWorkingSteps } from '../../services';
+import { getPageContent } from '../../services';
 
 import { IPageContent } from '../../interfaces/page-content-interface';
-import { ICoffeeType } from '../../interfaces/coffee-type-interface';
-import { IBenefit } from '../../interfaces/benefit-interface';
-import { IWorkingStep } from '../../interfaces/working-step-interface';
 
 const Home = () => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-  const [ coffeeCollection, setCoffeeCollection ] = useState<ICoffeeType[]>([]);
-  const [ benefits, setBenefits ] = useState<IBenefit[]>([]);
-  const [ workingSteps, setWorkingSteps ] = useState<IWorkingStep[]>([]);
 
   const handleGetPageContent = async () => {
     try {
@@ -27,41 +21,8 @@ const Home = () => {
     }
   };
 
-  const handleGetCoffeeCollection = async () => {
-    try {
-      const coffeeCollectionData = await getCoffeeCollection();
-
-      setCoffeeCollection(coffeeCollectionData);
-    } catch (error) {
-      setCoffeeCollection([]);
-    }
-  };
-
-  const handleGetBenefits = async () => {
-    try {
-      const benefitsData = await getBenefits();
-
-      setBenefits(benefitsData);
-    } catch (error) {
-      setBenefits([]);
-    }
-  };
-
-  const handleGetWorkingSteps = async () => {
-    try {
-      const workingStepsData = await getWorkingSteps();
-
-      setWorkingSteps(workingStepsData);
-    } catch (error) {
-      setWorkingSteps([]);
-    }
-  };
-
   useEffect(() => {
     handleGetPageContent();
-    handleGetCoffeeCollection();
-    handleGetBenefits();
-    handleGetWorkingSteps();
   }, []);
 
   return (
@@ -71,11 +32,11 @@ const Home = () => {
           <Fragment>
             <TheHero content={ pageContent[0] } />
       
-            <OurCollection coffeeTypes={ coffeeCollection } />
+            <OurCollection content={ pageContent[1] } />
 
-            <WhyChooseUs content={ pageContent[1] } benefits={ benefits } />
+            <WhyChooseUs content={ pageContent[2] } />
 
-            <BaseHowItWorks steps={ workingSteps } />
+            <BaseHowItWorks content={ pageContent[3] } />
           </Fragment>
         ) : null
       }

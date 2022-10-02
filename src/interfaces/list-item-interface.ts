@@ -1,6 +1,6 @@
-export interface IBenefit {
+export interface IListItem {
   id: string;
   title: string;
   description: string;
-  icon: string;
+  imagePath: string;
 }

@@ -4,15 +4,13 @@ import { BaseHero } from '../../components/layout';
 import { BaseHowItWorks } from '../../components/ui';
 import { Order } from './index';
 
-import { getPageContent, getWorkingSteps, getPlans } from '../../services';
+import { getPageContent, getPlans } from '../../services';
 
 import { IPageContent } from '../../interfaces/page-content-interface';
-import { IWorkingStep } from '../../interfaces/working-step-interface';
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-  const [ workingSteps, setWorkingSteps ] = useState<IWorkingStep[]>([]);
   const [ plans, setPlans ] = useState<IPlan[]>([]);
 
   const handleGetPageContent = async () => {
@@ -22,16 +20,6 @@ const Subscribe = () => {
       setPageContent(pageContentData);
     } catch (error) {
       setPageContent([]);
-    }
-  };
-
-  const handleGetWorkingSteps = async () => {
-    try {
-      const workingStepsData = await getWorkingSteps();
-
-      setWorkingSteps(workingStepsData);
-    } catch (error) {
-      setWorkingSteps([]);
     }
   };
 
@@ -47,7 +35,6 @@ const Subscribe = () => {
 
   useEffect(() => {
     handleGetPageContent();
-    handleGetWorkingSteps();
     handleGetPlans();
   }, []);
 
@@ -59,7 +46,7 @@ const Subscribe = () => {
             <BaseHero content={ pageContent[0] }/>
 
             <BaseHowItWorks
-              steps={ workingSteps }
+              content={ pageContent[1] }
               variant="dark"
               withTitle= { false }
               withCTA={ false }
