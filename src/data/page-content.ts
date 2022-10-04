@@ -33,9 +33,9 @@ import mobilePlanHeroImage from '../assets/images/plan/mobile/image-hero-blackcu
 import tabletPlanHeroImage from '../assets/images/plan/tablet/image-hero-blackcup.jpg';
 import desktopPlanHeroImage from '../assets/images/plan/desktop/image-hero-blackcup.jpg';
 
-export const pageContent = new Map();
+export const pageContentMap = new Map();
 
-pageContent.set('home', [
+pageContentMap.set('home', [
   {
     id: uuidv4(),
     title: 'Great coffee made simple.',
@@ -84,7 +84,7 @@ pageContent.set('home', [
       {
         id: uuidv4(),
         title: 'Best quality',
-        description: 'Discover an endless variety of the world’s best artisan coffee from each of our roasters.',
+        description: 'Discover an endless variety of the world\'s best artisan coffee from each of our roasters.',
         imagePath: IconCoffeeBean,
       },
       {
@@ -129,7 +129,7 @@ pageContent.set('home', [
   },
 ]);
 
-pageContent.set('about', [
+pageContentMap.set('about', [
   {
     id: uuidv4(),
     title: 'About Us',
@@ -140,7 +140,7 @@ pageContent.set('about', [
   {
     id: uuidv4(),
     title: 'Our commitment',
-    description: 'We’re built on a simple mission and a commitment to doing good along the way. We want to make it easy for you to discover and brew the world’s best coffee at home. It all starts at the source. To locate the specific lots we want to purchase, we travel nearly 60 days a year trying to understand the challenges and opportunities in each of these places. We collaborate with exceptional coffee growers and empower a global community of farmers through with well above fair-trade benchmarks. We also offer training, support farm community initiatives, and invest in coffee plant science. Curating only the finest blends, we roast each lot to highlight tasting profiles distinctive to their native growing region.',
+    description: 'We\'re built on a simple mission and a commitment to doing good along the way. We want to make it easy for you to discover and brew the world\'s best coffee at home. It all starts at the source. To locate the specific lots we want to purchase, we travel nearly 60 days a year trying to understand the challenges and opportunities in each of these places. We collaborate with exceptional coffee growers and empower a global community of farmers through with well above fair-trade benchmarks. We also offer training, support farm community initiatives, and invest in coffee plant science. Curating only the finest blends, we roast each lot to highlight tasting profiles distinctive to their native growing region.',
     imagePath: [mobileCommitmentImage, tabletCommitmentImage, desktopCommitmentImage],
     listing: null,
   },
@@ -188,12 +188,13 @@ pageContent.set('about', [
   },
 ]);
 
-pageContent.set('plan', [
+pageContentMap.set('plan', [
   {
     id: uuidv4(),
     title: 'Create plan',
     description: 'Coffee the way you wanted it to be. For coffee delivered tomorrow, or next week. For whatever brew method you use. For choice, for convenience, for quality.',
     imagePath: [mobilePlanHeroImage, tabletPlanHeroImage, desktopPlanHeroImage],
+    listing: null,
   },
   {
     id: uuidv4(),
@@ -220,5 +221,15 @@ pageContent.set('plan', [
         imagePath: null,
       },
     ],
+  },
+]);
+
+pageContentMap.set('checkout', [
+  {
+    id: uuidv4(),
+    title: 'Checkout',
+    description: 'We are getting ready to roast your coffee as per your order and it will be delivered directly to your door within the next 48 hours!',
+    imagePath: [mobilePlanHeroImage, tabletPlanHeroImage, desktopPlanHeroImage],
+    listing: null,
   },
 ]);
