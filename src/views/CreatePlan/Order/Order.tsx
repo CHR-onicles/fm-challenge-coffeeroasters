@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useRef, FormEvent } from 'react';
-import { createPortal } from 'react-dom'
+import { useState, useEffect, useCallback, FormEvent } from 'react';
+import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { BaseAccordion, BaseOrderSummary, BaseModal } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
@@ -50,7 +51,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
   const [ isModalVisible, setIsModalVisible ] = useState<boolean>(false);
 
-  const formRef = useRef<HTMLFormElement>(null);
+  const navigate = useNavigate();
 
   const handleMarkAsActive = (slug: string) => {
     const targetElem = document.getElementById(slug);
@@ -184,7 +185,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
   };
 
   const handleConfirmCheckout = () => {
-    console.log('handleConfirmCheckout called');
+    navigate('/checkout');
   };
 
   useEffect(() => {
@@ -216,7 +217,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
             </div>
 
             <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
-              <form className={ styles['order__form'] } ref={ formRef } onSubmit={ handleSubmit }>
+              <form className={ styles['order__form'] } onSubmit={ handleSubmit }>
                 {
                   orderOptions.map((orderOption, index) => (
                     <BaseAccordion

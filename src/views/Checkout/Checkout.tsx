@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
+import { ThankYou } from './index';
 
 import { getPageContent } from '../../services';
 
@@ -29,6 +30,8 @@ const Checkout = () => {
         pageContent.length ? (
           <Fragment>
             <BaseHero content={ pageContent[0] } />
+
+            <ThankYou />
           </Fragment>
         ) : null
       }
