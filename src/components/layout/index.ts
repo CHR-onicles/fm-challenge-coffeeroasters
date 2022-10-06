@@ -5,3 +5,4 @@ export { default as BaseBrand } from './BaseBrand/BaseBrand';
 export { default as BaseNavigation } from './BaseNavigation/BaseNavigation';
 export { default as BaseHero } from './BaseHero/BaseHero';
 export { default as BasePage } from './BasePage/BasePage';
+export { default as BaseRouteGuard } from './BaseRouteGuard/BaseRouteGuard';
