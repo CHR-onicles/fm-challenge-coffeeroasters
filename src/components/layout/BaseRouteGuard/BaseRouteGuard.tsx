@@ -1,20 +1,22 @@
-import { ReactNode, Fragment, useEffect } from 'react';
+import { ReactNode, Fragment, useEffect, useContext } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
+import AppContext from '../../../context/AppContext';
+
 interface IBaseRouteGuardProps {
-  isAccessGranted: boolean;
   redirectPath: string;
   children: ReactNode;
 }
 
-const BaseRouteGuard = ({ isAccessGranted, redirectPath, children }: IBaseRouteGuardProps) => {
+const BaseRouteGuard = ({ redirectPath, children }: IBaseRouteGuardProps) => {
+  const { willCheckout } = useContext(AppContext);
   const navigate = useNavigate();
   
   useEffect(() => {
-    if (!isAccessGranted) {
+    if (!willCheckout) {
       navigate(redirectPath, { replace: true });
     }
-  }, [navigate, isAccessGranted, redirectPath]);
+  }, [navigate, willCheckout, redirectPath]);
 
   return (
     <Fragment>

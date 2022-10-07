@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback, FormEvent } from 'react';
+import { useState, useEffect, useCallback, useContext, FormEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
+
+import AppContext from '../../../context/AppContext';
 
 import { BaseAccordion, BaseOrderSummary, BaseModal } from '../../../components/ui';
 import { BaseRadio } from '../../../components/form';
@@ -29,6 +31,7 @@ const priceMap = new Map([
 ]);
 
 const Order = ({ orderOptions }: IOrderProps) => {
+  const { willCheckout, onSetCheckout } = useContext(AppContext);
   const [ quickLinks, setQuickLinks ] = useState<IQuickLink[]>(
     orderOptions.map((orderOption, index) => ({
       id: orderOption.id,
@@ -185,6 +188,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
   };
 
   const handleConfirmCheckout = () => {
+    onSetCheckout();
     navigate('/checkout');
   };
 
