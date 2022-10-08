@@ -31,7 +31,7 @@ const priceMap = new Map([
 ]);
 
 const Order = ({ orderOptions }: IOrderProps) => {
-  const { willCheckout, onSetCheckout } = useContext(AppContext);
+  const { onSetCheckout } = useContext(AppContext);
   const [ quickLinks, setQuickLinks ] = useState<IQuickLink[]>(
     orderOptions.map((orderOption, index) => ({
       id: orderOption.id,

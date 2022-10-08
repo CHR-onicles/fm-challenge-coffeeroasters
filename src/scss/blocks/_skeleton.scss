@@ -1,0 +1,35 @@
+@use '../abstracts/' as *;
+
+.skeleton {
+  --skeleton-bg-color: var(--dark-color-3);
+
+  &__element {
+    --skeleton-element-width: 100%;
+    --skeleton-element-height: #{toRem(16px)};
+    --skeleton-element-spacing: #{toRem(12px)};
+
+    width: var(--skeleton-element-width);
+    height: var(--skeleton-element-height);
+    margin-bottom: var(--skeleton-element-spacing);
+    background-color: var(--skeleton-bg-color);
+    border-radius: toRem(4px);
+
+    &[data-variant="default"] {
+      &:last-child {
+        --skeleton-element-width: 80%;
+      }
+    }
+
+    &[data-variant="title"] {
+      --skeleton-element-width: 40%;
+      --skeleton-element-height: #{toRem(30px)};
+      --skeleton-element-spacing: #{toRem(24px)};
+    }
+
+    &[data-variant="thumbnail"] {
+      --skeleton-element-width: #{toRem(100px)};
+      --skeleton-element-height: #{toRem(100px)};
+      --skeleton-element-spacing: #{toRem(24px)};
+    }
+  }
+}

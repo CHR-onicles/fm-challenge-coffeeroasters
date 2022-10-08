@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { TheHero } from '../../components/layout';
-import { BaseHowItWorks } from '../../components/ui';
+import { BaseHowItWorks, BaseSkeletonElement } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
 import { getPageContent } from '../../services';
@@ -31,6 +31,18 @@ const Home = () => {
         pageContent.length ? (
           <Fragment>
             <TheHero content={ pageContent[0] } />
+
+            <div className="skeleton">
+              <BaseSkeletonElement variant="thumbnail" />
+
+              <BaseSkeletonElement variant="title" />
+
+              <BaseSkeletonElement />
+              
+              <BaseSkeletonElement />
+
+              <BaseSkeletonElement />
+            </div>
       
             <OurCollection content={ pageContent[1] } />
 
