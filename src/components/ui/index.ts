@@ -5,4 +5,4 @@ export { default as BaseSocialMedia } from './BaseSocialMedia/BaseSocialMedia';
 export { default as BaseHowItWorks } from './BaseHowItWorks/BaseHowItWorks';
 export { default as BaseOrderSummary } from './BaseOrderSummary/BaseOrderSummary';
 export { default as BaseModal } from './BaseModal/BaseModal';
-export { default as BaseSkeletonElement } from './BaseSkeleton/BaseSkeletonElement';
+export { default as BaseSkeleton } from './BaseSkeleton/BaseSkeleton';

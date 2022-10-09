@@ -1,7 +1,26 @@
 @use '../abstracts/' as *;
 
 .skeleton {
-  --skeleton-bg-color: var(--dark-color-3);
+  --skeleton-spacing-top: #{toRem(72px)};
+  --skeleton-spacing-bottom: #{toRem(48px)};
+  --skeleton-spacing-horizontal: #{toRem(48px)};
+
+  &[data-variant="article"],
+  &[data-variant="card"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--skeleton-spacing-top) var(--skeleton-spacing-horizontal) var(--skeleton-spacing-bottom) var(--skeleton-spacing-horizontal);
+    background-color: var(--neutral-color-2);
+    border-radius: toRem(10px);
+  }
+
+  &[data-variant="article"] {
+    --skeleton-spacing-top: #{toRem(100px)};
+    --skeleton-spacing-bottom: #{toRem(100px)};
+    --skeleton-spacing-horizontal: #{toRem(85px)};
+  }
 
   &__element {
     --skeleton-element-width: 100%;
@@ -11,7 +30,7 @@
     width: var(--skeleton-element-width);
     height: var(--skeleton-element-height);
     margin-bottom: var(--skeleton-element-spacing);
-    background-color: var(--skeleton-bg-color);
+    background-color: var(--dark-color-3);
     border-radius: toRem(4px);
 
     &[data-variant="default"] {

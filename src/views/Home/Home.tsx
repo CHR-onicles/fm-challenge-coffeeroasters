@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { TheHero } from '../../components/layout';
-import { BaseHowItWorks, BaseSkeletonElement } from '../../components/ui';
+import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
 import { getPageContent } from '../../services';
@@ -32,16 +32,10 @@ const Home = () => {
           <Fragment>
             <TheHero content={ pageContent[0] } />
 
-            <div className="skeleton">
-              <BaseSkeletonElement variant="thumbnail" />
+            <div className="container">
+              <BaseSkeleton variant="card" />
 
-              <BaseSkeletonElement variant="title" />
-
-              <BaseSkeletonElement />
-              
-              <BaseSkeletonElement />
-
-              <BaseSkeletonElement />
+              <BaseSkeleton variant="article" />
             </div>
       
             <OurCollection content={ pageContent[1] } />
