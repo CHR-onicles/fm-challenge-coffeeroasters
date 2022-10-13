@@ -31,12 +31,6 @@ const Home = () => {
         pageContent.length ? (
           <Fragment>
             <TheHero content={ pageContent[0] } />
-
-            <div className="container">
-              <BaseSkeleton variant="card" />
-
-              <BaseSkeleton variant="article" />
-            </div>
       
             <OurCollection content={ pageContent[1] } />
 
@@ -44,7 +38,32 @@ const Home = () => {
 
             <BaseHowItWorks content={ pageContent[3] } />
           </Fragment>
-        ) : null
+        ) : (
+          <section>
+            <div className="container">
+              <div className="grid-cols">
+                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                  <BaseSkeleton variant="card" />
+                </div>
+                
+                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                  <BaseSkeleton variant="card" />
+                </div>
+              </div> 
+              
+
+              <BaseSkeleton variant="article" />
+            </div>
+          </section>
+        )
       }
     </main>
   );
