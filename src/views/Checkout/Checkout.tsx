@@ -1,9 +1,11 @@
 import { useState, useEffect, useContext, Fragment } from 'react';
 
-import AppContext from '../../context/AppContext';
 
 import { BaseHero } from '../../components/layout';
+import { BaseSkeleton } from '../../components/ui';
 import { ThankYou } from './index';
+
+import AppContext from '../../context/AppContext';
 
 import { getPageContent } from '../../services';
 
@@ -40,7 +42,23 @@ const Checkout = () => {
 
             <ThankYou />
           </Fragment>
-        ) : null
+        ) : (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="hero-page" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="article" />
+                </div>
+              </div>
+            </div>
+          </section>
+        )
       }
     </main>
   );

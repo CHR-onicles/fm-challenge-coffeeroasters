@@ -5,7 +5,11 @@
   --skeleton-spacing-bottom: #{toRem(48px)};
   --skeleton-spacing-horizontal: #{toRem(48px)};
 
+  &[data-variant="hero"],
+  &[data-variant="hero-page"],
   &[data-variant="article"],
+  &[data-variant="content"],
+  &[data-variant="list"],
   &[data-variant="card"] {
     display: flex;
     flex-direction: column;
@@ -16,16 +20,60 @@
     border-radius: toRem(10px);
   }
 
+  &[data-variant="hero"],
+  &[data-variant="hero-page"],
+  &[data-variant="content"],
+  &[data-variant="list"] {
+    align-items: flex-start;
+  }
+  
+  &[data-variant="hero"],
+  &[data-variant="hero-page"] {
+    > [data-variant="default"] {
+      width: 50%;
+    }
+  }
+
+  &[data-variant="hero"] {
+    --skeleton-spacing-top: #{toRem(116px)};
+    --skeleton-spacing-bottom: #{toRem(116px)};
+  }
+
+  &[data-variant="hero-page"] {
+    --skeleton-spacing-top: #{toRem(137px)};
+    --skeleton-spacing-bottom: #{toRem(137px)};
+  }
+
   &[data-variant="article"] {
     --skeleton-spacing-top: #{toRem(100px)};
     --skeleton-spacing-bottom: #{toRem(100px)};
     --skeleton-spacing-horizontal: #{toRem(85px)};
   }
 
+  &[data-variant="content"] {
+    + [data-variant="content"] {
+      margin-top: var(--skeleton-spacing-top);
+    }
+  }
+
+  &[data-variant="image"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    [data-variant="thumbnail"] {
+      --skeleton-element-width: #{toRem(455px)};
+      --skeleton-element-height: #{toRem(520px)};
+    }
+  }
+
   &__element {
     --skeleton-element-width: 100%;
     --skeleton-element-height: #{toRem(16px)};
     --skeleton-element-spacing: #{toRem(12px)};
+
+    --skeleton-button-element-spacing: #{toRem(30px)};
 
     width: var(--skeleton-element-width);
     height: var(--skeleton-element-height);
@@ -39,16 +87,36 @@
       }
     }
 
-    &[data-variant="title"] {
+    &[data-variant="title-h1"],
+    &[data-variant="title-h2"], 
+    &[data-variant="title-h3"] {
       --skeleton-element-width: 40%;
-      --skeleton-element-height: #{toRem(30px)};
       --skeleton-element-spacing: #{toRem(24px)};
+    }
+
+    &[data-variant="title-h1"] {
+      --skeleton-element-height: #{toRem(72px)};
+    }
+
+    &[data-variant="title-h2"] {
+      --skeleton-element-height: #{toRem(30px)};
+    }
+
+    &[data-variant="title-h3"] {
+      --skeleton-element-height: #{toRem(24px)};
     }
 
     &[data-variant="thumbnail"] {
       --skeleton-element-width: #{toRem(100px)};
       --skeleton-element-height: #{toRem(100px)};
       --skeleton-element-spacing: #{toRem(24px)};
+    }
+
+    &[data-variant="button"] {
+      --skeleton-element-width: #{toRem(216px)};
+      --skeleton-element-height: #{toRem(54px)};
+
+      margin-top: var(--skeleton-button-element-spacing);
     }
   }
 }

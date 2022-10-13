@@ -12,7 +12,7 @@ const getPageContent = (page: string): Promise<IPageContent[]> => {
 
     setTimeout(() => {
       resolve(pageContentMap.get(page));
-    }, 3000);
+    }, 250);
   });
 };
 

@@ -41,7 +41,13 @@ const Home = () => {
         ) : (
           <section>
             <div className="container">
-              <div className="grid-cols">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="hero" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
@@ -57,10 +63,27 @@ const Home = () => {
                 <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
-              </div> 
-              
+              </div>
 
-              <BaseSkeleton variant="article" />
+              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="article" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+              </div>
             </div>
           </section>
         )
