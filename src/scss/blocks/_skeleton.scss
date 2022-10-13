@@ -75,11 +75,27 @@
 
     --skeleton-button-element-spacing: #{toRem(30px)};
 
+    position: relative;
     width: var(--skeleton-element-width);
     height: var(--skeleton-element-height);
     margin-bottom: var(--skeleton-element-spacing);
     background-color: var(--dark-color-3);
     border-radius: toRem(4px);
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      content: '';
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.8) 50%,rgba(128, 186, 232, 0) 99%,rgba(125, 185, 232, 0) 100%);
+      opacity: 0.5;
+      transform: skew(-45deg) translateX(100%);
+      z-index: 1;
+      animation: shine 1s infinite 0.5s;
+    }
 
     &[data-variant="default"] {
       &:last-child {
@@ -118,5 +134,15 @@
 
       margin-top: var(--skeleton-button-element-spacing);
     }
+  }
+}
+
+@keyframes shine {
+	0% {
+    transform: skew(-45deg) translateX(-100%);
+  }
+
+	100% {
+    transform: skew(-45deg) translateX(100%);
   }
 }
