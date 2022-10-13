@@ -34,6 +34,10 @@
     position: relative;
     border-radius: toRem(10px);
     overflow: hidden;
+    
+    img {
+      width: 100%;
+    }
   }
 
   &__body {

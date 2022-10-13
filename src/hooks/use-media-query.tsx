@@ -4,13 +4,19 @@ const useMediaQuery = (mediaQuery: string, mediaQueryChangeHandler: (mediaQueryL
   useEffect(() => {
     const mediaQueryList: MediaQueryList = window.matchMedia(mediaQuery);
 
-    mediaQueryChangeHandler(mediaQueryList);
-
-    mediaQueryList.addEventListener('change', (event: MediaQueryListEvent) => {
+    const handleChange = (event: MediaQueryListEvent) => {
       const mql = event.target as MediaQueryList;
 
       mediaQueryChangeHandler(mql);
-    });
+    };
+
+    mediaQueryChangeHandler(mediaQueryList);
+
+    mediaQueryList.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQueryList.removeEventListener('change', handleChange);
+    };
   }, [mediaQuery, mediaQueryChangeHandler]);
 };
 
