@@ -28,6 +28,8 @@ const Checkout = () => {
   useEffect(() => {
     handleGetPageContent();
 
+    window.scrollTo(0, 0);
+
     return () => {
       onSetCheckout();
     };

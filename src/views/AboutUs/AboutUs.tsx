@@ -23,6 +23,8 @@ const AboutUs = () => {
 
   useEffect(() => {
     handleGetPageContent();
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (

@@ -59,7 +59,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
                 {
                   routes.map(route => (
                     <li key={ `nav-${route.path}` }>
-                      <NavLink to={ route.path }>{ route.title }</NavLink>
+                      <NavLink to={ route.path } onClick={ handleToggleNav }>{ route.title }</NavLink>
                     </li>
                   ))
                 }
