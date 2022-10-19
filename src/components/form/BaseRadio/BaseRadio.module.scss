@@ -53,6 +53,13 @@
         }
       }
     }
+
+    &:focus {
+      + label {
+        outline: 3px dotted var(--dark-color-2);
+        outline-offset: 0.15rem;
+      }
+    }
   }
 
   &__description {

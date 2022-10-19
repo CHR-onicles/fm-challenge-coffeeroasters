@@ -49,31 +49,31 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-md-12 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
 
-                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                <div className="grid__item grid__item--span-md-12 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
 
-                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                <div className="grid__item grid__item--span-md-12 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
                 
-                <div className="grid__item grid__item--span-md-10 grid__item--span-lg-3">
+                <div className="grid__item grid__item--span-md-12 grid__item--span-lg-3">
                   <BaseSkeleton variant="card" />
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item">
                   <BaseSkeleton variant="article" />
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-lg-4">
                   <BaseSkeleton variant="card" />
                 </div>

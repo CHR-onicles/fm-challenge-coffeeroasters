@@ -49,7 +49,7 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-lg-4">
                   <BaseSkeleton variant="card" />
                 </div>
@@ -63,7 +63,7 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
                   <BaseSkeleton variant="image" />
                 </div>
@@ -73,7 +73,7 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
                   <BaseSkeleton variant="content" />
                 </div>
@@ -83,7 +83,7 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              <div className="grid-cols ml-s5 mr-s5 pl-s5 pr-s5 mb-s5 pb-s5">
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
                 <div className="grid__item grid__item--span-lg-4">
                   <BaseSkeleton variant="card" />
                 </div>

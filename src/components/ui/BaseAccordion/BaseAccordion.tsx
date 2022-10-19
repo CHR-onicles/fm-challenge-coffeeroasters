@@ -15,7 +15,7 @@ interface IBaseAccordionProps {
 const BaseAccordion = ({ id, label, initialState = false, isDisabled = false, onMarkAsActive, children }: IBaseAccordionProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(initialState);
 
-  const handleToggleDropdown = () => {
+  const handleTogglePanel = () => {
     setIsActive((prevState => !prevState));
 
     if (onMarkAsActive) {
@@ -28,20 +28,29 @@ const BaseAccordion = ({ id, label, initialState = false, isDisabled = false, on
   }, [initialState]);
 
   return (
-    <div id={ id } className={ styles.accordion }>
-      <button
-        type="button"
-        className={ `row | ${styles['accordion__toggle']} ${isActive ? `${styles['accordion__toggle-active']}` : ``}` }
-        disabled={ isDisabled }
-        onClick={ handleToggleDropdown }
-      >
-        <span>{ label }</span> <IconArrow />
-      </button>
+    <fieldset id={ id } className={ styles.accordion }>
+      <legend>
+        <button
+          type="button"
+          id={ `accordion-header-${id}` }
+          aria-controls={ `accordion-panel-${id}` }
+          aria-expanded={ isActive }
+          className={ `row | ${styles['accordion__header']} ${isActive ? `${styles['accordion__header-active']}` : ``}` }
+          disabled={ isDisabled }
+          onClick={ handleTogglePanel }
+        >
+          <span>{ label }</span> <IconArrow aria-hidden="true" />
+        </button>
+      </legend>
 
-      <div className={ `${isActive ? `${styles['accordion__dropdown-active']}` : `${styles['accordion__dropdown']}`}` }>
+      <section
+        id={ `accordion-panel-${id}` }
+        aria-labelledby={ `accordion-header-${id}` }
+        className={ `${isActive ? `${styles['accordion__panel-active']}` : `${styles['accordion__panel']}`}` }
+      >
         { children }
-      </div>
-    </div>
+      </section>
+    </fieldset>
   );
 };
 

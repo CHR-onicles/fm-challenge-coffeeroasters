@@ -10,6 +10,20 @@
   }
 }
 
+@each $breakpoint, $breakpointValue in $breakpoints {
+  @media (min-width: $breakpointValue) {
+    @each $scale, $value in $size-scale {
+      .mt-#{$breakpoint}-#{$scale} {
+        margin-top: $value;
+      }
+    
+      .mb-#{$breakpoint}-#{$scale} {
+        margin-bottom: $value;
+      }
+    }
+  }
+}
+
 @each $scale, $value in $size-scale {
   .ml-#{$scale} {
     margin-left: $value;
@@ -17,5 +31,19 @@
 
   .mr-#{$scale} {
     margin-right: $value;
+  }
+}
+
+@each $breakpoint, $breakpointValue in $breakpoints {
+  @media (min-width: $breakpointValue) {
+    @each $scale, $value in $size-scale {
+      .ml-#{$breakpoint}-#{$scale} {
+        margin-left: $value;
+      }
+    
+      .mr-#{$breakpoint}-#{$scale} {
+        margin-right: $value;
+      }
+    }
   }
 }
