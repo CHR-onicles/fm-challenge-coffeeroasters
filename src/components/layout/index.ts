@@ -1,7 +1,9 @@
 export { default as TheHeader } from './TheHeader/TheHeader';
 export { default as TheHero } from './TheHero/TheHero';
 export { default as TheFooter } from './TheFooter/TheFooter';
+export { default as TheCopyright } from './TheCopyright/TheCopyright';
 export { default as BaseBrand } from './BaseBrand/BaseBrand';
 export { default as BaseNavigation } from './BaseNavigation/BaseNavigation';
 export { default as BaseHero } from './BaseHero/BaseHero';
 export { default as BasePage } from './BasePage/BasePage';
+export { default as BaseRouteGuard } from './BaseRouteGuard/BaseRouteGuard';

@@ -1,17 +1,15 @@
 import { BaseCard } from '../../../components/ui';
 
 import { IPageContent } from '../../../interfaces/page-content-interface';
-import { IBenefit } from '../../../interfaces/benefit-interface';
 
 import styles from './WhyChooseUs.module.scss';
 
 interface IWhyChooseUsProps {
   content: IPageContent;
-  benefits: IBenefit[];
 }
 
-const WhyChooseUs = ({ content, benefits }: IWhyChooseUsProps) => {
-  const { title, description } = content;
+const WhyChooseUs = ({ content }: IWhyChooseUsProps) => {
+  const { title, description, listing } = content;
 
   return (
     <section className={ styles.benefits }>
@@ -27,17 +25,17 @@ const WhyChooseUs = ({ content, benefits }: IWhyChooseUsProps) => {
         </BaseCard>
 
         {
-          benefits.length ? (
+          listing?.length ? (
             <ul className="grid-cols">
               {
-                benefits.map(benefit => (
+                listing.map(benefit => (
                   <li
                     key={ benefit.id }
                     className={ `grid__item grid__item--span-lg-4 | ${styles['benefits__list-item']}` }
                   >
                     <BaseCard customClasses={ `${styles['benefits__card']} | stack | bg-cyan-color-1` }>
                       <img
-                        src={ benefit.icon }
+                        src={ benefit.imagePath }
                         alt={ benefit.title }
                       />
 

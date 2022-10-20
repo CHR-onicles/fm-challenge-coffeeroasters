@@ -1,4 +1,4 @@
-import { BaseBrand, BaseNavigation } from '../index';
+import { BaseBrand, BaseNavigation, TheCopyright } from '../index';
 import { BaseSocialMedia } from '../../ui/index';
 
 import styles from './TheFooter.module.scss';
@@ -13,6 +13,8 @@ const TheFooter = () => {
           <BaseNavigation isHeaderNav={ false } />
 
           <BaseSocialMedia />
+
+          <TheCopyright />
         </div>
       </div>
     </footer>

@@ -1,0 +1,46 @@
+@use '../../../scss/abstracts/' as *;
+
+.thank-you {
+  --thank-you-spacing-bottom: #{toRem(120px)};
+
+  --thank-you-list-spacing: #{toRem(48px)};
+
+  --thank-you-title-size: #{toRem(40px)};
+  --thank-you-title-spacing-bottom: #{toRem(40px)};
+
+  --thank-you-text-size: #{toRem(15px)};
+
+  margin-bottom: var(--thank-you-spacing-bottom);
+
+  h2 {
+    margin-bottom: var(--thank-you-title-spacing-bottom);
+    background: linear-gradient(180deg, var(--dark-color-1) 0%, var(--neutral-color-1) 98%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: var(--thank-you-title-size);
+    text-align: center;
+    line-height: 1.2;
+    color: var(--dark-color-1);
+  }
+
+  p {
+    font-size: var(--thank-you-text-size);
+    line-height: 1.7;
+  }
+
+  @include media-breakpoint(md) {
+    --thank-you-spacing-bottom: #{toRem(144px)};
+
+    --thank-you-title-size: #{toRem(96px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --thank-you-spacing-bottom: #{toRem(200px)};
+
+    --thank-you-title-size: #{toRem(150px)};
+    
+    --thank-you-text-size: #{toRem(16px)};
+  }
+}

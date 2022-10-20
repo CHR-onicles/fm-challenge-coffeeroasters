@@ -1,16 +1,15 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
+import { BaseSkeleton } from '../../components/ui';
 import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 
-import { getPageContent, getHeadquarters } from '../../services';
+import { getPageContent } from '../../services';
 
 import { IPageContent } from '../../interfaces/page-content-interface';
-import { IHeadquarter } from '../../interfaces/headquarter-interface';
 
 const AboutUs = () => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-  const [ headquarters, setHeadquarters ] = useState<IHeadquarter[]>([]);
 
   const handleGetPageContent = async () => {
     try {
@@ -22,19 +21,10 @@ const AboutUs = () => {
     }
   };
 
-  const handleGetHeadquarters = async () => {
-    try {
-      const headquartersData = await getHeadquarters();
-
-      setHeadquarters(headquartersData);
-    } catch (error) {
-      setHeadquarters([]);
-    }
-  };
-
   useEffect(() => {
     handleGetPageContent();
-    handleGetHeadquarters();
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -48,9 +38,67 @@ const AboutUs = () => {
 
             <OurQuality content={ pageContent[2] } />
 
-            <OurHeadquarters headquarters={ headquarters } />
+            <OurHeadquarters content={ pageContent[3] } />
           </Fragment>
-        ) : null
+        ) : (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="hero-page" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
+                  <BaseSkeleton variant="image" />
+                </div>
+
+                <div className="grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7">
+                  <BaseSkeleton variant="content" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
+                  <BaseSkeleton variant="content" />
+                </div>
+
+                <div className="grid__item grid__item--span-md-5 grid__item--start-md-8 grid__item--span-lg-5 grid__item--start-lg-8">
+                  <BaseSkeleton variant="image" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+              </div>
+            </div>
+          </section>
+        )
       }
     </main>
   );

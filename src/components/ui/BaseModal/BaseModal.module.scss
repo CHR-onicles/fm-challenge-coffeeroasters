@@ -3,7 +3,7 @@
 .modal {
   --modal-spacing-horizontal: #{toRem(24px)};
 
-  --modal-container-spacing-top: #{toRem(35px)};
+  --modal-container-spacing-top: 5vh;
   --modal-container-width: #{toRem(327px)};
 
   --modal-header-spacing-vertical: #{toRem(28px)};
@@ -60,7 +60,7 @@
   @include media-breakpoint(md) {
     --modal-spacing-horizontal: #{toRem(56px)};
 
-    --modal-container-spacing-top: #{toRem(214px)};
+    --modal-container-spacing-top: 15vh;
     --modal-container-width: #{toRem(540px)};
 
     --modal-header-spacing-vertical: #{toRem(48px)};

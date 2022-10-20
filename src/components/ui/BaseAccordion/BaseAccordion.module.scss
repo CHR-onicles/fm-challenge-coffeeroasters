@@ -6,7 +6,11 @@
 
   --base-accordion-spacing-top: #{toRem(32px)};
 
-  &__toggle {
+  legend {
+    width: 100%;
+  }
+
+  &__header {
     flex-wrap: nowrap;
     gap: 0;
     width: 100%;
@@ -55,7 +59,7 @@
     }
   }
 
-  &__dropdown {
+  &__panel {
     display: none;
 
     &-active {

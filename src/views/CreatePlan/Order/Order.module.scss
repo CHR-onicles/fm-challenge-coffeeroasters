@@ -12,6 +12,8 @@
   --order-button-spacing-top: #{toRem(56px)};
   --order-button-align: center;
 
+  --order-feedback-spacing-bottom: #{toRem(16px)};
+
   --btn-bg-active-color: transparent;
 
   margin-bottom: var(--order-spacing-bottom);
@@ -74,6 +76,11 @@
           color: var(--cyan-color-1);
         }
       }
+
+      [data-variant="burger"] {
+        margin-left: auto;
+        background-color: var(--red-color-1);
+      }
     }
   }
 
@@ -85,6 +92,12 @@
 
     > [class^="BaseAccordion_accordion"] {
       margin-bottom: var(--order-form-spacing);
+    }
+
+    &-feedback {
+      display: inline-block;
+      margin-bottom: var(--order-feedback-spacing-bottom);
+      color: var(--red-color-1);
     }
   }
 

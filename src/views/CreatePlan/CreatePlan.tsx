@@ -1,18 +1,16 @@
 import { useState, useEffect, Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
-import { BaseHowItWorks } from '../../components/ui';
+import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { Order } from './index';
 
-import { getPageContent, getWorkingSteps, getPlans } from '../../services';
+import { getPageContent, getPlans } from '../../services';
 
 import { IPageContent } from '../../interfaces/page-content-interface';
-import { IWorkingStep } from '../../interfaces/working-step-interface';
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-  const [ workingSteps, setWorkingSteps ] = useState<IWorkingStep[]>([]);
   const [ plans, setPlans ] = useState<IPlan[]>([]);
 
   const handleGetPageContent = async () => {
@@ -22,16 +20,6 @@ const Subscribe = () => {
       setPageContent(pageContentData);
     } catch (error) {
       setPageContent([]);
-    }
-  };
-
-  const handleGetWorkingSteps = async () => {
-    try {
-      const workingStepsData = await getWorkingSteps();
-
-      setWorkingSteps(workingStepsData);
-    } catch (error) {
-      setWorkingSteps([]);
     }
   };
 
@@ -47,8 +35,9 @@ const Subscribe = () => {
 
   useEffect(() => {
     handleGetPageContent();
-    handleGetWorkingSteps();
     handleGetPlans();
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -59,7 +48,7 @@ const Subscribe = () => {
             <BaseHero content={ pageContent[0] }/>
 
             <BaseHowItWorks
-              steps={ workingSteps }
+              content={ pageContent[1] }
               variant="dark"
               withTitle= { false }
               withCTA={ false }
@@ -67,7 +56,47 @@ const Subscribe = () => {
 
             <Order orderOptions={ plans } />
           </Fragment>
-        ) : null
+        ) : (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <BaseSkeleton variant="hero-page" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+
+                <div className="grid__item grid__item--span-lg-4">
+                  <BaseSkeleton variant="card" />
+                </div>
+              </div>
+
+              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+                <div className="grid__items grid__item--span-lg-3">
+                  <BaseSkeleton variant="list" />
+                </div>
+
+                <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
+                  <BaseSkeleton variant="content" />
+
+                  <BaseSkeleton variant="content" />
+
+                  <BaseSkeleton variant="content" />
+                  
+                  <BaseSkeleton variant="content" />
+                </div>
+              </div>
+            </div>
+          </section>
+        )
       }
     </main>
   );

@@ -1,23 +1,25 @@
-import { IHeadquarter } from '../../../interfaces/headquarter-interface';
+import { IPageContent } from '../../../interfaces/page-content-interface';
 
 import styles from './OurHeadquarters.module.scss';
 
 interface IOurHeadquartersProps {
-  headquarters: IHeadquarter[];
+  content: IPageContent;
 }
 
-const OurHeadquarters = ({ headquarters }: IOurHeadquartersProps) => {
+const OurHeadquarters = ({ content }: IOurHeadquartersProps) => {
+  const { title, listing } = content;
+
   return (
     <section className={ styles.headquarters }>
       <div className="container">
         <div className={ styles['headquarters__content'] }>
-          <h2>Our headquarters</h2>
+          <h2>{ title }</h2>
 
           {
-            headquarters.length ? (
+            listing?.length ? (
               <ul className={ `grid-cols | ${styles['headquarters__list']}` }>
                 {
-                  headquarters.map(headquarter => (
+                  listing.map(headquarter => (
                     <li
                       key={ headquarter.id }
                       className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['headquarters__item']}` }

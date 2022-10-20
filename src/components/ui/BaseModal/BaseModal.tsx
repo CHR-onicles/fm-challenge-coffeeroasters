@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 import styles from './BaseModal.module.scss';
 
@@ -9,6 +9,14 @@ interface IBaseModalProps {
 }
 
 const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
+  useEffect(() => {
+    document.body.classList.add('no-scrolling');
+
+    return () => {
+      document.body.classList.remove('no-scrolling');
+    }
+  }, []);
+
   return (
     <div className={ styles.modal }>
       <div className={ styles['modal__backdrop'] } onClick={ onDismiss }></div>
