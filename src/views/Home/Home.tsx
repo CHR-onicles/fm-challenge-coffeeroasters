@@ -1,46 +1,18 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { TheHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
-import { getPageContent } from '../../services';
-
-import { IPageContent } from '../../interfaces/page-content-interface';
+import useGetContent from '../../hooks/use-get-content';
 
 const Home = () => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-
-  const handleGetPageContent = async () => {
-    try {
-      const pageContentData = await getPageContent('home');
-
-      setPageContent(pageContentData);
-    } catch (error) {
-      setPageContent([]);
-    }
-  };
-
-  useEffect(() => {
-    handleGetPageContent();
-
-    window.scrollTo(0, 0);
-  }, []);
+  const { pageContent, error, isLoading } = useGetContent('home');
 
   return (
     <main>
       {
-        pageContent.length ? (
-          <Fragment>
-            <TheHero content={ pageContent[0] } />
-      
-            <OurCollection content={ pageContent[1] } />
-
-            <WhyChooseUs content={ pageContent[2] } />
-
-            <BaseHowItWorks content={ pageContent[3] } />
-          </Fragment>
-        ) : (
+        isLoading ? (
           <section>
             <div className="container">
               <div className="grid-cols mb-s5 pb-s5">
@@ -88,6 +60,26 @@ const Home = () => {
               </div>
             </div>
           </section>
+        ) : !isLoading && error?.length ? (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <p>{ error }</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <Fragment>
+            <TheHero content={ pageContent[0] } />
+      
+            <OurCollection content={ pageContent[1] } />
+
+            <WhyChooseUs content={ pageContent[2] } />
+
+            <BaseHowItWorks content={ pageContent[3] } />
+          </Fragment>
         )
       }
     </main>

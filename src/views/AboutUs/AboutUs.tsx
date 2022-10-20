@@ -1,46 +1,18 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
 import { BaseSkeleton } from '../../components/ui';
 import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 
-import { getPageContent } from '../../services';
-
-import { IPageContent } from '../../interfaces/page-content-interface';
+import useGetContent from '../../hooks/use-get-content';
 
 const AboutUs = () => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-
-  const handleGetPageContent = async () => {
-    try {
-      const pageContentData = await getPageContent('about');
-
-      setPageContent(pageContentData);
-    } catch (error) {
-      setPageContent([]);
-    }
-  };
-
-  useEffect(() => {
-    handleGetPageContent();
-
-    window.scrollTo(0, 0);
-  }, []);
+  const { pageContent, error, isLoading } = useGetContent('about');
 
   return (
     <main>
       {
-        pageContent.length ? (
-          <Fragment>
-            <BaseHero content={ pageContent[0] }/>
-
-            <OurCommitment content={ pageContent[1] } />
-
-            <OurQuality content={ pageContent[2] } />
-
-            <OurHeadquarters content={ pageContent[3] } />
-          </Fragment>
-        ) : (
+        isLoading ? (
           <section>
             <div className="container">
               <div className="grid-cols mb-s5 pb-s5">
@@ -98,6 +70,26 @@ const AboutUs = () => {
               </div>
             </div>
           </section>
+        ) : !isLoading && error?.length ? (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <p>{ error }</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <Fragment>
+            <BaseHero content={ pageContent[0] }/>
+
+            <OurCommitment content={ pageContent[1] } />
+
+            <OurQuality content={ pageContent[2] } />
+
+            <OurHeadquarters content={ pageContent[3] } />
+          </Fragment>
         )
       }
     </main>

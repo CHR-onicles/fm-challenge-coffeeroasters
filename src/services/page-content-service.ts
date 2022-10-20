@@ -6,12 +6,18 @@ const getPageContent = (page: string): Promise<IPageContent[]> => {
   return new Promise((resolve, reject) => {
     if (!pageContentMap) {
       return setTimeout(() => {
-        reject(new Error(`Sorry, an error occurred while fetching ${page} page content.`))
+        reject(new Error(`Sorry, an error occurred while fetching ${page} page content.`));
       }, 250);
     }
 
     setTimeout(() => {
-      resolve(pageContentMap.get(page));
+      const pageContent = pageContentMap.get(page);
+      // console.log('resolving pageContent: ', pageContentMap.get('test'));
+      if (pageContent) {
+        resolve(pageContentMap.get(page));
+      } else {
+        reject(new Error(`Sorry, an error occurred while fetching ${page} page content.`))
+      }
     }, 250);
   });
 };

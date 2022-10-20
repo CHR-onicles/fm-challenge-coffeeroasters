@@ -4,24 +4,14 @@ import { BaseHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { Order } from './index';
 
-import { getPageContent, getPlans } from '../../services';
+import { getPlans } from '../../services';
+import useGetContent from '../../hooks/use-get-content';
 
-import { IPageContent } from '../../interfaces/page-content-interface';
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
+  const { pageContent, error, isLoading } = useGetContent('about');
   const [ plans, setPlans ] = useState<IPlan[]>([]);
-
-  const handleGetPageContent = async () => {
-    try {
-      const pageContentData = await getPageContent('plan');
-
-      setPageContent(pageContentData);
-    } catch (error) {
-      setPageContent([]);
-    }
-  };
 
   const handleGetPlans = async () => {
     try {
@@ -34,29 +24,13 @@ const Subscribe = () => {
   };
 
   useEffect(() => {
-    handleGetPageContent();
     handleGetPlans();
-
-    window.scrollTo(0, 0);
   }, []);
 
   return (
     <main>
       {
-        pageContent.length ? (
-          <Fragment>
-            <BaseHero content={ pageContent[0] }/>
-
-            <BaseHowItWorks
-              content={ pageContent[1] }
-              variant="dark"
-              withTitle= { false }
-              withCTA={ false }
-            />
-
-            <Order orderOptions={ plans } />
-          </Fragment>
-        ) : (
+        isLoading ? (
           <section>
             <div className="container">
               <div className="grid-cols mb-s5 pb-s5">
@@ -96,6 +70,29 @@ const Subscribe = () => {
               </div>
             </div>
           </section>
+        ) : !isLoading && error?.length ? (
+          <section>
+            <div className="container">
+              <div className="grid-cols mb-s5 pb-s5">
+                <div className="grid__item">
+                  <p>{ error }</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <Fragment>
+            <BaseHero content={ pageContent[0] }/>
+
+            <BaseHowItWorks
+              content={ pageContent[1] }
+              variant="dark"
+              withTitle= { false }
+              withCTA={ false }
+            />
+
+            <Order orderOptions={ plans } />
+          </Fragment>
         )
       }
     </main>

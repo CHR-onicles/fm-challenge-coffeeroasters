@@ -7,7 +7,7 @@ import { IPageContent } from '../interfaces/page-content-interface';
 const useGetContent = (page: string) => {
   const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
   const [ error, setError ] = useState<string | null>(null);
-  const [ isLoading, setIsLoading ] = useState<boolean>(false);
+  const [ isLoading, setIsLoading ] = useState<boolean>(true);
 
   const handleGetPageContent = useCallback(async () => {
     try {
@@ -18,7 +18,7 @@ const useGetContent = (page: string) => {
       setPageContent(pageContentData);
     } catch (error) {
       setPageContent([]);
-      setError('Something went wrong while fetching page content data');
+      setError(`Something went wrong while fetching content for ${page} page.`);
     } finally {
       setIsLoading(false);
     }
@@ -26,9 +26,11 @@ const useGetContent = (page: string) => {
 
   useEffect(() => {
     handleGetPageContent();
+
+    window.scrollTo(0, 0);
   }, [handleGetPageContent]);
 
-  return [ pageContent, error, isLoading ];
+  return { pageContent, error, isLoading };
 };
 
 export default useGetContent;
