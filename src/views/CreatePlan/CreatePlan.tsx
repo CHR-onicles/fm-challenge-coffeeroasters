@@ -1,31 +1,15 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { Order } from './index';
 
-import { getPlans } from '../../services';
 import useGetContent from '../../hooks/use-get-content';
 
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
-  const { pageContent, error, isLoading } = useGetContent('about');
-  const [ plans, setPlans ] = useState<IPlan[]>([]);
-
-  const handleGetPlans = async () => {
-    try {
-      const plansData = await getPlans();
-
-      setPlans(plansData);
-    } catch (error) {
-      setPlans([]);
-    }
-  };
-
-  useEffect(() => {
-    handleGetPlans();
-  }, []);
+  const { pageContent, error, isLoading } = useGetContent('plan');
 
   return (
     <main>
@@ -91,7 +75,7 @@ const Subscribe = () => {
               withCTA={ false }
             />
 
-            <Order orderOptions={ plans } />
+            <Order orderOptions={ pageContent[2]?.listing as IPlan[] } />
           </Fragment>
         )
       }
