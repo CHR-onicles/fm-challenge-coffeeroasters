@@ -42,8 +42,11 @@ html:focus-within {
 /* Set core body defaults */
 body {
   min-height: 100vh;
+  font: 1rem/1.5 var(--font-family-regular);
+  background-color: var(--neutral-color-1);
+  color: var(--dark-color-2);
+  text-align: left;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
 /* A elements that don't have a class get default styles */
@@ -127,14 +130,6 @@ html {
   min-height: 100vh;
   font-family: sans-serif;
   font-size: $root-font-size;
-}
-
-body {
-  min-height: 100vh;
-  font: 1rem/1.5 var(--font-family-regular);
-  text-align: left;
-  background-color: var(--neutral-color-1);
-  color: var(--dark-color-2);
 }
 
 p {
