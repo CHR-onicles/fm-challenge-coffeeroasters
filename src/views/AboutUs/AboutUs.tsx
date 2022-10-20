@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
 import { BaseSkeleton } from '../../components/ui';
-import { OurCommitment, OurQuality } from './index';
+import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 
 import { getPageContent } from '../../services';
 
@@ -38,7 +38,7 @@ const AboutUs = () => {
 
             <OurQuality content={ pageContent[2] } />
 
-            {/* <OurHeadquarters content={ pageContent[3] } /> */}
+            <OurHeadquarters content={ pageContent[3] } />
           </Fragment>
         ) : (
           <section>
