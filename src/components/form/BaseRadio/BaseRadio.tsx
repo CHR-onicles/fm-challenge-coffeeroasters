@@ -9,13 +9,20 @@ interface IBaseRadioProps {
   name: string;
   value: string;
   checked?: boolean;
-  onHandleChange: (event: FormEvent<HTMLInputElement>) => void;
+  onHandleChange: (name: string, value: string) => void;
 }
 
 const BaseRadio = ({ id, label, description, name, value, checked = false, onHandleChange }: IBaseRadioProps) => {
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleRadioChange = (event: FormEvent<HTMLInputElement>) => {
+    const { name, value } = event.target as HTMLInputElement;
+
+    onHandleChange(name, value);
+  };
+
+  const handleLabelKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Space' || event.code === 'Enter') {
-      console.log('handleKeyDown: ', event.code);
+
+      onHandleChange(name, value);
     }
   }
 
@@ -26,8 +33,8 @@ const BaseRadio = ({ id, label, description, name, value, checked = false, onHan
         id={ id }
         value={ value }
         name={ name }
-        defaultChecked={ checked }
-        onChange={ onHandleChange }
+        checked= { checked }
+        onChange={ handleRadioChange }
         hidden
       />
 
@@ -35,7 +42,7 @@ const BaseRadio = ({ id, label, description, name, value, checked = false, onHan
         htmlFor={ id }
         className={ `${styles['radio-control__label']} | stack` }
         tabIndex={ 0 }
-        onKeyDown={ handleKeyDown }
+        onKeyDown={ handleLabelKeyDown }
       >
         { label }
         <span className={ styles['radio-control__description'] }>{ description }</span>

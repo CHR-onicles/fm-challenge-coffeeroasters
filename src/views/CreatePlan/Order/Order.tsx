@@ -22,6 +22,7 @@ interface IQuickLink {
   label: string;
   isActive: boolean;
   isDisabled: boolean;
+  isValid: boolean;
 }
 
 const priceMap = new Map([
@@ -39,6 +40,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
       label: orderOption.quickLink,
       isActive: index === 0 ? true : false,
       isDisabled: false,
+      isValid: true,
     }))
   );
 
@@ -71,12 +73,46 @@ const Order = ({ orderOptions }: IOrderProps) => {
     targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
-  const handleChange = (event: FormEvent<HTMLInputElement>) => {
-    const input = event.target as HTMLInputElement;
+  const handleMarkAsInvalid = (slug: string) => {
+    // const targetElem = document.getElementById(slug);
 
+    setQuickLinks((quickLinks) => {
+      const invalidIndex = quickLinks.findIndex(quickLink => quickLink.slug === slug); 
+      const updatedQuickLinks = [ ...quickLinks ];
+
+      updatedQuickLinks[invalidIndex].isValid = false;
+
+      return updatedQuickLinks;
+    });
+
+    // targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const handleMarkAsValid = (slug: string) => {
+    // const targetElem = document.getElementById(slug);
+
+    setQuickLinks((quickLinks) => {
+      const invalidIndex = quickLinks.findIndex(quickLink => quickLink.slug === slug); 
+      const updatedQuickLinks = [ ...quickLinks ];
+
+      updatedQuickLinks[invalidIndex].isValid = true;
+
+      return updatedQuickLinks;
+    });
+
+    // targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const handleScrollToError = (slug: string) => {
+    const targetElem = document.getElementById(slug);
+
+    targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+
+  const handleChange = (name: string, value: string) => {
     setFormData((formData) => {
       const updatedFormData = { ...formData };
-      const { name, value } = input;
 
       updatedFormData[name as keyof IFormData] = value;
 
@@ -86,6 +122,8 @@ const Order = ({ orderOptions }: IOrderProps) => {
 
       return updatedFormData;
     });
+
+    handleMarkAsValid(name);
   };
 
   const handleDisableGrindOption = useCallback(() => {
@@ -162,19 +200,33 @@ const Order = ({ orderOptions }: IOrderProps) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    let isFormValid;
+    let isFormValid: boolean;
+    let invalidFields: string[];
 
     if (formData.preferences === 'Filter' || formData.preferences === 'Espresso') {
       isFormValid = Object.values(formData).every(option => option !== '');
+      invalidFields = Object.keys(formData).filter(key => formData[key as keyof IFormData] === '');
     } else {
       const capsulePreference = { ...formData };
 
       delete capsulePreference.grindOption;
 
       isFormValid = Object.values(capsulePreference).every(option => option !== '');
+      invalidFields = Object.keys(formData).filter(key => formData[key as keyof IFormData] === '');
     }
 
     if (!isFormValid) {
+      // handleMarkAsInvalid();
+      console.log('invalidFields: string[]: ', invalidFields);
+
+      if (invalidFields.length) {
+        invalidFields.forEach(field => {
+          handleMarkAsInvalid(field);
+        });
+
+        handleScrollToError(invalidFields[0]);
+      }
+      
       return;
     }
 
@@ -208,11 +260,13 @@ const Order = ({ orderOptions }: IOrderProps) => {
                     <li className={ styles['order__link-list-item'] } key={ quickLink.id }>
                       <button
                         type="button"
+                        id={ `quicklink-${quickLink.slug}` }
                         className={ `btn | ${styles['order__link-list-btn']} ${quickLink.isActive ? `${styles['active']}` : ''}` }
                         disabled={ quickLink.isDisabled }
                         onClick={ () => handleMarkAsActive(quickLink.slug) }
                       >
                         { quickLink.label }
+                        { !quickLink.isValid ? (<span className="btn" data-variant="burger" aria-expanded="true"></span>) : null }
                       </button>
                     </li>
                   ))
@@ -232,6 +286,12 @@ const Order = ({ orderOptions }: IOrderProps) => {
                       label={ orderOption.title }
                       onMarkAsActive={ handleMarkAsActive }
                     >
+                      {
+                        !quickLinks[index].isValid ? (
+                          <span className={ `${styles['order__form-feedback']} | text-font-bold text-size-s-1` }>Please select your { quickLinks[index].label }!</span>
+                        ) : null
+                      }
+
                       <div className={ `row | ${styles['order__form-group']}` }>
                         {
                           orderOption.options.map((option, index) => (
@@ -242,6 +302,7 @@ const Order = ({ orderOptions }: IOrderProps) => {
                               name={ orderOption.slug }
                               label={ option.title }
                               description={ orderOption.slug === 'deliveries' ? `$${handleGetDeliveryPrice(index).toFixed(2)} ${option.description}` : option.description }
+                              checked={ formData[orderOption.slug as keyof IFormData] === option.title }
                               onHandleChange={ handleChange }
                             />
                           ))
