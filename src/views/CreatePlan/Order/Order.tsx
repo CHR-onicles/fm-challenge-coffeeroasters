@@ -73,38 +73,28 @@ const Order = ({ orderOptions }: IOrderProps) => {
     targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
-  const handleMarkAsInvalid = (slug: string) => {
-    // const targetElem = document.getElementById(slug);
-
+  const handleUpdateValidity = (slug: string, isValid: boolean) => {
     setQuickLinks((quickLinks) => {
-      const invalidIndex = quickLinks.findIndex(quickLink => quickLink.slug === slug); 
+      const index = quickLinks.findIndex(quickLink => quickLink.slug === slug); 
       const updatedQuickLinks = [ ...quickLinks ];
 
-      updatedQuickLinks[invalidIndex].isValid = false;
+      updatedQuickLinks[index].isValid = isValid;
 
       return updatedQuickLinks;
     });
-
-    // targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  };
-
-  const handleMarkAsValid = (slug: string) => {
-    // const targetElem = document.getElementById(slug);
-
-    setQuickLinks((quickLinks) => {
-      const invalidIndex = quickLinks.findIndex(quickLink => quickLink.slug === slug); 
-      const updatedQuickLinks = [ ...quickLinks ];
-
-      updatedQuickLinks[invalidIndex].isValid = true;
-
-      return updatedQuickLinks;
-    });
-
-    // targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   const handleScrollToError = (slug: string) => {
     const targetElem = document.getElementById(slug);
+
+    setQuickLinks((quickLinks) => {
+      const updatedQuickLinks = quickLinks.map(quickLink => ({
+        ...quickLink,
+        isActive: quickLink.slug === slug ? true : false,
+      }));
+
+      return updatedQuickLinks;
+    });
 
     targetElem?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -123,7 +113,11 @@ const Order = ({ orderOptions }: IOrderProps) => {
       return updatedFormData;
     });
 
-    handleMarkAsValid(name);
+    handleUpdateValidity(name, true);
+
+    if (value === 'Capsule') {
+      handleUpdateValidity('grindOption', true);
+    }
   };
 
   const handleDisableGrindOption = useCallback(() => {
@@ -203,29 +197,24 @@ const Order = ({ orderOptions }: IOrderProps) => {
     let isFormValid: boolean;
     let invalidFields: string[];
 
-    if (formData.preferences === 'Filter' || formData.preferences === 'Espresso') {
-      isFormValid = Object.values(formData).every(option => option !== '');
-      invalidFields = Object.keys(formData).filter(key => formData[key as keyof IFormData] === '');
-    } else {
+    if (formData.preferences === 'Capsule') {
       const capsulePreference = { ...formData };
 
       delete capsulePreference.grindOption;
 
       isFormValid = Object.values(capsulePreference).every(option => option !== '');
+      invalidFields = Object.keys(capsulePreference).filter(key => formData[key as keyof IFormData] === '');
+    } else {
+      isFormValid = Object.values(formData).every(option => option !== '');
       invalidFields = Object.keys(formData).filter(key => formData[key as keyof IFormData] === '');
     }
 
     if (!isFormValid) {
-      // handleMarkAsInvalid();
-      console.log('invalidFields: string[]: ', invalidFields);
+      invalidFields.forEach(field => {
+        handleUpdateValidity(field, false);
+      });
 
-      if (invalidFields.length) {
-        invalidFields.forEach(field => {
-          handleMarkAsInvalid(field);
-        });
-
-        handleScrollToError(invalidFields[0]);
-      }
+      handleScrollToError(invalidFields[0]);
       
       return;
     }
