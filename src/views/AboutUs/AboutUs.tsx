@@ -7,91 +7,101 @@ import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 import { useContent } from '../../hooks';
 
 const AboutUs = () => {
-  const { pageContent, error, isLoading } = useContent('about');
+  const { content, error, status } = useContent('about');
+
+  if (status === 'loading') {
+    return (
+      <main>
+        <section>
+          <div className="container">
+            <div className="grid-cols mb-s5 pb-s5">
+              <div className="grid__item">
+                <BaseSkeleton variant="hero-page" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
+                <BaseSkeleton variant="image" />
+              </div>
+
+              <div className="grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7">
+                <BaseSkeleton variant="content" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
+                <BaseSkeleton variant="content" />
+              </div>
+
+              <div className="grid__item grid__item--span-md-5 grid__item--start-md-8 grid__item--span-lg-5 grid__item--start-lg-8">
+                <BaseSkeleton variant="image" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <main>
+        <section>
+          <div className="container">
+            <div className="grid-cols mt-s5 pt-s5 mb-s5 pb-s5">
+              <div className="grid__item">
+                <h2 className="text-align-center mb-s5">Oops</h2>
+
+                <p className="text-align-center">{ error }</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main>
-      {
-        isLoading ? (
-          <section>
-            <div className="container">
-              <div className="grid-cols mb-s5 pb-s5">
-                <div className="grid__item">
-                  <BaseSkeleton variant="hero-page" />
-                </div>
-              </div>
+      <Fragment>
+        <BaseHero content={ content[0] }/>
 
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
+        <OurCommitment content={ content[1] } />
 
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
+        <OurQuality content={ content[2] } />
 
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
-                  <BaseSkeleton variant="image" />
-                </div>
-
-                <div className="grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7">
-                  <BaseSkeleton variant="content" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
-                  <BaseSkeleton variant="content" />
-                </div>
-
-                <div className="grid__item grid__item--span-md-5 grid__item--start-md-8 grid__item--span-lg-5 grid__item--start-lg-8">
-                  <BaseSkeleton variant="image" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-              </div>
-            </div>
-          </section>
-        ) : !isLoading && error?.length ? (
-          <section>
-            <div className="container">
-              <div className="grid-cols mb-s5 pb-s5">
-                <div className="grid__item">
-                  <p>{ error }</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        ) : (
-          <Fragment>
-            <BaseHero content={ pageContent[0] }/>
-
-            <OurCommitment content={ pageContent[1] } />
-
-            <OurQuality content={ pageContent[2] } />
-
-            <OurHeadquarters content={ pageContent[3] } />
-          </Fragment>
-        )
-      }
+        <OurHeadquarters content={ content[3] } />
+      </Fragment>
     </main>
   );
 };

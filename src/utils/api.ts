@@ -24,6 +24,8 @@ const initializeMockAdapter = () => {
 
     return [200, contentMap.get(id)];
   });
+
+  // mock.onGet(apiRoutes.contents).networkError();
 };
 
 export default initializeMockAdapter;

@@ -5,22 +5,25 @@ import { getContent } from '../services';
 import { IContent } from '../interfaces/content-interface';
 
 const useContent = (page: string) => {
-  const [ pageContent, setPageContent ] = useState<IContent[]>([]);
-  const [ error, setError ] = useState<string | null>(null);
-  const [ isLoading, setIsLoading ] = useState<boolean>(true);
+  const [ content, setContent ] = useState<IContent[]>([]);
+  const [ error, setError ] = useState<string>('');
+  const [ status, setStatus ] = useState<string>('loading');
 
   const handleGetPageContent = useCallback(async () => {
     try {
-      setIsLoading(true);
+      setStatus('loading');
 
       const { data } = await getContent(page);
 
-      setPageContent(data);
+      setContent(data);
+
+      setStatus('success');
     } catch (error) {
-      setPageContent([]);
+      setContent([]);
+
       setError(`Something went wrong while fetching content for ${page} page.`);
-    } finally {
-      setIsLoading(false);
+
+      setStatus('error');
     }
   }, [page]);
 
@@ -30,7 +33,7 @@ const useContent = (page: string) => {
     window.scrollTo(0, 0);
   }, [handleGetPageContent]);
 
-  return { pageContent, error, isLoading };
+  return { content, error, status };
 };
 
 export default useContent;
