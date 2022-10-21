@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import { IContent } from '../interfaces/content-interface';
+
 import mobileHeroImage from '../assets/images/home/mobile/image-hero-coffeepress.jpg';
 import tabletHeroImage from '../assets/images/home/tablet/image-hero-coffeepress.jpg';
 import desktopHeroImage from '../assets/images/home/desktop/image-hero-coffeepress.jpg';
@@ -33,9 +35,9 @@ import mobilePlanHeroImage from '../assets/images/plan/mobile/image-hero-blackcu
 import tabletPlanHeroImage from '../assets/images/plan/tablet/image-hero-blackcup.jpg';
 import desktopPlanHeroImage from '../assets/images/plan/desktop/image-hero-blackcup.jpg';
 
-export const pageContentMap = new Map();
+export const contentMap = new Map() as Map<string, IContent[]>;
 
-pageContentMap.set('home', [
+contentMap.set('home', [
   {
     id: uuidv4(),
     title: 'Great coffee made simple.',
@@ -129,7 +131,7 @@ pageContentMap.set('home', [
   },
 ]);
 
-pageContentMap.set('about', [
+contentMap.set('about', [
   {
     id: uuidv4(),
     title: 'About Us',
@@ -188,7 +190,7 @@ pageContentMap.set('about', [
   },
 ]);
 
-pageContentMap.set('plan', [
+contentMap.set('plan', [
   {
     id: uuidv4(),
     title: 'Create plan',
@@ -347,7 +349,7 @@ pageContentMap.set('plan', [
   }
 ]);
 
-pageContentMap.set('checkout', [
+contentMap.set('checkout', [
   {
     id: uuidv4(),
     title: 'Checkout',

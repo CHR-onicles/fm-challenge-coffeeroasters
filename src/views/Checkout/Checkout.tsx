@@ -6,10 +6,10 @@ import { ThankYou } from './index';
 
 import AppContext from '../../context/AppContext';
 
-import useGetContent from '../../hooks/use-get-content';
+import { useContent } from '../../hooks';
 
 const Checkout = () => {
-  const { pageContent, error, isLoading } = useGetContent('about');
+  const { pageContent, error, isLoading } = useContent('checkout');
   const { onSetCheckout } = useContext(AppContext);
 
   useEffect(() => {

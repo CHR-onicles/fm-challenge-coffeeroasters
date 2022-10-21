@@ -4,10 +4,10 @@ import { BaseHero } from '../../components/layout';
 import { BaseSkeleton } from '../../components/ui';
 import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 
-import useGetContent from '../../hooks/use-get-content';
+import { useContent } from '../../hooks';
 
 const AboutUs = () => {
-  const { pageContent, error, isLoading } = useGetContent('about');
+  const { pageContent, error, isLoading } = useContent('about');
 
   return (
     <main>

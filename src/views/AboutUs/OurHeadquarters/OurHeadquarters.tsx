@@ -1,9 +1,10 @@
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
+import { IHeadquarter } from '../../../interfaces/headquarter-interface';
 
 import styles from './OurHeadquarters.module.scss';
 
 interface IOurHeadquartersProps {
-  content: IPageContent;
+  content: IContent;
 }
 
 const OurHeadquarters = ({ content }: IOurHeadquartersProps) => {
@@ -19,7 +20,7 @@ const OurHeadquarters = ({ content }: IOurHeadquartersProps) => {
             listing?.length ? (
               <ul className={ `grid-cols | ${styles['headquarters__list']}` }>
                 {
-                  listing.map(headquarter => (
+                  listing.map((headquarter: IHeadquarter) => (
                     <li
                       key={ headquarter.id }
                       className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['headquarters__item']}` }

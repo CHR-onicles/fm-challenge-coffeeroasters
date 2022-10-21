@@ -4,10 +4,10 @@ import { TheHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
 
-import useGetContent from '../../hooks/use-get-content';
+import { useContent } from '../../hooks';
 
 const Home = () => {
-  const { pageContent, error, isLoading } = useGetContent('home');
+  const { pageContent, error, isLoading } = useContent('home');
 
   return (
     <main>

@@ -1,4 +1,4 @@
-export const routes = [
+export const viewRoutes = [
   {
     title: 'Home',
     path: '/',
@@ -12,3 +12,7 @@ export const routes = [
     path: '/create-plan',
   },
 ];
+
+export const apiRoutes = {
+  contents: '/api/v1/contents/:id',
+};

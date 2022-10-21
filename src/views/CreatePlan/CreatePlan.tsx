@@ -4,12 +4,12 @@ import { BaseHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
 import { Order } from './index';
 
-import useGetContent from '../../hooks/use-get-content';
+import { useContent } from '../../hooks';
 
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
-  const { pageContent, error, isLoading } = useGetContent('plan');
+  const { pageContent, error, isLoading } = useContent('plan');
 
   return (
     <main>

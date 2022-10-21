@@ -1,9 +1,9 @@
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
 
 import styles from './OurCommitment.module.scss';
 
 interface IOurCommitmentProps {
-  content: IPageContent;
+  content: IContent;
 }
 
 const OurCommitment = ({ content }: IOurCommitmentProps) => {
@@ -16,10 +16,10 @@ const OurCommitment = ({ content }: IOurCommitmentProps) => {
           <div className="grid-cols">
             <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
               <picture>
-                <source media="(min-width: 1110px)" srcSet={ imagePath[2] } />
-                <source media="(min-width: 768px)" srcSet={ imagePath[1] } />
+                <source media="(min-width: 1110px)" srcSet={ imagePath ? imagePath[2] : '' } />
+                <source media="(min-width: 768px)" srcSet={ imagePath ? imagePath[1] : '' } />
                 <img
-                  src={ imagePath[0] }
+                  src={ imagePath ? imagePath[0] : '' }
                   alt={ title }
                   className={ styles['our-commitment__content-image'] }
                 />

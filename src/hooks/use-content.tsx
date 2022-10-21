@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { getPageContent } from '../services';
+import { getContent } from '../services';
 
-import { IPageContent } from '../interfaces/page-content-interface';
+import { IContent } from '../interfaces/content-interface';
 
-const useGetContent = (page: string) => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
+const useContent = (page: string) => {
+  const [ pageContent, setPageContent ] = useState<IContent[]>([]);
   const [ error, setError ] = useState<string | null>(null);
   const [ isLoading, setIsLoading ] = useState<boolean>(true);
 
@@ -13,9 +13,9 @@ const useGetContent = (page: string) => {
     try {
       setIsLoading(true);
 
-      const pageContentData = await getPageContent(page);
+      const { data } = await getContent(page);
 
-      setPageContent(pageContentData);
+      setPageContent(data);
     } catch (error) {
       setPageContent([]);
       setError(`Something went wrong while fetching content for ${page} page.`);
@@ -33,4 +33,4 @@ const useGetContent = (page: string) => {
   return { pageContent, error, isLoading };
 };
 
-export default useGetContent;
+export default useContent;

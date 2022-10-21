@@ -2,12 +2,13 @@ import { useRef, useCallback } from 'react';
 
 import { useMediaQuery } from '../../../hooks';
 
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
+import { IArticle } from '../../../interfaces/article-interface';
 
 import styles from './OurCollection.module.scss';
 
 interface IOurCollectionProps {
-  content: IPageContent;
+  content: IContent;
 }
 
 const OurCollection = ({ content }: IOurCollectionProps) => {
@@ -48,7 +49,7 @@ const OurCollection = ({ content }: IOurCollectionProps) => {
                 className={ `${styles['collection__list']} | grid-cols` }
               >
                 {
-                  listing.map(coffeeType => (
+                  listing.map((coffeeType: IArticle) => (
                     <li
                       key={ coffeeType.id }
                       className={ `grid__item grid__item--span-md-10 grid__item--span-lg-3 | ${styles['collection__item']}` }

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { useMediaQuery } from '../../../hooks';
 
-import { routes } from '../../../data/routes';
+import { viewRoutes } from '../../../routes';
 
 import styles from './BaseNavigation.module.scss';
 
@@ -57,7 +57,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
             >
               <ul className={ `row ${styles.row}`}>
                 {
-                  routes.map(route => (
+                  viewRoutes.map(route => (
                     <li key={ `nav-${route.path}` }>
                       <NavLink to={ route.path } onClick={ handleToggleNav }>{ route.title }</NavLink>
                     </li>
@@ -73,7 +73,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
           >
             <ul className={ `row ${styles.row}` }>
               {
-                routes.map(route => (
+                viewRoutes.map(route => (
                   <li key={ `nav-${route.path}` }>
                     <NavLink to={ route.path }>{ route.title }</NavLink>
                   </li>

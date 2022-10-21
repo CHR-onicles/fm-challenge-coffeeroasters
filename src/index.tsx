@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './scss/index.scss';
 
+import initializeMockAdapter from './utils/api';
 import { AppContextProvider } from './context/AppContext';
 
 import App from './App';
@@ -11,6 +12,8 @@ import { BasePage, BaseRouteGuard } from './components/layout';
 import { Home, AboutUs, CreatePlan, Checkout, DesignSystem, NotFound } from './views';
 
 import reportWebVitals from './reportWebVitals';
+
+initializeMockAdapter();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
