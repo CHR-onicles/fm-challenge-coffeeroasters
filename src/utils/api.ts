@@ -16,16 +16,18 @@ const initializeMockAdapter = () => {
       decode: decodeURIComponent,
     })(config.url!);
 
-    if (!result) {
-      return [403];
-    }
+    // if (!result) {
+    //   return [404];
+    // }
 
-    const { id } = config.params;
+    return [404];
 
-    return [200, contentMap.get(id)];
+    // const { id } = config.params;
+
+    // return [200, contentMap.get(id)];
   });
 
-  // mock.onGet(apiRoutes.contents).networkError();
+  // mock.onGet(apiRoutes.contents).timeout();
 };
 
 export default initializeMockAdapter;
