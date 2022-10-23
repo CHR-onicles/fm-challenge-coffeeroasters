@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import axios, { AxiosError } from 'axios';
 
 import { getContent } from '../services';
 
@@ -19,11 +20,15 @@ const useContent = (page: string) => {
 
       setStatus('success');
     } catch (error) {
-      console.dir(error);
-
       setContent([]);
 
-      setError('404');
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError;
+
+        setError(serverError.message);
+      } else {
+        setError(String(error));
+      }
 
       setStatus('error');
     }

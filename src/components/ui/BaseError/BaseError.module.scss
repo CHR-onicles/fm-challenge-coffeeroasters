@@ -1,1 +1,33 @@
 @use '../../../scss/abstracts/' as *;
+
+.error {
+  --error-status-code-text-size: #{toRem(40px)};
+  --error-status-code-spacing-top: #{toRem(20px)};
+
+  position: relative;
+
+  h2, p {
+    z-index: 2;
+  }
+
+  &__status-code {
+    // position: absolute;
+    // top: var(--error-status-code-spacing-top);
+    // left: 50%;
+    // transform: translateX(-50%);
+    color: var(--cyan-color-2);
+    font-size: var(--error-status-code-text-size);
+    z-index: -1;
+    // opacity: 0.5;
+  }
+
+  @include media-breakpoint(md) {
+    --error-status-code-text-size: #{toRem(96px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --error-status-code-text-size: #{toRem(150px)};
+
+    padding: 0 var(--content-spacing-horizontal);
+  }
+}

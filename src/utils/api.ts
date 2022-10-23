@@ -20,14 +20,14 @@ const initializeMockAdapter = () => {
     //   return [404];
     // }
 
-    return [404];
+    return [504];
 
     // const { id } = config.params;
 
     // return [200, contentMap.get(id)];
   });
 
-  // mock.onGet(apiRoutes.contents).timeout();
+  // mock.onGet(apiRoutes.contents).networkError();
 };
 
 export default initializeMockAdapter;
