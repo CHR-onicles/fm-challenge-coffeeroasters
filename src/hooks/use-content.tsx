@@ -19,11 +19,11 @@ const useContent = (page: string) => {
 
       setStatus('success');
     } catch (error) {
-      console.error(error);
+      console.dir(error);
 
       setContent([]);
 
-      setError(`Something went wrong while fetching content for ${page} page.`);
+      setError('404');
 
       setStatus('error');
     }
