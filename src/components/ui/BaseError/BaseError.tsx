@@ -19,7 +19,7 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
 
       switch (statusCode) {
         case '400':
-          message = 'Sorry, a bad request error occurred as the server didn\'t understand the syntax of the request.';
+          message = 'Sorry, a bad request error occurred as the server did not understand the syntax of the request.';
           break;
 
         case '401':
@@ -27,7 +27,7 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
           break;
 
         case '404':
-          message = 'Sorry, we\'re not sure how you got here... but the server can\'t find the requested page.';
+          message = 'Sorry, we\'re not sure how you got here... but the server cannot find the requested page.';
           break;
 
         case '408':
@@ -35,7 +35,7 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
           break;
 
         case '500':
-          message = 'Sorry, an internal server error occurred and the server was unable to complete the request.';
+          message = 'Sorry, an internal server error occurred as the server was unable to complete the request.';
           break;
 
         case '502':
@@ -65,12 +65,12 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
       <div className="container">
         <div className={ styles.error }>
           <div className="grid-cols">
-            <div className="grid__item grid__item--span-lg-6">
-              <h2 className="text-align-center mb-s5">{ title }</h2>
+            <div className="grid__item grid__item--start-md-3 grid__item--span-md-8 grid__item--start-lg-4 grid__item--span-lg-6">
+              <h1 className={ `${styles['error__title']} | text-align-center` }>{ title }</h1>
               
-              <h3 className={ styles['error__status-code'] }>{ errorResponse.statusCode }</h3>
+              <h2 className={ `${styles['error__status-code']} | text-align-center` }>{ errorResponse.statusCode }</h2>
 
-              <p className="text-align-center">{ errorResponse.message }</p>
+              <p className={ `${styles['error__message']} | text-align-center` }>{ errorResponse.message }</p>
             </div>
           </div>
         </div>

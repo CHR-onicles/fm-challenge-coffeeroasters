@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
-import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
+import { BaseHowItWorks, BaseSkeleton, BaseError } from '../../components/ui';
 import { Order } from './index';
 
 import { useContent } from '../../hooks';
@@ -60,17 +60,7 @@ const Subscribe = () => {
   if (status === 'error') {
     return (
       <main>
-        <section>
-          <div className="container">
-            <div className="grid-cols mt-s5 pt-s5 mb-s5 pb-s5">
-              <div className="grid__item">
-                <h2 className="text-align-center mb-s5">Oops</h2>
-
-                <p className="text-align-center">{ error }</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BaseError error={ error } />
       </main>
     );
   }

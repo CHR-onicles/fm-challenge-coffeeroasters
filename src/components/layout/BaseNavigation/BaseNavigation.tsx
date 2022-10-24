@@ -16,7 +16,15 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(false);
 
   const handleToggleNav = () => {
-    setIsActive(prevState => !prevState);
+    setIsActive(prevState => {
+      if (!prevState) {
+        document.body.classList.add('no-scrolling');
+      } else {
+        document.body.classList.remove('no-scrolling');
+      }
+
+      return !prevState;
+    });
   };
 
   const handleMediaQueryChange = useCallback((mediaQueryList: MediaQueryList) => {
