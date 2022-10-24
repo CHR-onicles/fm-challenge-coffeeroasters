@@ -1,11 +1,12 @@
 import { BaseCard } from '../../../components/ui';
 
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
+import { IArticle } from '../../../interfaces/article-interface';
 
 import styles from './WhyChooseUs.module.scss';
 
 interface IWhyChooseUsProps {
-  content: IPageContent;
+  content: IContent;
 }
 
 const WhyChooseUs = ({ content }: IWhyChooseUsProps) => {
@@ -28,7 +29,7 @@ const WhyChooseUs = ({ content }: IWhyChooseUsProps) => {
           listing?.length ? (
             <ul className="grid-cols">
               {
-                listing.map(benefit => (
+                listing.map((benefit: IArticle) => (
                   <li
                     key={ benefit.id }
                     className={ `grid__item grid__item--span-lg-4 | ${styles['benefits__list-item']}` }

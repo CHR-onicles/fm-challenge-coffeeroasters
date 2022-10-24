@@ -1,0 +1,44 @@
+@use '../../../scss/abstracts/' as *;
+
+.error {
+  --error-spacing-vertical: #{toRem(60px)};
+
+  --error-title-spacing-bottom: #{toRem(24px)};
+
+  --error-status-code-text-size: #{toRem(80px)};
+  --error-status-code-spacing-top: #{toRem(20px)};
+
+  --error-message-spacing-top: #{toRem(40px)};
+
+  margin: var(--error-spacing-vertical) 0;
+
+  &__title {
+    margin-bottom: var(--error-title-spacing-bottom);
+  }
+
+  &__status-code {
+    background: linear-gradient(180deg, var(--cyan-color-2) 0%, var(--neutral-color-1) 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: var(--error-status-code-text-size);
+    line-height: 1.2;
+  }
+
+  &__message {
+    margin-top: var(--error-message-spacing-top);
+  }
+
+  @include media-breakpoint(md) {
+    --error-spacing-vertical: #{toRem(72px)};
+
+    --error-status-code-text-size: #{toRem(96px)};
+  }
+
+  @include media-breakpoint(lg) {
+    --error-spacing-vertical: #{toRem(100px)};
+
+    --error-status-code-text-size: #{toRem(150px)};
+  }
+}

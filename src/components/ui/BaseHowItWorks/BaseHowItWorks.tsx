@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { BaseCard } from '../../ui';
 
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
+import { IArticle } from '../../../interfaces/article-interface';
 
 import styles from './BaseHowItWorks.module.scss';
 
 interface IBaseHowItWorksProps {
-  content: IPageContent;
+  content: IContent;
   variant?: string;
   withTitle?: boolean;
   withCTA?: boolean;
@@ -31,7 +32,7 @@ const BaseHowItWorks = ({ content, variant = 'default', withTitle = true, withCT
             ? (
               <ul className={ `grid-cols | ${styles['how-it-works__list']}` }>
                 {
-                  listing.map(step => (
+                  listing.map((step: IArticle) => (
                     <li
                       key={ step.id }
                       className={ `grid__item grid__item--span-md-4 grid__item--span-lg-4 | ${styles['how-it-works__item']}` }

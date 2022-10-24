@@ -1,103 +1,84 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
-import { BaseHowItWorks, BaseSkeleton } from '../../components/ui';
+import { BaseHowItWorks, BaseSkeleton, BaseError } from '../../components/ui';
 import { Order } from './index';
 
-import { getPageContent, getPlans } from '../../services';
+import { useContent } from '../../hooks';
 
-import { IPageContent } from '../../interfaces/page-content-interface';
 import { IPlan } from '../../interfaces/plan-interface';
 
 const Subscribe = () => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
-  const [ plans, setPlans ] = useState<IPlan[]>([]);
+  const { content, error, status } = useContent('plan');
 
-  const handleGetPageContent = async () => {
-    try {
-      const pageContentData = await getPageContent('plan');
+  if (status === 'loading') {
+    return (
+      <main>
+        <section>
+          <div className="container">
+            <div className="grid-cols mb-s5 pb-s5">
+              <div className="grid__item">
+                <BaseSkeleton variant="hero-page" />
+              </div>
+            </div>
 
-      setPageContent(pageContentData);
-    } catch (error) {
-      setPageContent([]);
-    }
-  };
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
 
-  const handleGetPlans = async () => {
-    try {
-      const plansData = await getPlans();
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
 
-      setPlans(plansData);
-    } catch (error) {
-      setPlans([]);
-    }
-  };
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+            </div>
 
-  useEffect(() => {
-    handleGetPageContent();
-    handleGetPlans();
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__items grid__item--span-lg-3">
+                <BaseSkeleton variant="list" />
+              </div>
 
-    window.scrollTo(0, 0);
-  }, []);
+              <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
+                <BaseSkeleton variant="content" />
+
+                <BaseSkeleton variant="content" />
+
+                <BaseSkeleton variant="content" />
+                
+                <BaseSkeleton variant="content" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <main>
+        <BaseError error={ error } />
+      </main>
+    );
+  }
 
   return (
     <main>
-      {
-        pageContent.length ? (
-          <Fragment>
-            <BaseHero content={ pageContent[0] }/>
+      <Fragment>
+        <BaseHero content={ content[0] }/>
 
-            <BaseHowItWorks
-              content={ pageContent[1] }
-              variant="dark"
-              withTitle= { false }
-              withCTA={ false }
-            />
+        <BaseHowItWorks
+          content={ content[1] }
+          variant="dark"
+          withTitle= { false }
+          withCTA={ false }
+        />
 
-            <Order orderOptions={ plans } />
-          </Fragment>
-        ) : (
-          <section>
-            <div className="container">
-              <div className="grid-cols mb-s5 pb-s5">
-                <div className="grid__item">
-                  <BaseSkeleton variant="hero-page" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__items grid__item--span-lg-3">
-                  <BaseSkeleton variant="list" />
-                </div>
-
-                <div className="grid__items grid__item--span-lg-8 grid__item--start-lg-5">
-                  <BaseSkeleton variant="content" />
-
-                  <BaseSkeleton variant="content" />
-
-                  <BaseSkeleton variant="content" />
-                  
-                  <BaseSkeleton variant="content" />
-                </div>
-              </div>
-            </div>
-          </section>
-        )
-      }
+        <Order orderOptions={ content[2]?.listing as IPlan[] } />
+      </Fragment>
     </main>
   );
 };

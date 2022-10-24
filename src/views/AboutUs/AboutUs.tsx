@@ -1,105 +1,97 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { BaseHero } from '../../components/layout';
-import { BaseSkeleton } from '../../components/ui';
+import { BaseSkeleton, BaseError } from '../../components/ui';
 import { OurCommitment, OurQuality, OurHeadquarters } from './index';
 
-import { getPageContent } from '../../services';
-
-import { IPageContent } from '../../interfaces/page-content-interface';
+import { useContent } from '../../hooks';
 
 const AboutUs = () => {
-  const [ pageContent, setPageContent ] = useState<IPageContent[]>([]);
+  const { content, error, status } = useContent('about');
 
-  const handleGetPageContent = async () => {
-    try {
-      const pageContentData = await getPageContent('about');
+  if (status === 'loading') {
+    return (
+      <main>
+        <section>
+          <div className="container">
+            <div className="grid-cols mb-s5 pb-s5">
+              <div className="grid__item">
+                <BaseSkeleton variant="hero-page" />
+              </div>
+            </div>
 
-      setPageContent(pageContentData);
-    } catch (error) {
-      setPageContent([]);
-    }
-  };
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
 
-  useEffect(() => {
-    handleGetPageContent();
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
 
-    window.scrollTo(0, 0);
-  }, []);
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
+                <BaseSkeleton variant="image" />
+              </div>
+
+              <div className="grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7">
+                <BaseSkeleton variant="content" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
+                <BaseSkeleton variant="content" />
+              </div>
+
+              <div className="grid__item grid__item--span-md-5 grid__item--start-md-8 grid__item--span-lg-5 grid__item--start-lg-8">
+                <BaseSkeleton variant="image" />
+              </div>
+            </div>
+
+            <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+
+              <div className="grid__item grid__item--span-lg-4">
+                <BaseSkeleton variant="card" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <main>
+        <BaseError error={ error } />
+      </main>
+    );
+  }
 
   return (
     <main>
-      {
-        pageContent.length ? (
-          <Fragment>
-            <BaseHero content={ pageContent[0] }/>
+      <Fragment>
+        <BaseHero content={ content[0] }/>
 
-            <OurCommitment content={ pageContent[1] } />
+        <OurCommitment content={ content[1] } />
 
-            <OurQuality content={ pageContent[2] } />
+        <OurQuality content={ content[2] } />
 
-            <OurHeadquarters content={ pageContent[3] } />
-          </Fragment>
-        ) : (
-          <section>
-            <div className="container">
-              <div className="grid-cols mb-s5 pb-s5">
-                <div className="grid__item">
-                  <BaseSkeleton variant="hero-page" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-md-5 grid__item--span-lg-5">
-                  <BaseSkeleton variant="image" />
-                </div>
-
-                <div className="grid__item grid__item--span-md-6 grid__item--start-md-7 grid__item--span-lg-6 grid__item--start-lg-7">
-                  <BaseSkeleton variant="content" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-md-6 grid__item--span-lg-6">
-                  <BaseSkeleton variant="content" />
-                </div>
-
-                <div className="grid__item grid__item--span-md-5 grid__item--start-md-8 grid__item--span-lg-5 grid__item--start-lg-8">
-                  <BaseSkeleton variant="image" />
-                </div>
-              </div>
-
-              <div className="grid-cols ml-md-s5 mr-md-s5 pl-md-s5 pr-md-s5 mb-s5 pb-s5">
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-
-                <div className="grid__item grid__item--span-lg-4">
-                  <BaseSkeleton variant="card" />
-                </div>
-              </div>
-            </div>
-          </section>
-        )
-      }
+        <OurHeadquarters content={ content[3] } />
+      </Fragment>
     </main>
   );
 };

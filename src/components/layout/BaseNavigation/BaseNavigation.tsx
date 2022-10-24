@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { useMediaQuery } from '../../../hooks';
 
-import { routes } from '../../../data/routes';
+import { viewRoutes } from '../../../routes';
 
 import styles from './BaseNavigation.module.scss';
 
@@ -16,7 +16,15 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
   const [ isActive, setIsActive ] = useState<boolean>(false);
 
   const handleToggleNav = () => {
-    setIsActive(prevState => !prevState);
+    setIsActive(prevState => {
+      if (!prevState) {
+        document.body.classList.add('no-scrolling');
+      } else {
+        document.body.classList.remove('no-scrolling');
+      }
+
+      return !prevState;
+    });
   };
 
   const handleMediaQueryChange = useCallback((mediaQueryList: MediaQueryList) => {
@@ -57,7 +65,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
             >
               <ul className={ `row ${styles.row}`}>
                 {
-                  routes.map(route => (
+                  viewRoutes.map(route => (
                     <li key={ `nav-${route.path}` }>
                       <NavLink to={ route.path } onClick={ handleToggleNav }>{ route.title }</NavLink>
                     </li>
@@ -73,7 +81,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
           >
             <ul className={ `row ${styles.row}` }>
               {
-                routes.map(route => (
+                viewRoutes.map(route => (
                   <li key={ `nav-${route.path}` }>
                     <NavLink to={ route.path }>{ route.title }</NavLink>
                   </li>

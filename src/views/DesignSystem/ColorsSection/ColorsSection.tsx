@@ -1,4 +1,4 @@
-import { colors } from '../../../data/colors';
+import { colors } from '../../../fixtures/colors';
 
 import { BaseSwatch } from '../../../components/ui/';
 

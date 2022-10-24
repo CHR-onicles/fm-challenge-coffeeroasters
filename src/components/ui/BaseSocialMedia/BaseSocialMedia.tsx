@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { socialMediaLinks } from '../../../data/social-media-links';
+import { socialMediaLinks } from '../../../fixtures/social-media-links';
 
 import styles from './BaseSocialMedia.module.scss';
 

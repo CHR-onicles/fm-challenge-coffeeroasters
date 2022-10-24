@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import { IPageContent } from '../../../interfaces/page-content-interface';
+import { IContent } from '../../../interfaces/content-interface';
 
 import styles from './TheHero.module.scss';
 
 interface ITheHeroProps {
-  content: IPageContent;
+  content: IContent;
 }
 
 const TheHero = ({ content }: ITheHeroProps) => {
@@ -16,11 +16,11 @@ const TheHero = ({ content }: ITheHeroProps) => {
       <div className="container">
         <div className={ styles['hero__content'] }>
           <picture>
-            <source media="(min-width: 1110px)" srcSet={ imagePath[2] } />
-            <source media="(min-width: 768px)" srcSet={ imagePath[1] } />
-            <source srcSet={ imagePath[0] } />
+            <source media="(min-width: 1110px)" srcSet={ imagePath ? imagePath[2] : '' } />
+            <source media="(min-width: 768px)" srcSet={ imagePath ? imagePath[1] : '' } />
+            <source srcSet={ imagePath ? imagePath[0] : '' } />
             <img
-              src={ imagePath[0] }
+              src={ imagePath ? imagePath[0] : '' }
               alt={ title }
             />
           </picture>

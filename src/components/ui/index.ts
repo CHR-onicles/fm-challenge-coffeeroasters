@@ -6,3 +6,4 @@ export { default as BaseHowItWorks } from './BaseHowItWorks/BaseHowItWorks';
 export { default as BaseOrderSummary } from './BaseOrderSummary/BaseOrderSummary';
 export { default as BaseModal } from './BaseModal/BaseModal';
 export { default as BaseSkeleton } from './BaseSkeleton/BaseSkeleton';
+export { default as BaseError } from './BaseError/BaseError';
