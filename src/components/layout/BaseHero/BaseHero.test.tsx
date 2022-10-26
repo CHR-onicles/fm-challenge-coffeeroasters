@@ -27,9 +27,10 @@ describe('BaseHero component', () => {
 
   it('should render an image', () => {
     render(<BaseHero content={ data } />);
-    const heroImage = screen.getByRole('img');
+    const imageElement = screen.getByRole('img');
 
-    expect(heroImage).toBeInTheDocument();
-    expect(heroImage).toHaveAccessibleName(data.title);
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAccessibleName(data.title);
+    expect(imageElement).toHaveAttribute('src', data.imagePath![0]);
   });
 });

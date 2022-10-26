@@ -12,9 +12,17 @@ describe('BaseBrand component', () => {
 
   it('should render an image as logo', () => {
     render(<BaseBrand />, { wrapper: BrowserRouter });
-    const brandImg = screen.getByRole('img');
+    const imageElement = screen.getByRole('img');
 
-    expect(brandImg).toBeInTheDocument();
-    expect(brandImg).toHaveAccessibleName('Coffeeroasters logo');
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAccessibleName('Coffeeroasters logo');
+    expect(imageElement).toHaveAttribute('src', 'logo.svg');
+  });
+
+  it('should render an image with white logo given #isLogoDark is set to false', () => {
+    render(<BaseBrand isLogoDark={ false } />, { wrapper: BrowserRouter });
+    const imageElement = screen.getByRole('img');
+
+    expect(imageElement).toHaveAttribute('src', 'logo-white.svg');
   });
 });

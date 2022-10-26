@@ -35,9 +35,10 @@ describe('TheHero component', () => {
 
   it('should render an image', () => {
     render(<TheHero content={ data } />, { wrapper: BrowserRouter });
-    const heroImg = screen.getByRole('img');
+    const imageElement = screen.getByRole('img');
 
-    expect(heroImg).toBeInTheDocument();
-    expect(heroImg).toHaveAccessibleName(data.title);
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAccessibleName(data.title);
+    expect(imageElement).toHaveAttribute('src', data.imagePath![0]);
   });
 });
