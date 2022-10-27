@@ -1,25 +1,24 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import BaseRadio from './BaseRadio';
 
 describe('BaseRadio component', () => {
+  const onHandleChangeSpy = jest.fn();
   const props = {
-    id: '12345',
+    id: 'rad-1',
     label: 'Radio label',
     description: 'Radio description',
     name: 'radio-test',
     value: 'Test',
     checked: false,
-    onHandleChange: (name: string, value: string) => {
-      console.log({ name, value });
-    },
+    onHandleChange: onHandleChangeSpy,
   };
 
-  // it('should render a hidden radio input', () => {
-  //   render(<BaseRadio { ...props } />);
+  it('should render a hidden radio input', () => {
+    render(<BaseRadio { ...props } />);
 
-  //   expect(screen.getByRole('input', { name: /radio-test/i })).toBeInTheDocument();
-  // });
+    expect(screen.getByLabelText(/Radio label/i)).toBeInTheDocument();
+  });
 
   it('should render a label', () => {
     render(<BaseRadio { ...props } />);
@@ -32,4 +31,20 @@ describe('BaseRadio component', () => {
 
     expect(screen.getByText(`${props.description}`)).toBeInTheDocument();
   });
+
+  it('should call #onHandleChange when clicked', () => {
+    render(<BaseRadio { ...props } />);
+
+    fireEvent.click(screen.getByLabelText(/Radio label/i));
+
+    expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
+  });
+
+  // it('should call #onHandleChange when #Enter key is pressed', () => {
+  //   render(<BaseRadio { ...props } />);
+
+  //   fireEvent.keyDown(screen.getByLabelText(/Radio label/i), { key: 'Enter', code: 13, charCode: 13 });
+
+  //   expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
+  // });
 });
