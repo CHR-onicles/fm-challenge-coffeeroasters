@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
 import BaseNavigation from './BaseNavigation';
@@ -8,6 +9,22 @@ describe.skip('BaseNavigation component', () => {
     render(<BaseNavigation />, { wrapper: BrowserRouter });
 
     expect(screen.getByRole('button', { name: /Toggle Menu/i })).toBeInTheDocument();
+  });
+
+  it('should render a button with #aria-expanded set to false', () => {
+    render(<BaseNavigation />, { wrapper: BrowserRouter });
+
+    expect(screen.getByRole('button', { name: /Toggle Menu/i })).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('should set #aria-expanded set to true given the button is clicked', () => {
+    render(<BaseNavigation />, { wrapper: BrowserRouter });
+
+    const toggleButton = screen.getByRole('button', { name: /Toggle Menu/i });
+
+    userEvent.click(toggleButton);
+
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('should not render a button given #isHeaderNav is set to false', () => {

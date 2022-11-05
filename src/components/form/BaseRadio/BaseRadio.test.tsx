@@ -40,11 +40,11 @@ describe('BaseRadio component', () => {
     expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
   });
 
-  // it('should call #onHandleChange when #Enter key is pressed', () => {
-  //   render(<BaseRadio { ...props } />);
+  it('should call #onHandleChange when #Enter key is pressed', () => {
+    render(<BaseRadio { ...props } />);
 
-  //   fireEvent.keyDown(screen.getByLabelText(/Radio label/i), { key: 'Enter', code: 13, charCode: 13 });
+    fireEvent.keyDown(screen.getByTestId(`lbl-${props.id}`), { key: 'Enter', code: 'Enter', keyCode: 13 });
 
-  //   expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
-  // });
+    expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
+  });
 });

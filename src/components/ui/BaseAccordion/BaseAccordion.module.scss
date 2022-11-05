@@ -62,7 +62,7 @@
   &__panel {
     display: none;
 
-    &-active {
+    &--active {
       display: block;
       margin-top: var(--base-accordion-spacing-top);
     }
