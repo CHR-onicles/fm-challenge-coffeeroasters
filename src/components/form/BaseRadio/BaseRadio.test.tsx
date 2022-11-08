@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import BaseRadio from './BaseRadio';
 
@@ -35,7 +36,9 @@ describe('BaseRadio component', () => {
   it('should call #onHandleChange when clicked', () => {
     render(<BaseRadio { ...props } />);
 
-    fireEvent.click(screen.getByLabelText(/Radio label/i));
+    const labelElem = screen.getByText(/Radio label/i);
+
+    userEvent.click(labelElem);
 
     expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
   });
@@ -43,7 +46,10 @@ describe('BaseRadio component', () => {
   it('should call #onHandleChange when #Enter key is pressed', () => {
     render(<BaseRadio { ...props } />);
 
-    fireEvent.keyDown(screen.getByTestId(`lbl-${props.id}`), { key: 'Enter', code: 'Enter', keyCode: 13 });
+    const labelElem = screen.getByText(/Radio label/i);
+
+    labelElem.focus();
+    userEvent.keyboard('[Enter]');
 
     expect(onHandleChangeSpy).toHaveBeenCalledWith(props.name, props.value);
   });

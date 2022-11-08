@@ -14,7 +14,7 @@ describe('BaseAccordion component', () => {
     children: (<p>Accodrion content</p>)
   };
 
-  afterAll(() => {
+  afterEach(() => {
     props.initialState = false;
     props.isDisabled = false;
   });
@@ -26,13 +26,13 @@ describe('BaseAccordion component', () => {
     expect(screen.getByRole('button', { name: /Accordion label/i })).toBeEnabled();
   });
 
-  it('should not set an active class on accordion section by default', () => {
+  it('should show accordion content by default', () => {
     render(<BaseAccordion { ...props } />);
 
-    expect(screen.getByRole('region', { name: /Accordion label/i })).not.toHaveClass('accordion__panel--active');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
   });
 
-  it('should render a disabled accordion toggle button given #isDisabled is set to true', () => {
+  it('should render a disabled accordion header given #isDisabled is set to true', () => {
     props.isDisabled = true;
 
     render(<BaseAccordion { ...props } />);
@@ -40,13 +40,13 @@ describe('BaseAccordion component', () => {
     expect(screen.getByRole('button', { name: /Accordion label/i })).toBeDisabled();
   });
 
-  it('should set #aria-expanded attribute of the accordion toggle button to false by default', () => {
+  it('should set #aria-expanded attribute of the accordion header to false by default', () => {
     render(<BaseAccordion { ...props } />);
 
     expect(screen.getByRole('button', { name: /Accordion label/i })).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should set #aria-expanded attribute of the accordion toggle button to true given #initialState is set as true', () => {
+  it('should set #aria-expanded attribute of the accordion header to true given #initialState is set as true', () => {
     props.initialState = true;
 
     render(<BaseAccordion { ...props } />);
@@ -54,43 +54,97 @@ describe('BaseAccordion component', () => {
     expect(screen.getByRole('button', { name: /Accordion label/i })).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('should set an active class on accordion section given #initialState is set as true', () => {
+  it('should show accordion content given #initialState is set as true', () => {
     props.initialState = true;
 
     render(<BaseAccordion { ...props } />);
 
-    expect(screen.getByRole('region', { name: /Accordion label/i })).toHaveClass('accordion__panel--active');
+    expect(screen.getByText(/Accodrion content/i)).toBeVisible();
   });
 
-  it('should set #aria-expanded attribute to true given user clicks on the accordion toggle button', () => {
+  it('should show accordion content given user clicks on the accordion header', () => {
     render(<BaseAccordion { ...props } />);
 
-    const button = screen.getByRole('button', { name: /Accordion label/i });
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
 
-    userEvent.click(button);
+    userEvent.click(accordionHeader);
 
-    expect(button).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByText(/Accodrion content/i)).toBeVisible();
   });
 
-  it('should set an active class on accordion section given user clicks on the accordion toggle button', () => {
+  it('should not show accordion content given #isDisabled is set to true', () => {
+    props.isDisabled = true;
+
     render(<BaseAccordion { ...props } />);
 
-    const button = screen.getByRole('button', { name: /Accordion label/i });
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
 
-    userEvent.click(button);
+    userEvent.click(accordionHeader);
 
-    expect(screen.getByRole('region', { name: /Accordion label/i })).toHaveClass('accordion__panel--active');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
   });
 
-  // it('should not set an active class on accordion section given #isDisabled is set to true', () => {
-  //   props.isDisabled = true;
+  it('should hide accordion content given user clicks twice on the accordion header', () => {
+    render(<BaseAccordion { ...props } />);
 
-  //   render(<BaseAccordion { ...props } />);
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
 
-  //   const button = screen.getByRole('button', { name: /Accordion label/i });
+    userEvent.click(accordionHeader);
+    expect(screen.getByText(/Accodrion content/i)).toBeVisible();
 
-  //   userEvent.click(button);
+    userEvent.click(accordionHeader);
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
+  });
 
-  //   expect(screen.getByRole('region', { name: /Accordion label/i })).not.toHaveClass('accordion__panel--active');
-  // });
+  it('should have a focusable accordion header', () => {
+    render(<BaseAccordion { ...props } />);
+
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+
+    accordionHeader.focus();
+
+    expect(accordionHeader).toHaveFocus();
+  });
+
+  it('should show and hide accordion content given accordion header is focused and #Space key is pressed', () => {
+    render(<BaseAccordion { ...props } />);
+
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+
+    accordionHeader.focus();
+
+    userEvent.keyboard('[Space]');
+    expect(screen.getByText(/Accodrion content/i)).toBeVisible();
+
+    userEvent.keyboard('[Space]');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
+  });
+
+  it('should not show accordion content given accordion header is not focused and #Space key is pressed', () => {
+    render(<BaseAccordion { ...props } />);
+
+    userEvent.keyboard('[Space]');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
+  });
+
+  it('should show and hide accordion content given accordion header is focused and #Enter key is pressed', () => {
+    render(<BaseAccordion { ...props } />);
+
+    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+
+    accordionHeader.focus();
+
+    userEvent.keyboard('[Enter]');
+    expect(screen.getByText(/Accodrion content/i)).toBeVisible();
+
+    userEvent.keyboard('[Enter]');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
+  });
+
+  it('should not show accordion content given accordion header is not focused and #Enter key is pressed', () => {
+    render(<BaseAccordion { ...props } />);
+
+    userEvent.keyboard('[Enter]');
+    expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
+  });
 });
