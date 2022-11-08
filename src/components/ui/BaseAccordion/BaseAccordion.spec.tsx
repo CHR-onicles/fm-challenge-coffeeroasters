@@ -65,9 +65,9 @@ describe('BaseAccordion component', () => {
   it('should show accordion content given user clicks on the accordion header', () => {
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    userEvent.click(accordionHeader);
+    userEvent.click(headerElem);
 
     expect(screen.getByText(/Accodrion content/i)).toBeVisible();
   });
@@ -77,9 +77,9 @@ describe('BaseAccordion component', () => {
 
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    userEvent.click(accordionHeader);
+    userEvent.click(headerElem);
 
     expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
   });
@@ -87,31 +87,31 @@ describe('BaseAccordion component', () => {
   it('should hide accordion content given user clicks twice on the accordion header', () => {
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    userEvent.click(accordionHeader);
+    userEvent.click(headerElem);
     expect(screen.getByText(/Accodrion content/i)).toBeVisible();
 
-    userEvent.click(accordionHeader);
+    userEvent.click(headerElem);
     expect(screen.getByText(/Accodrion content/i)).not.toBeVisible();
   });
 
   it('should have a focusable accordion header', () => {
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    accordionHeader.focus();
+    headerElem.focus();
 
-    expect(accordionHeader).toHaveFocus();
+    expect(headerElem).toHaveFocus();
   });
 
   it('should show and hide accordion content given accordion header is focused and #Space key is pressed', () => {
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    accordionHeader.focus();
+    headerElem.focus();
 
     userEvent.keyboard('[Space]');
     expect(screen.getByText(/Accodrion content/i)).toBeVisible();
@@ -130,9 +130,9 @@ describe('BaseAccordion component', () => {
   it('should show and hide accordion content given accordion header is focused and #Enter key is pressed', () => {
     render(<BaseAccordion { ...props } />);
 
-    const accordionHeader = screen.getByRole('button', { name: /Accordion label/i });
+    const headerElem = screen.getByRole('button', { name: /Accordion label/i });
 
-    accordionHeader.focus();
+    headerElem.focus();
 
     userEvent.keyboard('[Enter]');
     expect(screen.getByText(/Accodrion content/i)).toBeVisible();
