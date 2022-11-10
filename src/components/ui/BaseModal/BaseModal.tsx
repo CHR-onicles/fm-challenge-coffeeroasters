@@ -19,7 +19,11 @@ const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
 
   return (
     <div className={ styles.modal }>
-      <div className={ styles['modal__backdrop'] } onClick={ onDismiss }></div>
+      <div
+        data-testid="modal-backdrop"
+        className={ styles['modal__backdrop'] } 
+        onClick={ onDismiss }
+      ></div>
 
       <div className={ styles['modal__container'] }>
         <header className={ styles['modal__header'] }>
