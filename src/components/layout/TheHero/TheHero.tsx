@@ -30,7 +30,11 @@ const TheHero = ({ content }: ITheHeroProps) => {
 
             <p>{ description }</p>
 
-            <Link to="/create-plan" className="btn">Create your plan</Link>
+            <Link
+              to="/create-plan"
+              className="btn"
+              data-testid="btn-hero"
+            >Create your plan</Link>
           </div>
         </div>
       </div>
