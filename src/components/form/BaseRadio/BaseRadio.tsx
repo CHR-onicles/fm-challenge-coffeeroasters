@@ -42,6 +42,8 @@ const BaseRadio = ({ id, label, description, name, value, checked = false, onHan
         htmlFor={ id }
         className={ `${styles['radio-control__label']} | stack` }
         tabIndex={ 0 }
+        data-testid={ `lbl-${id}` }
+        aria-label={ `lbl-${id}` }
         onKeyDown={ handleLabelKeyDown }
       >
         { label }

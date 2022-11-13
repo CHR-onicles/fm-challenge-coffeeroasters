@@ -5,9 +5,9 @@ import LogoWhite from '../../../assets/images/shared/logo-white.svg';
 
 import styles from './BaseBrand.module.scss';
 
-const BaseBrand = ({ className = '', isLogoDark = true }) => {
+const BaseBrand = ({ isLogoDark = true }) => {
   return (
-    <Link to="/" className={ `${styles['brand']} ${className}` }>
+    <Link to="/" className={ styles.brand }>
       <img src={ isLogoDark ? Logo : LogoWhite } alt="Coffeeroasters logo" />
     </Link>
   );

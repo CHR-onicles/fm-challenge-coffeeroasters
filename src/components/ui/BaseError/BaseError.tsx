@@ -13,7 +13,7 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
   const [ errorResponse, setErrorResponseStatus ] = useState<IErrorResponse>({ statusCode: '', message: '' });
 
   useEffect(() => {
-    setErrorResponseStatus((prevErrorStatus) => {
+    setErrorResponseStatus(() => {
       let statusCode = error.substring(error.length - 3);
       let message: string;
 

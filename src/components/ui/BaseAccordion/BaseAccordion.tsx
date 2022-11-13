@@ -46,7 +46,8 @@ const BaseAccordion = ({ id, label, initialState = false, isDisabled = false, on
       <section
         id={ `accordion-panel-${id}` }
         aria-labelledby={ `accordion-header-${id}` }
-        className={ `${isActive ? `${styles['accordion__panel-active']}` : `${styles['accordion__panel']}`}` }
+        hidden={ !isActive }
+        className={ `${isActive ? `${styles['accordion__panel--active']}` : `${styles['accordion__panel']}`}` }
       >
         { children }
       </section>

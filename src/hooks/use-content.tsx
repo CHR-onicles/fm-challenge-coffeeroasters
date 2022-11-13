@@ -40,7 +40,7 @@ const useContent = (page: string) => {
     window.scrollTo(0, 0);
   }, [handleGetPageContent]);
 
-  return { content, error, status };
+  return { content, error, status, handleGetPageContent };
 };
 
 export default useContent;
