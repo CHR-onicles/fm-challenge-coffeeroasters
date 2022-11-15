@@ -1,7 +1,9 @@
 describe('Home page', () => {
-  it('should visit the coffeeroasters home page', () => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000');
+  });
 
+  it('should visit the coffeeroasters home page', () => {
     // Should see header
     cy.findByRole('banner')
       .should('be.visible');
@@ -108,6 +110,41 @@ describe('Home page', () => {
 
     // Should see footer
     cy.findByRole('contentinfo')
+      .should('be.visible');
+
+    cy.findByRole('link', { name:/Facebook logo/i })
+      .should('be.visible');
+    cy.findByRole('link', { name:/Twitter logo/i })
+      .should('be.visible');
+    cy.findByRole('link', { name:/Instagram logo/i })
+      .should('be.visible');
+    
+    const year = new Date().getFullYear();
+    cy.findByText(`© ${year}`)
+      .should('be.visible');
+    cy.findByText(/coded by/i)
+      .should('be.visible');
+    cy.findByRole('link', { name: /christopher's github repository for the coffeeroasters challenge on frontend mentor/i })
+      .should('be.visible');
+  });
+
+  it('should navigate to About us page', () => {
+    cy.findAllByRole('link', { name: /About us/i })
+      .first()
+      .click();
+
+    // Should see hero section
+    cy.findByRole('heading', { name: /About us/i })
+      .should('be.visible');
+  });
+
+  it('should navigate to Create your plan page', () => {
+    cy.findAllByRole('link', { name: /Create your plan/i })
+    .first()
+    .click();
+
+    // Should see hero section
+    cy.findByRole('heading', { name: /Create plan/i })
       .should('be.visible');
   });
 });
