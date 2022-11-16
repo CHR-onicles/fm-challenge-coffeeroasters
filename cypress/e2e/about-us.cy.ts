@@ -1,5 +1,5 @@
 describe('About Us page', () => {
-  it('should view all sections of the About Us page', () => {
+  it('should view all sections of the page', () => {
     cy.visit('http://localhost:3000/about-us');
 
     // Should see hero section
@@ -39,6 +39,12 @@ describe('About Us page', () => {
       .should('be.visible');
     cy.findByText(/68 Asfordby Rd/i)
       .should('be.visible');
+    cy.findByText(/Alcaston/i)
+      .should('be.visible');
+    cy.findByText(/SY6 1YA/i)
+      .should('be.visible');
+    cy.findByText(/\+44 1241 918425/i)
+      .should('be.visible');
 
     cy.findByRole('img', { name: /Canada/i })
       .should('be.visible');
@@ -46,12 +52,24 @@ describe('About Us page', () => {
       .should('be.visible');
     cy.findByText(/1528 Eglinton Avenue/i)
       .should('be.visible');
+    cy.findByText(/Toronto/i)
+      .should('be.visible');
+    cy.findByText(/Ontario M4P 1A6/i)
+      .should('be.visible');
+    cy.findByText(/\+1 416 485 2997/i)
+      .should('be.visible');
 
     cy.findByRole('img', { name: /Australia/i })
       .should('be.visible');
     cy.findByRole('heading', { name: /Australia/i })
       .should('be.visible');
     cy.findByText(/36 Swanston Street/i)
+      .should('be.visible');
+    cy.findByText(/Kewell/i)
+      .should('be.visible');
+    cy.findByText(/Victoria/i)
+      .should('be.visible');
+    cy.findByText(/\+61 4 9928 3629/i)
       .should('be.visible');
   });
 });

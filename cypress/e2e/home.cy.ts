@@ -3,7 +3,7 @@ describe('Home page', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it('should view all sections of the Home page', () => {
+  it('should view all sections of the page', () => {
     // Should see header
     cy.findByRole('banner')
       .should('be.visible');
