@@ -70,4 +70,23 @@ describe('Create Plan page', () => {
     cy.findByRole('button', { name: /Create my plan/i })
       .should('be.visible');
   });
+
+  it('should view the different order options', () => {
+    // Should see the options for Preferences
+    cy.findByRole('button', { name: /How do you drink your coffee\?/i })
+      .scrollIntoView()
+
+    cy.findByRole('region', {
+      name: /How do you drink your coffee\?/i
+    }).within(() => {
+      cy.findByText(/Capsule/i)
+        .should('be.visible');
+
+      cy.findByText(/Filter/i)
+        .should('be.visible');
+
+      // cy.findByText(/Espresso/i)
+      //   .should('be.visible');
+    });
+  });
 });
