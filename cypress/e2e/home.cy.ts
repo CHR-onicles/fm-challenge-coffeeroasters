@@ -6,16 +6,20 @@ describe('Home page', () => {
   it('should view all sections of the page', () => {
     // Should see header
     cy.findByRole('banner')
-      .should('be.visible');
-    
-    cy.findAllByRole('link', { name: /Home/i })
-      .should('have.length', 2);
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('img', { name: /Coffeeroasters logo/i })
+          .should('be.visible');
 
-    cy.findAllByRole('link', { name: /About us/i })
-      .should('have.length', 2);
+        cy.findByRole('link', { name: /Home/i })
+          .should('be.visible');
 
-    cy.findAllByRole('link', { name: /Create your plan/i })
-      .should('have.length', 2);
+        cy.findByRole('link', { name: /About us/i })
+          .should('be.visible');
+
+        cy.findByRole('link', { name: /Create your plan/i })
+          .should('be.visible');
+      });
 
     // Should see hero section
     cy.findByRole('heading', { name: /Great coffee made simple\./i })
@@ -110,7 +114,20 @@ describe('Home page', () => {
 
     // Should see footer
     cy.findByRole('contentinfo')
-      .should('be.visible');
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('img', { name: /Coffeeroasters logo/i })
+          .should('be.visible');
+
+        cy.findByRole('link', { name: /Home/i })
+          .should('be.visible');
+
+        cy.findByRole('link', { name: /About us/i })
+          .should('be.visible');
+
+        cy.findByRole('link', { name: /Create your plan/i })
+          .should('be.visible');
+      });
 
     cy.findByRole('link', { name:/Facebook logo/i })
       .should('be.visible');
@@ -128,23 +145,51 @@ describe('Home page', () => {
       .should('be.visible');
   });
 
-  it('should navigate to About us page', () => {
-    cy.findAllByRole('link', { name: /About us/i })
-      .first()
-      .click();
+  it('should navigate to About us page and back to Home page', () => {
+    cy.findByRole('banner')
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('link', { name: /About us/i })
+          .click();
+      });
 
-    // Should see hero section
+    // Should see About Us hero section
     cy.findByRole('heading', { name: /About us/i })
+      .should('be.visible');
+
+    cy.findByRole('contentinfo')
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('link', { name: /Home/i })
+          .click();
+      });
+
+    // Should see Home hero section
+    cy.findByRole('heading', { name: /Great coffee made simple\./i })
       .should('be.visible');
   });
 
-  it('should navigate to Create your plan page', () => {
-    cy.findAllByRole('link', { name: /Create your plan/i })
-    .first()
-    .click();
+  it('should navigate to Create plan page and back to Home page', () => {
+    cy.findByRole('banner')
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('link', { name: /Create your plan/i })
+          .click();
+      });
 
-    // Should see hero section
+    // Should see Create Plan hero section
     cy.findByRole('heading', { name: /Create plan/i })
+      .should('be.visible');
+
+    cy.findByRole('contentinfo')
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('link', { name: /Home/i })
+          .click();
+      });
+
+    // Should see Home hero section
+    cy.findByRole('heading', { name: /Great coffee made simple\./i })
       .should('be.visible');
   });
 });

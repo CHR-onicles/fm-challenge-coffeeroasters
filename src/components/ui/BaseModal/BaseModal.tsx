@@ -18,7 +18,7 @@ const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
   }, []);
 
   return (
-    <div className={ styles.modal }>
+    <div className={ styles.modal } role="dialog">
       <div
         data-testid="modal-backdrop"
         className={ styles['modal__backdrop'] } 
