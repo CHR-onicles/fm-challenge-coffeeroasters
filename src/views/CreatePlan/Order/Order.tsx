@@ -255,7 +255,14 @@ const Order = ({ orderOptions }: IOrderProps) => {
                         onClick={ () => handleMarkAsActive(quickLink.slug) }
                       >
                         { quickLink.label }
-                        { !quickLink.isValid ? (<span className="btn" data-variant="burger" aria-expanded="true"></span>) : null }
+                        { !quickLink.isValid ? (
+                          <span
+                            className="btn"
+                            data-variant="burger"
+                            aria-label="is invalid"
+                            role="img"
+                          ></span>
+                        ) : null }
                       </button>
                     </li>
                   ))
@@ -277,7 +284,9 @@ const Order = ({ orderOptions }: IOrderProps) => {
                     >
                       {
                         !quickLinks[index].isValid ? (
-                          <span className={ `${styles['order__form-feedback']} | text-font-bold text-size-s-1` }>Please select your { quickLinks[index].label }!</span>
+                          <div className={ `${styles['order__form-feedback']} | text-font-bold text-size-s-1` } role="alert">
+                            <span>Please select your { quickLinks[index].label }!</span>
+                          </div>
                         ) : null
                       }
 

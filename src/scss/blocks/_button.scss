@@ -45,7 +45,8 @@
     mask-repeat: no-repeat;
     mask-position: center;
 
-    &[aria-expanded="true"] {
+    &[aria-expanded="true"],
+    &[role="img"] {
       mask-image: url('../../assets/images/shared/mobile/icon-close.svg');
     }
   }

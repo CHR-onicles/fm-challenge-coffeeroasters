@@ -813,5 +813,232 @@ describe('Create Plan page', () => {
     });
   });
 
-  it('should show error messages when no options are selected', () => {});
+  it('should show error messages when no options are selected', () => {
+    cy.findByRole('button', { name: /Create my plan/i })
+      .scrollIntoView()
+      .click();
+    cy.findByRole('alert')
+      .within(() => {
+        cy.findByText(/Please select your preferences!/i)
+          .should('be.visible');
+      });
+
+    cy.findByRole('button', { name: /Bean type is invalid/i })
+      .click();
+    cy.findByRole('alert')
+      .within(() => {
+        cy.findByText(/Please select your bean type!/i)
+          .should('be.visible');
+      });
+    
+    cy.findByRole('button', { name: /Quantity is invalid/i })
+      .click();
+    cy.findByRole('alert')
+      .within(() => {
+        cy.findByText(/Please select your quantity!/i)
+          .should('be.visible');
+      });
+    
+    cy.findByRole('button', { name: /Grind option is invalid/i })
+      .click();
+    cy.findByRole('alert')
+      .within(() => {
+        cy.findByText(/Please select your grind option!/i)
+          .should('be.visible');
+      });
+
+    cy.findByRole('button', { name: /Deliveries is invalid/i })
+      .click();
+    cy.findByRole('alert')
+      .within(() => {
+        cy.findByText(/Please select your deliveries!/i)
+          .should('be.visible');
+      });
+  });
+
+  it('should remove error messages when options are selected', () => {
+    cy.findByRole('region', {
+      name: /How often should we deliver\?/i
+    }).within(() => {
+      cy.findByText(/Every 2 weeks/i)
+        .click();
+
+      cy.findByRole('alert')
+        .should('not.exist');
+    });
+    cy.findByRole('button', { name: /Deliveries/i })
+      .within(() => {
+        cy.findByRole('img', { name: /is invalid/i })
+          .should('not.exist');
+      });
+
+    cy.findByRole('button', { name: /Grind option is invalid/i })
+      .click();
+    cy.findByRole('region', {
+        name: /Want us to grind them\?/i
+      }).within(() => {
+        cy.findByText(/Filter/i)
+          .click();
+  
+        cy.findByRole('alert')
+          .should('not.exist');
+      });
+      cy.findByRole('button', { name: /Grind option/i })
+        .within(() => {
+          cy.findByRole('img', { name: /is invalid/i })
+            .should('not.exist');
+        });
+    
+    cy.findByRole('button', { name: /Quantity is invalid/i })
+      .click();
+    cy.findByRole('region', {
+        name: /How much would you like\?/i
+      }).within(() => {
+        cy.findByText(/1000g/i)
+          .click();
+  
+        cy.findByRole('alert')
+          .should('not.exist');
+      });
+      cy.findByRole('button', { name: /Quantity/i })
+        .within(() => {
+          cy.findByRole('img', { name: /is invalid/i })
+            .should('not.exist');
+        });
+
+    cy.findByRole('button', { name: /Bean type is invalid/i })
+      .click();
+    cy.findByRole('region', {
+        name: /What type of coffee\?/i
+      }).within(() => {
+        cy.findByText(/Blended/i)
+          .click();
+  
+        cy.findByRole('alert')
+          .should('not.exist');
+      });
+      cy.findByRole('button', { name: /Bean type/i })
+        .within(() => {
+          cy.findByRole('img', { name: /is invalid/i })
+            .should('not.exist');
+        });
+
+    cy.findByRole('button', { name: /Preferences is invalid/i })
+      .click();
+    cy.findByRole('region', {
+        name: /How do you drink your coffee\?/i
+      }).within(() => {
+        cy.findByText(/Espresso/)
+          .click();
+  
+        cy.findByRole('alert')
+          .should('not.exist');
+      });
+      cy.findByRole('button', { name: /Preferences/i })
+        .within(() => {
+          cy.findByRole('img', { name: /is invalid/i })
+            .should('not.exist');
+        });
+        
+    // Should see a Order Summary with selected options
+    cy.findByRole('heading', { name: /Order Summary/i })
+    .should('be.visible');
+    cy.findByText(/“I drink my coffee as , with a type of bean\. ground ala , sent to me \.”/i)
+      .within(() => {
+        cy.findByText(/Espresso/i)
+          .should('be.visible');
+
+        cy.findByText(/Blended/i)
+          .should('be.visible');
+
+        cy.findByText(/1000g/i)
+          .should('be.visible');
+
+        cy.findByText(/Filter/i)
+          .should('be.visible');
+
+        cy.findByText(/Every 2 weeks/i)
+          .should('be.visible');
+      });
+
+    // Should get an error for grind option given Preferences is changed from
+    // Espresso to Capsule and back to Espresso
+    cy.findByRole('region', {
+      name: /How do you drink your coffee\?/i
+    }).within(() => {
+      cy.findByText(/Capsule/i)
+        .click();
+      cy.findByText(/Espresso/)
+        .click();
+    });
+    cy.findByRole('button', { name: /Create my plan/i })
+      .click();
+
+    cy.findByRole('region', {
+      name: /Want us to grind them\?/i
+    }).within(() => {
+      cy.findByRole('alert')
+        .should('be.visible');
+      cy.findByText(/Please select your grind option!/i)
+        .should('be.visible');
+    });
+    cy.findByRole('button', { name: /Grind option is invalid/i })
+      .within(() => {
+        cy.findByRole('img', { name: /is invalid/i })
+          .should('be.visible');
+      });
+
+    cy.findByRole('region', {
+      name: /Want us to grind them\?/i
+    }).within(() => {
+      cy.findByText(/Filter/i)
+        .click();
+
+      cy.findByRole('alert')
+        .should('not.exist');
+    });
+    cy.findByRole('button', { name: /Grind option/i })
+      .within(() => {
+        cy.findByRole('img', { name: /is invalid/i })
+          .should('not.exist');
+      });
+
+    // Should open Order Summary dialog
+    cy.findByRole('button', { name: /Create my plan/i })
+    .click();
+
+    cy.findByRole('dialog')
+      .within(() => {
+        cy.findByRole('heading', { name: /Order Summary/i })
+          .should('be.visible');
+
+        cy.findByRole('button', { name: /Close modal/i })
+          .should('be.visible');
+
+        cy.findByText(/“I drink my coffee as , with a type of bean\. ground ala , sent to me \.”/i)
+          .within(() => {
+            cy.findByText(/Espresso/i)
+              .should('be.visible');
+
+            cy.findByText(/Blended/i)
+              .should('be.visible');
+
+            cy.findByText(/1000g/i)
+              .should('be.visible');
+
+            cy.findByText(/Filter/i)
+              .should('be.visible');
+
+            cy.findByText(/Every 2 weeks/i)
+              .should('be.visible');
+          });
+
+        cy.findByRole('heading', { name: /\$64\.00\/mo/i })
+          .should('be.visible');
+
+        cy.findByRole('button', { name: /Checkout/i })
+          .should('be.visible')
+          .click();
+      });
+  });
 });
