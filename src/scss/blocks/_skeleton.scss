@@ -37,6 +37,8 @@
   &[data-variant="hero"] {
     --skeleton-spacing-top: #{toRem(116px)};
     --skeleton-spacing-bottom: #{toRem(116px)};
+
+    align-items: center;
   }
 
   &[data-variant="hero-page"] {
@@ -133,6 +135,12 @@
       --skeleton-element-height: #{toRem(54px)};
 
       margin-top: var(--skeleton-button-element-spacing);
+    }
+  }
+
+  @include media-breakpoint(md) {
+    &[data-variant="hero"] {
+      align-items: flex-start;
     }
   }
 }
