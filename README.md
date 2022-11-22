@@ -22,6 +22,7 @@ Users should be able to:
 - View the optimal layout for each page depending on their device's screen size
 - See hover states for all interactive elements throughout the site
 - Make selections to create a coffee subscription and see an order summary modal of their choices
+- **Bonus**: View feedback on the form if ever user tries to create an order without selecting any option
 - **Bonus**: See a loading state while the content of each page is loading
 
 ### Screenshot
@@ -65,6 +66,7 @@ I have been learning `React` since the beginning of 2022 and this challenge was 
 - **Custom `React` hooks**
   - I created a `useContent` hook to handle the fetching of page content, catching errors and transitioning of state.
 - **Handling forms and user inputs**
+  - I added some form feedback if the user tries to create a plan without selecting any options.
 - **Handling HTTP request and response**
   - Even if the challenge is to build a static website, I wanted to know how to handle the content in a scenario where it would be fetched from a server. I discovered `Axios Mock Adapter` which proves to be a useful tool to mock requests when building application and you do not have a backend to serve the data.
 - **Routing with `React Router`**
