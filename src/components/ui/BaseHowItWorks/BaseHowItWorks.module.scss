@@ -105,9 +105,11 @@
 
     --howItWorks-list-spacing: 0;
 
-    --howItWorks-item-step-spacing-bottom: #{toRem(42px)};
+    --howItWorks-item-step-spacing-bottom: #{toRem(56px)};
     --howItWorks-item-title-spacing-bottom: #{toRem(38px)};
     --howItWorks-item-text-width: 22ch;
+
+    --howItWorks-cta-spacing-top: #{toRem(44px)};
 
     &__card {
       padding: 0;
@@ -185,6 +187,8 @@
     --howItWorks-item-title-spacing-bottom: #{toRem(42px)};
     --howItWorks-item-text-size: #{toRem(16px)};
     --howItWorks-item-text-width: 31ch;
+
+    --howItWorks-cta-spacing-top: #{toRem(60px)};
 
     &__card {
       padding: 0 var(--content-spacing-horizontal);

@@ -14,6 +14,7 @@
       font-size: var(--nav-text-size);
       text-transform: uppercase;
       color: var(--dark-color-1);
+      letter-spacing: toRem(0.92px);
     }
 
     &[data-variant="mobile"] {
@@ -76,6 +77,7 @@
       font-family: var(--font-family-bold);
       font-size: var(--nav-text-size);
       text-transform: uppercase;
+      letter-spacing: toRem(0.92px);
     }
 
     @include media-breakpoint(md) {
@@ -86,7 +88,7 @@
     }
 
     @include media-breakpoint(xl) {
-      --footer-spacing-left: #{toRem(86px)};
+      --footer-spacing-left: #{toRem(106px)};
     }
   }
 }

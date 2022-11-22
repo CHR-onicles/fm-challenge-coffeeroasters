@@ -15,9 +15,9 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
   const navRef = useRef<HTMLElement>(null);
   const [ isActive, setIsActive ] = useState<boolean>(false);
 
-  const handleToggleNav = () => {
+  const handleToggleNav = (isExpanded: boolean) => {
     setIsActive(prevState => {
-      if (!prevState) {
+      if (!isExpanded) {
         document.body.classList.add('no-scrolling');
       } else {
         document.body.classList.remove('no-scrolling');
@@ -53,7 +53,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
               aria-controls="header-nav"
               aria-expanded={ isActive ? 'true' : 'false' }
               data-variant="burger"
-              onClick={ handleToggleNav }
+              onClick={ () => handleToggleNav(false) }
             >
               <span className="sr-only">Toggle Menu</span>
             </button>
@@ -67,7 +67,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
                 {
                   viewRoutes.map(route => (
                     <li key={ `nav-${route.path}` }>
-                      <NavLink to={ route.path } onClick={ handleToggleNav }>{ route.title }</NavLink>
+                      <NavLink to={ route.path } onClick={ () => handleToggleNav(true) }>{ route.title }</NavLink>
                     </li>
                   ))
                 }

@@ -66,4 +66,17 @@
     --modal-header-spacing-vertical: #{toRem(48px)};
     --modal-header-title-size: #{toRem(40px)};
   }
+
+  @media (max-width: 915px) and (orientation: landscape) {
+    --modal-container-spacing-top: 4vh;
+
+    --modal-header-spacing-vertical: #{toRem(18px)};
+
+    &__body {
+      max-height: 65vh;
+      padding-top: var(--modal-header-spacing-vertical);
+      padding-bottom: var(--modal-header-spacing-vertical);
+      overflow-y: auto;
+    }
+  }
 }
