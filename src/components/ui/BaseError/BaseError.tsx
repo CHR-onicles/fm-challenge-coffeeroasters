@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { IErrorResponse } from '../../../interfaces/error-response-interface';
 
@@ -65,12 +66,17 @@ const BaseError = ({ error, title = 'Whoops!' }: IBaseErrorProps) => {
       <div className="container">
         <div className={ styles.error }>
           <div className="grid-cols">
-            <div className="grid__item grid__item--start-md-3 grid__item--span-md-8 grid__item--start-lg-4 grid__item--span-lg-6">
-              <h1 className={ `${styles['error__title']} | text-align-center` }>{ title }</h1>
+            <div className="grid__item grid__item--start-md-3 grid__item--span-md-8 grid__item--start-lg-4 grid__item--span-lg-6 | text-align-center">
+              <h1 className={ `${styles['error__title']}` }>{ title }</h1>
               
-              <h2 className={ `${styles['error__status-code']} | text-align-center` }>{ errorResponse.statusCode }</h2>
+              <h2 className={ `${styles['error__status-code']}` }>{ errorResponse.statusCode }</h2>
 
-              <p className={ `${styles['error__message']} | text-align-center` }>{ errorResponse.message }</p>
+              <p className={ `${styles['error__message']}` }>{ errorResponse.message }</p>
+
+              <Link
+                to="/"
+                className={ `btn | ${styles['error__cta']}`}
+              >Back to Home</Link>
             </div>
           </div>
         </div>

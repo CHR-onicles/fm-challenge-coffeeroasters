@@ -29,6 +29,8 @@
   
   &[data-variant="hero"],
   &[data-variant="hero-page"] {
+    align-items: center;
+
     > [data-variant="default"] {
       width: 50%;
     }
@@ -37,8 +39,6 @@
   &[data-variant="hero"] {
     --skeleton-spacing-top: #{toRem(116px)};
     --skeleton-spacing-bottom: #{toRem(116px)};
-
-    align-items: center;
   }
 
   &[data-variant="hero-page"] {
@@ -139,7 +139,8 @@
   }
 
   @include media-breakpoint(md) {
-    &[data-variant="hero"] {
+    &[data-variant="hero"],
+    &[data-variant="hero-page"] {
       align-items: flex-start;
     }
   }

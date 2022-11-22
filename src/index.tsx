@@ -33,7 +33,7 @@ root.render(
                 <Checkout />
               </BaseRouteGuard>
             } />
-            <Route path="*" element={ <NotFound /> } />
+            <Route path="error" element={ <NotFound /> } />
           </Route>
 
           <Route path="design-system" element={ <BasePage /> }>

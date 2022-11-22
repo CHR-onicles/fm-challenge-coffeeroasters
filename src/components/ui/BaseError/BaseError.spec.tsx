@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import BaseError from './BaseError';
 
@@ -39,26 +40,32 @@ describe('BaseError component', () => {
   ];
 
   it('should render a default title', () => {
-    render(<BaseError error="Some unexpected error" />);
+    render(<BaseError error="Some unexpected error" />, { wrapper: BrowserRouter });
 
     expect(screen.getByRole('heading', { name: /Whoops!/i})).toBeInTheDocument();
   });
 
   it('should render a default status code', () => {
-    render(<BaseError error="Some unexpected error" />);
+    render(<BaseError error="Some unexpected error" />, { wrapper: BrowserRouter });
 
     expect(screen.getByRole('heading', { name: /Error/i })).toBeInTheDocument();
   });
 
   it('should render a default message', () => {
-    render(<BaseError error="Some unexpected error" />);
+    render(<BaseError error="Some unexpected error" />, { wrapper: BrowserRouter });
 
     expect(screen.getByText(/Sorry, an unexpected error occured./i)).toBeInTheDocument();
   });
 
+  it('should render a link', () => {
+    render(<BaseError error="Some unexpected error" />, { wrapper: BrowserRouter });
+
+    expect(screen.getByRole('link', { name: /Back to Home/i})).toBeInTheDocument();
+  });
+
   for (const error of errors) {
     it(`should render a status code and message for ${error.statusCode}`, () => {
-      render(<BaseError error={ `Some error ${error.statusCode}` } />);
+      render(<BaseError error={ `Some error ${error.statusCode}` } />, { wrapper: BrowserRouter });
 
       expect(screen.getByText(`${error.statusCode}`)).toBeInTheDocument();
       expect(screen.getByText(`${error.message}`)).toBeInTheDocument();
