@@ -14,7 +14,7 @@ const TheFooter = () => {
 
           <BaseSocialMedia />
 
-          <TheCopyright />
+          {/* <TheCopyright /> */}
         </div>
       </div>
     </footer>
