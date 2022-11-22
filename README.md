@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: []()
-- Live Site URL: []()
+- Solution URL: [Coffeeroasters subscription site](https://www.frontendmentor.io/solutions/coffeeroasters-subscription-site-react-unit-tests-endtoend-tests-pqsJlCTpaE)
+- Live Site URL: [fm-coffeeroasters.netlify.app](https://fm-coffeeroasters.netlify.app/)
 
 ## My process
 

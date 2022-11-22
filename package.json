@@ -1,6 +1,6 @@
 {
   "name": "coffeeroasters",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -46,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/cypress": "^8.0.3",
     "cypress": "^11.0.1",
     "sass": "^1.54.0"
   }

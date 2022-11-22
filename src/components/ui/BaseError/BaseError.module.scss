@@ -26,7 +26,8 @@
     line-height: 1.2;
   }
 
-  &__message {
+  &__message,
+  &__cta {
     margin-top: var(--error-message-spacing-top);
   }
 
