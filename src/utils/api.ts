@@ -7,7 +7,7 @@ import { contentMap } from '../fixtures/contents';
 
 const initializeMockAdapter = () => {
   const mock = new MockAdapter(axios, {
-    delayResponse: 0,
+    delayResponse: 1800,
     onNoMatch: 'throwException',
   });
 
