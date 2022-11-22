@@ -61,7 +61,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
             <nav
               ref={ navRef }
               id="header-nav"
-              aria-labelledby="header"
+              aria-label="header-nav"
               className={ styles['header__nav'] }
             >
               <ul className={ `row ${styles.row}`}>
@@ -78,7 +78,7 @@ const BaseNavigation = ({ isHeaderNav = true }: IBaseNavigationProps) => {
         ) : (
           <nav
             id="footer-nav"
-            aria-labelledby="footer"
+            aria-label="footer-nav"
             className={ styles['footer__nav'] }
           >
             <ul className={ `row ${styles.row}` }>
