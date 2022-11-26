@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 
 import styles from './BaseModal.module.scss';
 
@@ -9,10 +9,16 @@ interface IBaseModalProps {
 }
 
 const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
-  useEffect(() => {
-    document.body.classList.add('no-scrolling');
+  const modalCloseBtnRef = useRef<HTMLButtonElement>(null);
 
+  useEffect(() => {
+    const modalCloseBtn = modalCloseBtnRef.current;
+    
+    modalCloseBtn?.focus()
+    document.body.classList.add('no-scrolling');
+    
     return () => {
+      modalCloseBtn?.blur();
       document.body.classList.remove('no-scrolling');
     }
   }, []);
@@ -25,7 +31,7 @@ const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
         onClick={ onDismiss }
       ></div>
 
-      <div className={ styles['modal__container'] }>
+      <div className={ styles['modal__container'] } tabIndex={ 0 }>
         <header className={ styles['modal__header'] }>
           <h2>{ title }</h2>
 
@@ -34,6 +40,7 @@ const BaseModal = ({ title, onDismiss, children }: IBaseModalProps) => {
             className="btn"
             data-variant="burger"
             onClick={ onDismiss }
+            ref={ modalCloseBtnRef }
           >
             <span className="sr-only">Close Modal</span>
           </button>

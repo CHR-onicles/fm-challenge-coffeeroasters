@@ -1,10 +1,27 @@
+@use '../abstracts/' as *;
+
 .page {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
   height: 100vh;
+
+  &__btn-skip {
+    position: absolute;
+    top: toRem(20px);
+    left: toRem(20px);
+    z-index: var(--zindex-skip-link);
+    transform: translateX(-200%);
+    transition: transform 0.25s ease-in-out, opacity 0.75s ease-in-out;
+
+    &:focus {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
   > main {
     flex-grow: 1;
