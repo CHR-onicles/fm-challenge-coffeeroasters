@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { BaseHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton, BaseError } from '../../components/ui';
 import { Order } from './index';
@@ -13,7 +11,7 @@ const Subscribe = () => {
 
   if (status === 'loading') {
     return (
-      <main>
+      <main id="main">
         <section>
           <div className="container">
             <div className="grid-cols mb-s5 pb-s5">
@@ -59,26 +57,24 @@ const Subscribe = () => {
 
   if (status === 'error') {
     return (
-      <main>
+      <main id="main">
         <BaseError error={ error } />
       </main>
     );
   }
 
   return (
-    <main>
-      <Fragment>
-        <BaseHero content={ content[0] }/>
+    <main id="main">
+      <BaseHero content={ content[0] }/>
 
-        <BaseHowItWorks
-          content={ content[1] }
-          variant="dark"
-          withTitle= { false }
-          withCTA={ false }
-        />
+      <BaseHowItWorks
+        content={ content[1] }
+        variant="dark"
+        withTitle= { false }
+        withCTA={ false }
+      />
 
-        <Order orderOptions={ content[2]?.listing as IPlan[] } />
-      </Fragment>
+      <Order orderOptions={ content[2]?.listing as IPlan[] } />
     </main>
   );
 };

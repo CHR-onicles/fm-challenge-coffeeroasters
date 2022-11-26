@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { TheHero } from '../../components/layout';
 import { BaseHowItWorks, BaseSkeleton, BaseError } from '../../components/ui';
 import { OurCollection, WhyChooseUs } from './index';
@@ -11,7 +9,7 @@ const Home = () => {
 
   if (status === 'loading') {
     return (
-      <main>
+      <main id="main">
         <section>
           <div className="container">
             <div className="grid-cols mb-s5 pb-s5">
@@ -65,23 +63,21 @@ const Home = () => {
 
   if (status === 'error') {
     return (
-      <main>
+      <main id="main">
         <BaseError error={ error } />
       </main>
     );
   }
 
   return (
-    <main>
-      <Fragment>
-        <TheHero content={ content[0] } />
+    <main id="main">
+      <TheHero content={ content[0] } />
   
-        <OurCollection content={ content[1] } />
+      <OurCollection content={ content[1] } />
 
-        <WhyChooseUs content={ content[2] } />
+      <WhyChooseUs content={ content[2] } />
 
-        <BaseHowItWorks content={ content[3] } />
-      </Fragment>
+      <BaseHowItWorks content={ content[3] } />
     </main>
   );
 };

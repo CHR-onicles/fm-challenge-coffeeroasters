@@ -50,6 +50,10 @@
         background-color: var(--neutral-color-1);
         mask-image: url('../../../assets/images/shared/mobile/icon-close.svg');
       }
+
+      &:focus {
+        outline: var(--neutral-color-1) dotted 3px !important;
+      }
     }
   }
 
